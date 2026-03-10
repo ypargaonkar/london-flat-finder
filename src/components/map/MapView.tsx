@@ -171,7 +171,8 @@ export function MapView({
           return;
         }
       }
-      // Clicked on empty area
+      // Clicked on empty area — close any open listing/popup
+      onSelectListing(null);
       setPopupInfo(null);
     },
     [onSelectListing]
@@ -239,7 +240,7 @@ export function MapView({
               10,
               ["==", ["get", "listingType"], "flat"],
               7,
-              5,
+              6,
             ],
             "circle-color": [
               "case",
@@ -270,17 +271,12 @@ export function MapView({
               ["==", ["get", "selected"], 1],
               "#3b82f6",
               ["==", ["get", "listingType"], "studio"],
-              "rgba(167,139,250,0.4)",
+              "rgba(167,139,250,0.7)",
               ["==", ["get", "listingType"], "flatshare"],
-              "rgba(245,158,11,0.4)",
+              "rgba(245,158,11,0.7)",
               "rgba(255,255,255,0.6)",
             ],
-            "circle-opacity": [
-              "case",
-              ["==", ["get", "listingType"], "flat"],
-              0.9,
-              0.6,
-            ],
+            "circle-opacity": 0.9,
             "circle-blur": 0.1,
           }}
         />
@@ -340,49 +336,49 @@ export function MapView({
             onClose={() => onSelectListing(null)}
             closeOnClick={false}
           >
-            <div className="p-3.5 max-w-[260px]">
-              <div className="flex items-center justify-between gap-2">
-                <p className="text-sm font-serif font-bold text-white">
+            <div className="p-5 min-w-[320px]">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-lg font-serif font-bold text-white">
                   £{listing.pricePerMonth?.toLocaleString()}/mo
                 </p>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1.5">
                   {(() => {
                     const t = classifyListing(listing);
                     if (t === "studio") return (
-                      <span className="text-[9px] font-bold text-purple-300 bg-purple-500/20 px-1.5 py-0.5 rounded">Studio</span>
+                      <span className="text-[10px] font-bold text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded">Studio</span>
                     );
                     if (t === "flatshare") return (
-                      <span className="text-[9px] font-bold text-amber-300 bg-amber-500/20 px-1.5 py-0.5 rounded">Flat Share</span>
+                      <span className="text-[10px] font-bold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded">Flat Share</span>
                     );
                     return null;
                   })()}
-                  <span className="text-[10px] font-bold text-white/40 bg-white/[0.06] px-1.5 py-0.5 rounded">
+                  <span className="text-xs font-bold text-white/40 bg-white/[0.06] px-2 py-0.5 rounded">
                     {listing.postcode}
                   </span>
                 </div>
               </div>
-              <p className="text-[11px] text-white/50 mt-0.5 line-clamp-1">{listing.title}</p>
+              <p className="text-sm text-white/50 mt-1 line-clamp-2">{listing.title}</p>
               {listing.stationName && (
-                <p className="text-[10px] text-white/30 mt-1">
+                <p className="text-xs text-white/30 mt-2">
                   {listing.stationName}
                   {listing.distanceToStationM != null && ` (${listing.distanceToStationM}m)`}
                   {listing.journeyToOfficeMin != null && (
-                    <span className="text-blue-400/70 ml-1">
+                    <span className="text-blue-400/70 ml-1.5">
                       ~{Math.round(listing.journeyToOfficeMin)}min to Dojo
                     </span>
                   )}
                 </p>
               )}
-              <div className="flex items-center justify-between mt-2">
-                <span className="text-[10px] text-white/25">Score: {listing.compositeScore}</span>
+              <div className="flex items-center justify-between mt-3 pt-2 border-t border-white/[0.06]">
+                <span className="text-xs text-white/25">Score: {listing.compositeScore}</span>
                 <a
                   href={listing.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] text-blue-400 hover:text-blue-300 inline-flex items-center gap-0.5 transition-colors font-medium"
+                  className="text-xs text-blue-400 hover:text-blue-300 inline-flex items-center gap-1 transition-colors font-medium"
                 >
                   View Listing
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M7 17L17 7M17 7H7M17 7v10" />
                   </svg>
                 </a>

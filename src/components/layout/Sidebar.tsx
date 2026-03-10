@@ -39,9 +39,9 @@ export function Sidebar({
 }: SidebarProps) {
   const listRef = useRef<HTMLDivElement>(null);
 
-  // Only show 1-bed flats in sidebar (not studios)
+  // Only show top 1-bed flats in sidebar (not studios/flat shares), capped at 50
   const sidebarListings = useMemo(
-    () => listings.filter(isOneBedFlat),
+    () => listings.filter(isOneBedFlat).slice(0, 50),
     [listings]
   );
 
@@ -61,9 +61,9 @@ export function Sidebar({
       {/* Listing count */}
       <div className="px-4 py-2 flex items-center justify-between border-t border-b border-white/[0.05]">
         <span className="text-[11px] text-white/35 font-medium">
-          {sidebarListings.length} flats
-          {sidebarListings.length < stats.totalActive && (
-            <span className="text-white/20"> &middot; {stats.totalActive - sidebarListings.length} studios on map</span>
+          Top {sidebarListings.length} flats
+          {listings.filter(isOneBedFlat).length > sidebarListings.length && (
+            <span className="text-white/20"> &middot; of {listings.filter(isOneBedFlat).length} total</span>
           )}
         </span>
         <span className="text-[10px] text-white/20 font-medium">by score</span>
