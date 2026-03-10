@@ -9,23 +9,27 @@ function sleep(ms: number) {
 }
 
 /**
- * Scrape OpenRent for a single postcode
+ * Scrape OpenRent for a single postcode.
+ * OpenRent embeds property data as JavaScript arrays in the page:
+ *   PROPERTYIDS, prices, bedrooms, bathrooms, furnished,
+ *   PROPERTYLISTLATITUDES, PROPERTYLISTLONGITUDES, etc.
  */
 async function scrapePostcode(postcode: string): Promise<RawListing[]> {
   const listings: RawListing[] = [];
 
   try {
-    // OpenRent has a JSON API endpoint
-    const apiUrl = `https://www.openrent.com/properties-to-rent?term=${encodeURIComponent(postcode)}&bedrooms_min=1&bedrooms_max=1&prices_max=2200&isLive=true`;
+    // OpenRent uses .co.uk (redirects from .com)
+    const url = `https://www.openrent.co.uk/properties-to-rent/london-${postcode.toLowerCase()}?term=${encodeURIComponent(postcode)}&bedrooms_min=1&bedrooms_max=1&prices_max=2200&isLive=true`;
 
-    console.log(`    Fetching: ${apiUrl}`);
+    console.log(`    Fetching: ${url}`);
 
-    const res = await fetch(apiUrl, {
+    const res = await fetch(url, {
       headers: {
         "User-Agent": USER_AGENT,
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-GB,en;q=0.9",
       },
+      redirect: "follow",
     });
 
     console.log(`    Response: ${res.status} ${res.statusText}`);
@@ -38,132 +42,143 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
     const html = await res.text();
     console.log(`    HTML length: ${html.length} chars`);
 
-    // Check for bot detection
-    if (html.includes("captcha") || html.includes("Access Denied") || html.includes("blocked")) {
-      console.warn(`    OpenRent bot detection triggered for ${postcode}`);
-      console.log(`    HTML preview: ${html.substring(0, 500)}`);
-      return [];
-    }
+    // Parse JavaScript arrays embedded in the page
+    const propertyIds = extractJsArray(html, "PROPERTYIDS");
+    const prices = extractJsArray(html, "prices");
+    const bedrooms = extractJsArray(html, "bedrooms");
+    const lats = extractJsArray(html, "PROPERTYLISTLATITUDES");
+    const lons = extractJsArray(html, "PROPERTYLISTLONGITUDES");
+    const furnished = extractJsArray(html, "furnished");
 
-    const $ = cheerio.load(html);
+    console.log(`    Parsed arrays: ${propertyIds.length} IDs, ${prices.length} prices`);
 
-    // Try multiple selector patterns
-    const selectorGroups = [
-      { container: ".pli", title: ".pli__title", price: ".pli__price", desc: ".pli__description" },
-      { container: ".property-listing", title: ".listing-title", price: ".listing-price", desc: ".listing-desc" },
-      { container: "[data-listing]", title: "h2, h3, .title", price: ".price", desc: ".description" },
-      { container: ".listing-card, .property-card, .result-card", title: "h2, h3, .title, .address", price: ".price, .rent", desc: ".description, .summary" },
-    ];
+    if (propertyIds.length === 0) {
+      // Fallback: try HTML parsing
+      const $ = cheerio.load(html);
+      console.log(`    Page title: ${$("title").text()}`);
+      console.log(`    Fallback: trying HTML selectors...`);
 
-    for (const { container, title: titleSel, price: priceSel, desc: descSel } of selectorGroups) {
-      $(container).each((_, el) => {
-        const $el = $(el);
-        const id =
-          $el.attr("data-id") ||
-          $el.attr("data-listing-id") ||
-          $el.find("a").attr("href")?.match(/\/(\d+)/)?.[1] ||
-          "";
-        if (!id) return;
+      // Try various selectors
+      $("a[href*='/property-to-rent/']").each((_, el) => {
+        const href = $(el).attr("href") || "";
+        const idMatch = href.match(/\/property-to-rent\/(\d+)/);
+        if (!idMatch) return;
+        const id = idMatch[1];
+        if (listings.some((l) => l.sourceId === id)) return;
 
-        const title = $el.find(titleSel).first().text().trim()
-          || $el.find("a").first().text().trim();
-        const priceText = $el.find(priceSel).first().text().trim();
+        // Try to find price near this element
+        const card = $(el).closest("div");
+        const priceText = card.find("[class*='price'], [class*='Price']").text()
+          || card.text().match(/£[\d,]+/)?.[0]
+          || "";
         const price = parseInt(priceText.replace(/[^0-9]/g, "") || "0");
-        const desc = $el.find(descSel).text().trim();
-        const imgSrc = $el.find("img").attr("src")
-          || $el.find("img").attr("data-src")
+
+        const title = card.find("h2, h3, [class*='title'], [class*='Title']").first().text().trim()
+          || $(el).text().trim();
+        const imgSrc = card.find("img").first().attr("src")
+          || card.find("img").first().attr("data-src")
           || "";
 
         if (price > 0 && price <= 5000) {
           listings.push({
-            sourceId: String(id),
-            url: `https://www.openrent.com/property-to-rent/${id}`,
+            sourceId: id,
+            url: `https://www.openrent.co.uk/property-to-rent/${id}`,
             title: title || `${postcode} flat`,
             address: title,
             postcode,
             pricePerMonth: price > 10000 ? Math.round(price / 12) : price,
             bedrooms: 1,
-            description: desc,
-            imageUrls: imgSrc ? [imgSrc] : [],
+            description: "",
+            imageUrls: imgSrc ? [imgSrc.startsWith("//") ? `https:${imgSrc}` : imgSrc] : [],
           });
         }
       });
 
-      if (listings.length > 0) {
-        console.log(`    [HTML] Found ${listings.length} with selector "${container}"`);
-        return listings;
-      }
-    }
-
-    // Try JSON embedded in page
-    $("script").each((_, el) => {
-      const content = $(el).html() || "";
-      if (content.includes("properties") || content.includes("listings")) {
-        try {
-          // Look for JSON arrays of properties
-          const arrayMatch = content.match(/\[{"id":\d+.*?\}]/);
-          if (arrayMatch) {
-            const data = JSON.parse(arrayMatch[0]);
-            for (const item of data) {
-              if (!item.id) continue;
-              listings.push({
-                sourceId: String(item.id),
-                url: `https://www.openrent.com/property-to-rent/${item.id}`,
-                title: item.title || item.address || `${postcode} flat`,
-                address: item.address || item.title || "",
-                postcode,
-                pricePerMonth: item.price || item.rent || 0,
-                bedrooms: 1,
-                description: item.description || "",
-                imageUrls: item.image ? [item.image] : [],
-              });
-            }
-          }
-        } catch {
-          // Not valid JSON
-        }
-      }
-    });
-
-    if (listings.length > 0) {
-      console.log(`    [JSON] Found ${listings.length} from embedded JSON`);
+      console.log(`    Fallback found ${listings.length} listings`);
       return listings;
     }
 
-    // Debug info
-    console.log(`    No listings found. Page title: ${$("title").text()}`);
-    console.log(`    Links: ${$("a").length}, Property links: ${$('a[href*="property"]').length}`);
+    // Build listings from parallel arrays
+    for (let i = 0; i < propertyIds.length; i++) {
+      const id = String(propertyIds[i]);
+      const price = Number(prices[i]) || 0;
+      const beds = Number(bedrooms[i]) || 1;
+      const lat = Number(lats[i]) || 0;
+      const lon = Number(lons[i]) || 0;
 
-    // Last resort: find property links
-    $('a[href*="/property-to-rent/"]').each((_, el) => {
-      const href = $(el).attr("href") || "";
-      const idMatch = href.match(/\/property-to-rent\/(\d+)/);
-      if (!idMatch) return;
-      const id = idMatch[1];
-      if (listings.some((l) => l.sourceId === id)) return;
+      // Only include 1-bed flats within budget
+      if (beds !== 1 || price <= 0 || price > 2200) continue;
 
       listings.push({
         sourceId: id,
-        url: `https://www.openrent.com${href}`,
-        title: $(el).text().trim() || `${postcode} flat`,
-        address: $(el).text().trim(),
+        url: `https://www.openrent.co.uk/property-to-rent/${id}`,
+        title: `${postcode} - 1 Bed Flat`,
+        address: "",
         postcode,
-        pricePerMonth: 0,
+        pricePerMonth: price,
         bedrooms: 1,
         description: "",
-        imageUrls: [],
+        imageUrls: [`https://imagescdn.openrent.co.uk/listings/${id}/listing_image_primary.jpg`],
       });
-    });
-
-    if (listings.length > 0) {
-      console.log(`    [LINKS] Found ${listings.length} property links`);
     }
 
+    // Try to get titles from page HTML
+    if (listings.length > 0) {
+      const $ = cheerio.load(html);
+
+      // Try to find listing titles in the page
+      for (const listing of listings) {
+        const link = $(`a[href*="/property-to-rent/${listing.sourceId}"]`);
+        if (link.length > 0) {
+          const card = link.closest("div");
+          const title = card.find("h2, h3, [class*='title']").first().text().trim();
+          if (title) listing.title = title;
+
+          const addr = card.find("[class*='address'], [class*='location']").first().text().trim();
+          if (addr) {
+            listing.address = addr;
+            listing.title = addr;
+          }
+        }
+      }
+    }
+
+    console.log(`    Found ${listings.length} valid listings from JS arrays`);
     return listings;
   } catch (err) {
     console.error(`Error scraping OpenRent for ${postcode}:`, err);
     return [];
   }
+}
+
+/**
+ * Extract a JavaScript array from HTML source.
+ * Looks for patterns like: var PROPERTYIDS = [1,2,3];
+ * or: PROPERTYIDS = [1,2,3];
+ */
+function extractJsArray(html: string, varName: string): (string | number)[] {
+  // Try various patterns
+  const patterns = [
+    new RegExp(`(?:var\\s+)?${varName}\\s*=\\s*\\[([^\\]]*?)\\]`, "s"),
+    new RegExp(`"${varName}"\\s*:\\s*\\[([^\\]]*?)\\]`, "s"),
+  ];
+
+  for (const pattern of patterns) {
+    const match = html.match(pattern);
+    if (match && match[1]) {
+      try {
+        return JSON.parse(`[${match[1]}]`);
+      } catch {
+        // Try splitting by comma
+        return match[1]
+          .split(",")
+          .map((s) => s.trim().replace(/['"]/g, ""))
+          .filter(Boolean);
+      }
+    }
+  }
+
+  return [];
 }
 
 /**
@@ -178,8 +193,8 @@ export async function scrapeOpenRent(postcodes: string[]): Promise<RawListing[]>
     allListings.push(...listings);
     console.log(`    Found ${listings.length} listings`);
 
-    // Random delay 2-5 seconds
-    await sleep(2000 + Math.random() * 3000);
+    // Random delay 1-3 seconds (OpenRent is less aggressive with blocking)
+    await sleep(1000 + Math.random() * 2000);
   }
 
   return allListings;

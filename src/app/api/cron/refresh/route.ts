@@ -147,12 +147,18 @@ export async function POST(request: NextRequest) {
       newCount++;
     }
 
+    // Count total in DB after insert
+    const totalInDb = await db.select().from(schema.listings).all();
+    console.log(`  Total listings in DB after scrape: ${totalInDb.length}`);
+
     return NextResponse.json({
       success: true,
       postcode,
       source,
       found: rawListings.length,
+      valid: validListings.length,
       new: newCount,
+      totalInDb: totalInDb.length,
     });
   } catch (error) {
     console.error(`Scrape error for ${postcode}/${source}:`, error);
