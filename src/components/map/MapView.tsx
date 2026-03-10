@@ -248,7 +248,7 @@ export function MapView({
               ["==", ["get", "listingType"], "studio"],
               "#a78bfa",
               ["==", ["get", "listingType"], "flatshare"],
-              "#f59e0b",
+              "#06b6d4",
               [
                 "interpolate",
                 ["linear"],
@@ -274,7 +274,7 @@ export function MapView({
               ["==", ["get", "listingType"], "studio"],
               "rgba(167,139,250,0.7)",
               ["==", ["get", "listingType"], "flatshare"],
-              "rgba(245,158,11,0.7)",
+              "rgba(6,182,212,0.7)",
               "rgba(255,255,255,0.6)",
             ],
             "circle-opacity": 0.9,
