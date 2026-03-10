@@ -32,7 +32,7 @@ export const TARGET_POSTCODES = [
   "SW1", "SW7",
   "EC1", "WC1", "WC2",
   // East London
-  "E1", "E3", "E8", "E9", "E14", "E15", "E20",
+  "E1", "E3", "E8", "E9", "E14", "E15", "E16", "E20",
   // South & North
   "SE1", "N1",
   // Outer West
