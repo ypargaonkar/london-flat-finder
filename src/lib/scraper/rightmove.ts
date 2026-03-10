@@ -39,6 +39,8 @@ export interface RawListing {
   bedrooms: number;
   description: string;
   imageUrls: string[];
+  lat?: number;
+  lon?: number;
 }
 
 /**

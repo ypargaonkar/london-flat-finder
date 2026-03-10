@@ -40,6 +40,8 @@ export async function POST(request: NextRequest) {
       bedrooms: number;
       description: string;
       imageUrls: string[];
+      lat?: number;
+      lon?: number;
     }> = [];
 
     if (source === "rightmove") {
@@ -78,10 +80,10 @@ export async function POST(request: NextRequest) {
         continue;
       }
 
-      // Geocode
-      let lat: number | null = null;
-      let lon: number | null = null;
-      if (raw.postcode) {
+      // Use lat/lon from scraper if available, otherwise geocode
+      let lat: number | null = raw.lat || null;
+      let lon: number | null = raw.lon || null;
+      if (!lat && !lon && raw.postcode) {
         const geo = await geocodePostcode(raw.postcode);
         if (geo) { lat = geo.lat; lon = geo.lon; }
       }

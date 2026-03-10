@@ -119,7 +119,12 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
         bedrooms: 1,
         description: "",
         imageUrls: [`https://imagescdn.openrent.co.uk/listings/${id}/listing_image_primary.jpg`],
+        lat: lat || undefined,
+        lon: lon || undefined,
       });
+
+      // Limit to 30 listings per postcode to avoid timeout
+      if (listings.length >= 30) break;
     }
 
     // Try to get titles from page HTML
