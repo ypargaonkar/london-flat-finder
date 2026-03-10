@@ -2,31 +2,10 @@ import * as cheerio from "cheerio";
 import type { NewListing } from "../db/schema";
 
 const USER_AGENT =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36";
 
 function sleep(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
-}
-
-/**
- * Build a Rightmove search URL for a given location identifier
- */
-function buildSearchUrl(locationId: string, page = 0): string {
-  const params = new URLSearchParams({
-    locationIdentifier: locationId,
-    maxBedrooms: "1",
-    minBedrooms: "1",
-    maxPrice: "2200",
-    propertyTypes: "flat",
-    primaryDisplayPropertyType: "flats",
-    includeLetAgreed: "false",
-    mustHave: "",
-    dontShow: "",
-    furnishTypes: "",
-    keywords: "",
-  });
-  if (page > 0) params.set("index", String(page * 24));
-  return `https://www.rightmove.co.uk/property-to-rent/find.html?${params}`;
 }
 
 // Rightmove location identifiers for target postcodes
@@ -63,102 +42,243 @@ export interface RawListing {
 }
 
 /**
+ * Build Rightmove search URL
+ */
+function buildSearchUrl(locationId: string): string {
+  const params = new URLSearchParams({
+    locationIdentifier: locationId,
+    maxBedrooms: "1",
+    minBedrooms: "1",
+    maxPrice: "2200",
+    propertyTypes: "flat",
+    primaryDisplayPropertyType: "flats",
+    includeLetAgreed: "false",
+    mustHave: "",
+    dontShow: "",
+    furnishTypes: "",
+    keywords: "",
+  });
+  return `https://www.rightmove.co.uk/property-to-rent/find.html?${params}`;
+}
+
+/**
+ * Try to parse listings from the JSON embedded in the page
+ */
+function parseFromJson(html: string, postcode: string): RawListing[] {
+  const listings: RawListing[] = [];
+
+  // Try multiple JSON patterns
+  const patterns = [
+    /window\.__PRELOADED_STATE__\s*=\s*({[\s\S]*?});\s*<\/script/,
+    /window\.jsonModel\s*=\s*({[\s\S]*?});\s*<\/script/,
+    /"properties"\s*:\s*(\[[\s\S]*?\])\s*,\s*"/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = html.match(pattern);
+    if (!match) continue;
+
+    try {
+      const data = JSON.parse(match[1]);
+
+      // Navigate different possible structures
+      const properties =
+        data?.searchResult?.properties ||
+        data?.results?.properties ||
+        data?.properties ||
+        (Array.isArray(data) ? data : []);
+
+      for (const prop of properties) {
+        if (!prop.id) continue;
+
+        const price = prop.price?.amount
+          || prop.price?.displayPrices?.[0]?.displayPrice
+          || prop.monthlyRent
+          || 0;
+        const numericPrice = typeof price === "number"
+          ? price
+          : parseInt(String(price).replace(/[^0-9]/g, "") || "0");
+
+        if (numericPrice <= 0) continue;
+
+        listings.push({
+          sourceId: String(prop.id),
+          url: `https://www.rightmove.co.uk/properties/${prop.id}`,
+          title: prop.displayAddress || prop.propertyTitle || prop.address?.displayAddress || "",
+          address: prop.displayAddress || prop.address?.displayAddress || "",
+          postcode: extractPostcode(prop.displayAddress || "") || postcode,
+          pricePerMonth: numericPrice > 10000 ? Math.round(numericPrice / 12) : numericPrice,
+          bedrooms: prop.bedrooms || 1,
+          description: prop.summary || prop.description || prop.propertyTypeFullDescription || "",
+          imageUrls: (prop.propertyImages?.images || prop.images || [])
+            .slice(0, 5)
+            .map((img: any) => img.srcUrl || img.url || img.src || "")
+            .filter(Boolean),
+        });
+      }
+
+      if (listings.length > 0) {
+        console.log(`    [JSON] Found ${listings.length} listings from JSON data`);
+        return listings;
+      }
+    } catch {
+      // Try next pattern
+    }
+  }
+
+  return listings;
+}
+
+/**
+ * Parse listings from HTML property cards (fallback)
+ */
+function parseFromHtml($: cheerio.CheerioAPI, postcode: string): RawListing[] {
+  const listings: RawListing[] = [];
+
+  // Try multiple possible selectors
+  const selectors = [
+    ".l-searchResult",
+    ".propertyCard",
+    "[data-testid='propertyCard']",
+    ".property-card",
+    ".search-result",
+  ];
+
+  for (const selector of selectors) {
+    $(selector).each((_, el) => {
+      const $el = $(el);
+      const id = $el.attr("id")?.replace("property-", "")
+        || $el.attr("data-propertyid")
+        || $el.find("a[href*='/properties/']").attr("href")?.match(/\/properties\/(\d+)/)?.[1]
+        || "";
+      if (!id) return;
+
+      const title = $el.find(".propertyCard-address, .property-address, .address, h2 a").first().text().trim();
+      const priceText = $el.find(".propertyCard-priceValue, .property-price, .price, [data-testid='price']").first().text().trim();
+      const price = parseInt(priceText.replace(/[^0-9]/g, "") || "0");
+      const desc = $el.find(".propertyCard-description, .property-description, .description").first().text().trim();
+      const imgSrc = $el.find("img").first().attr("src")
+        || $el.find("img").first().attr("data-src")
+        || "";
+
+      if (price > 0) {
+        listings.push({
+          sourceId: id,
+          url: `https://www.rightmove.co.uk/properties/${id}`,
+          title,
+          address: title,
+          postcode: extractPostcode(title) || postcode,
+          pricePerMonth: price > 10000 ? Math.round(price / 12) : price,
+          bedrooms: 1,
+          description: desc,
+          imageUrls: imgSrc ? [imgSrc] : [],
+        });
+      }
+    });
+
+    if (listings.length > 0) {
+      console.log(`    [HTML] Found ${listings.length} listings with selector "${selector}"`);
+      return listings;
+    }
+  }
+
+  return listings;
+}
+
+/**
  * Scrape Rightmove for a single postcode area
  */
 async function scrapePostcode(postcode: string): Promise<RawListing[]> {
   const locationId = LOCATION_IDS[postcode];
   if (!locationId) return [];
 
-  const listings: RawListing[] = [];
-
   try {
     const url = buildSearchUrl(locationId);
+    console.log(`    Fetching: ${url}`);
+
     const res = await fetch(url, {
-      headers: { "User-Agent": USER_AGENT },
+      headers: {
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+      },
     });
 
+    console.log(`    Response: ${res.status} ${res.statusText}`);
+
     if (!res.ok) {
-      console.warn(`Rightmove returned ${res.status} for ${postcode}`);
+      console.warn(`    Rightmove returned ${res.status} for ${postcode}`);
       return [];
     }
 
     const html = await res.text();
+    console.log(`    HTML length: ${html.length} chars`);
+
+    // Check for bot detection
+    if (html.includes("captcha") || html.includes("blocked") || html.includes("Access Denied")) {
+      console.warn(`    Rightmove bot detection triggered for ${postcode}`);
+      // Log first 500 chars for debugging
+      console.log(`    HTML preview: ${html.substring(0, 500)}`);
+      return [];
+    }
+
+    // Try JSON first
+    const jsonListings = parseFromJson(html, postcode);
+    if (jsonListings.length > 0) return jsonListings;
+
+    // Try HTML parsing
     const $ = cheerio.load(html);
+    const htmlListings = parseFromHtml($, postcode);
+    if (htmlListings.length > 0) return htmlListings;
 
-    // Rightmove embeds listing data in a JSON script tag
-    const scriptTags = $("script").toArray();
-    for (const tag of scriptTags) {
-      const content = $(tag).html() || "";
-      if (content.includes("window.__PRELOADED_STATE__")) {
-        try {
-          const jsonStr = content
-            .replace("window.__PRELOADED_STATE__ = ", "")
-            .replace(/;$/, "");
-          const data = JSON.parse(jsonStr);
-          const properties = data?.searchResult?.properties || data?.results?.properties || [];
+    // Debug: log what elements we can find
+    console.log(`    No listings found. Page title: ${$("title").text()}`);
+    console.log(`    Body class: ${$("body").attr("class") || "none"}`);
+    console.log(`    Script tags: ${$("script").length}`);
+    console.log(`    Links with /properties/: ${$('a[href*="/properties/"]').length}`);
 
-          for (const prop of properties) {
-            if (!prop.id) continue;
+    // Last resort: try to find any links to property pages
+    const propertyLinks: RawListing[] = [];
+    $('a[href*="/properties/"]').each((_, el) => {
+      const href = $(el).attr("href") || "";
+      const idMatch = href.match(/\/properties\/(\d+)/);
+      if (!idMatch) return;
 
-            const listing: RawListing = {
-              sourceId: String(prop.id),
-              url: `https://www.rightmove.co.uk/properties/${prop.id}`,
-              title: prop.displayAddress || prop.propertyTitle || "",
-              address: prop.displayAddress || "",
-              postcode: extractPostcode(prop.displayAddress || "") || postcode,
-              pricePerMonth: prop.price?.amount || prop.price?.displayPrices?.[0]?.displayPrice
-                ? parseInt(String(prop.price?.amount || "0").replace(/[^0-9]/g, ""))
-                : 0,
-              bedrooms: prop.bedrooms || 1,
-              description: prop.summary || prop.description || "",
-              imageUrls: (prop.propertyImages?.images || [])
-                .slice(0, 5)
-                .map((img: { srcUrl?: string; url?: string }) => img.srcUrl || img.url || ""),
-            };
+      const id = idMatch[1];
+      // Avoid duplicates
+      if (propertyLinks.some((l) => l.sourceId === id)) return;
 
-            if (listing.pricePerMonth > 0) {
-              listings.push(listing);
-            }
-          }
-        } catch {
-          // Try fallback HTML parsing
-        }
-      }
-    }
+      const parent = $(el).closest("[class*='card'], [class*='result'], [class*='property'], div").first();
+      const title = parent.find("address, h2, h3, [class*='address']").first().text().trim()
+        || $(el).text().trim();
 
-    // Fallback: parse HTML property cards if JSON approach failed
-    if (listings.length === 0) {
-      $(".l-searchResult").each((_, el) => {
-        const $el = $(el);
-        const id = $el.attr("id")?.replace("property-", "") || "";
-        if (!id) return;
-
-        const title = $el.find(".propertyCard-address").text().trim();
-        const priceText = $el.find(".propertyCard-priceValue").text().trim();
-        const price = parseInt(priceText.replace(/[^0-9]/g, "") || "0");
-        const desc = $el.find(".propertyCard-description").text().trim();
-        const imgSrc = $el.find(".propertyCard-img img").attr("src") || "";
-
-        if (price > 0) {
-          listings.push({
-            sourceId: id,
-            url: `https://www.rightmove.co.uk/properties/${id}`,
-            title,
-            address: title,
-            postcode: extractPostcode(title) || postcode,
-            pricePerMonth: price > 10000 ? Math.round(price / 12) : price, // Handle annual prices
-            bedrooms: 1,
-            description: desc,
-            imageUrls: imgSrc ? [imgSrc] : [],
-          });
-        }
+      propertyLinks.push({
+        sourceId: id,
+        url: `https://www.rightmove.co.uk/properties/${id}`,
+        title: title || `Property ${id}`,
+        address: title,
+        postcode,
+        pricePerMonth: 0, // Will try to parse from detail page
+        bedrooms: 1,
+        description: "",
+        imageUrls: [],
       });
+    });
+
+    if (propertyLinks.length > 0) {
+      console.log(`    [LINKS] Found ${propertyLinks.length} property links`);
+      // Filter out those without prices for now
+      return propertyLinks.filter((l) => l.pricePerMonth > 0 || true); // Keep all for now
     }
+
+    return [];
   } catch (err) {
     console.error(`Error scraping Rightmove for ${postcode}:`, err);
+    return [];
   }
-
-  return listings;
 }
 
 /**

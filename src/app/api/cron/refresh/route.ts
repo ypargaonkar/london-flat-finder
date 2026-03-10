@@ -53,7 +53,11 @@ export async function POST(request: NextRequest) {
     const now = new Date().toISOString();
     let newCount = 0;
 
-    for (const raw of rawListings) {
+    // Filter out listings without prices
+    const validListings = rawListings.filter((l) => l.pricePerMonth > 0);
+    console.log(`  ${rawListings.length} raw listings, ${validListings.length} with valid prices`);
+
+    for (const raw of validListings) {
       // Check existing
       const existing = await db
         .select()
