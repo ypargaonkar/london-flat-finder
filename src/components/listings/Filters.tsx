@@ -56,12 +56,33 @@ export function Filters({ filters, onFiltersChange, stats }: FiltersProps) {
         <span className="text-[11px] font-semibold uppercase tracking-wider text-white/30">Show on map</span>
         <div className="flex items-center gap-2 flex-wrap">
           <label
+            htmlFor="showFlats"
+            className={`
+              flex items-center gap-1.5 px-3 py-1.5 rounded-lg cursor-pointer text-xs font-medium transition-all duration-300
+              ${filters.showFlats
+                ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/25"
+                : "bg-white/[0.03] text-white/20 border border-white/[0.06] hover:bg-white/[0.06]"
+              }
+            `}
+          >
+            <Checkbox
+              id="showFlats"
+              checked={filters.showFlats}
+              onCheckedChange={(checked) =>
+                onFiltersChange({ ...filters, showFlats: !!checked })
+              }
+              className="hidden"
+            />
+            <span className={`w-2 h-2 rounded-full ${filters.showFlats ? "bg-emerald-400" : "bg-white/20"}`} />
+            1-Bed Flats
+          </label>
+          <label
             htmlFor="showStudios"
             className={`
               flex items-center gap-1.5 px-3 py-1.5 rounded-lg cursor-pointer text-xs font-medium transition-all duration-300
               ${filters.showStudios
                 ? "bg-purple-500/15 text-purple-400 border border-purple-500/25"
-                : "bg-white/[0.03] text-white/40 border border-white/[0.06] hover:bg-white/[0.06] hover:text-white/60 line-through"
+                : "bg-white/[0.03] text-white/20 border border-white/[0.06] hover:bg-white/[0.06]"
               }
             `}
           >
@@ -73,7 +94,7 @@ export function Filters({ filters, onFiltersChange, stats }: FiltersProps) {
               }
               className="hidden"
             />
-            <span className="w-2 h-2 rounded-full bg-purple-400" />
+            <span className={`w-2 h-2 rounded-full ${filters.showStudios ? "bg-purple-400" : "bg-white/20"}`} />
             Studios
           </label>
           <label
@@ -82,7 +103,7 @@ export function Filters({ filters, onFiltersChange, stats }: FiltersProps) {
               flex items-center gap-1.5 px-3 py-1.5 rounded-lg cursor-pointer text-xs font-medium transition-all duration-300
               ${filters.showFlatShares
                 ? "bg-cyan-500/15 text-cyan-400 border border-cyan-500/25"
-                : "bg-white/[0.03] text-white/40 border border-white/[0.06] hover:bg-white/[0.06] hover:text-white/60 line-through"
+                : "bg-white/[0.03] text-white/20 border border-white/[0.06] hover:bg-white/[0.06]"
               }
             `}
           >
@@ -94,7 +115,7 @@ export function Filters({ filters, onFiltersChange, stats }: FiltersProps) {
               }
               className="hidden"
             />
-            <span className="w-2 h-2 rounded-full bg-cyan-400" />
+            <span className={`w-2 h-2 rounded-full ${filters.showFlatShares ? "bg-cyan-400" : "bg-white/20"}`} />
             Flat Shares
           </label>
         </div>

@@ -47,6 +47,7 @@ export interface Filters {
   hasDryer: boolean;
   hasDishwasher: boolean;
   hasModularKitchen: boolean;
+  showFlats: boolean;
   showStudios: boolean;
   showFlatShares: boolean;
 }

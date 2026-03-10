@@ -14,6 +14,7 @@ export default function Dashboard() {
     hasDryer: false,
     hasDishwasher: false,
     hasModularKitchen: false,
+    showFlats: true,
     showStudios: true,
     showFlatShares: true,
   });
@@ -24,6 +25,7 @@ export default function Dashboard() {
 
   // Filter out studios/flat shares on the map based on toggle
   const listings = allListings.filter((l) => {
+    if (!filters.showFlats && (l.listingType === "flat" || !l.listingType)) return false;
     if (!filters.showStudios && l.listingType === "studio") return false;
     if (!filters.showFlatShares && l.listingType === "flatshare") return false;
     return true;

@@ -9,19 +9,17 @@ function sleep(ms: number) {
 }
 
 /**
- * Scrape OpenRent for a single postcode.
- * OpenRent embeds property data as JavaScript arrays in the page:
- *   PROPERTYIDS, prices, bedrooms, bathrooms, furnished,
- *   PROPERTYLISTLATITUDES, PROPERTYLISTLONGITUDES, etc.
+ * Scrape a single OpenRent search URL and return parsed listings.
+ * OpenRent embeds property data as JavaScript arrays in the page.
  */
-async function scrapePostcode(postcode: string): Promise<RawListing[]> {
+async function scrapeSearchUrl(
+  url: string,
+  postcode: string,
+  forceListingType?: "studio" | "flatshare",
+): Promise<RawListing[]> {
   const listings: RawListing[] = [];
 
   try {
-    // OpenRent uses .co.uk (redirects from .com)
-    // Search 0-1 bedrooms to capture studios as well
-    const url = `https://www.openrent.co.uk/properties-to-rent/london-${postcode.toLowerCase()}?term=${encodeURIComponent(postcode)}&bedrooms_min=0&bedrooms_max=1&prices_max=2200&isLive=true`;
-
     console.log(`    Fetching: ${url}`);
 
     const res = await fetch(url, {
@@ -110,12 +108,14 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
 
       const propType = Number(propertyTypes[i]) || 2; // 1=House, 2=Flat, 3=Room
 
-      // Classify listing type from propertyType and bedrooms
-      let listingType: "flat" | "studio" | "flatshare" = "flat";
-      if (propType === 3) {
-        listingType = "flatshare";
-      } else if (beds === 0) {
-        listingType = "studio";
+      // Classify listing type: forced type from search, or infer from data
+      let listingType: "flat" | "studio" | "flatshare" = forceListingType || "flat";
+      if (!forceListingType) {
+        if (propType === 3) {
+          listingType = "flatshare";
+        } else if (beds === 0) {
+          listingType = "studio";
+        }
       }
 
       // Build descriptive title
@@ -151,11 +151,9 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
       if (listings.length >= 30) break;
     }
 
-    // Classify listings by resolving real URLs from HTML links + HEAD requests
+    // Resolve real URLs from HTML links (no HEAD requests to avoid timeouts)
     if (listings.length > 0) {
       const $ = cheerio.load(html);
-
-      // Build a map of sourceId -> real href from HTML links (first ~20)
       const hrefMap = new Map<string, string>();
       $("a[href*='/property-to-rent/']").each((_, el) => {
         const href = $(el).attr("href") || "";
@@ -163,38 +161,20 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
         if (idMatch) hrefMap.set(idMatch[1], href);
       });
 
-      // For listings not in HTML, resolve real URL via HEAD request
       for (const listing of listings) {
-        let href = hrefMap.get(listing.sourceId);
-
-        if (!href) {
-          // Quick HEAD request to get redirect URL
-          try {
-            const headRes = await fetch(listing.url, {
-              method: "HEAD",
-              redirect: "follow",
-              headers: { "User-Agent": USER_AGENT },
-            });
-            const realUrl = headRes.url;
-            if (realUrl && realUrl !== listing.url) {
-              listing.url = realUrl;
-              href = new URL(realUrl).pathname;
-            }
-          } catch {
-            // Skip if HEAD request fails
-          }
-        } else {
-          listing.url = `https://www.openrent.co.uk${href}`;
-        }
-
+        const href = hrefMap.get(listing.sourceId);
         if (href) {
-          const slug = href.toLowerCase();
-          if (slug.includes("studio-flat") || slug.includes("studio/")) {
-            listing.listingType = "studio";
-            listing.title = `${postcode} - Studio`;
-          } else if (slug.includes("room-in-a-shared") || slug.includes("shared-flat") || slug.includes("house-share")) {
-            listing.listingType = "flatshare";
-            listing.title = `${postcode} - Room in Shared Flat`;
+          listing.url = `https://www.openrent.co.uk${href}`;
+          // Refine type from URL slug if not already forced
+          if (!forceListingType) {
+            const slug = href.toLowerCase();
+            if (slug.includes("studio-flat") || slug.includes("studio/")) {
+              listing.listingType = "studio";
+              listing.title = `${postcode} - Studio`;
+            } else if (slug.includes("room-in-a-shared") || slug.includes("shared-flat") || slug.includes("house-share")) {
+              listing.listingType = "flatshare";
+              listing.title = `${postcode} - Room in Shared Flat`;
+            }
           }
         }
       }
@@ -239,6 +219,36 @@ function extractJsArray(html: string, varName: string): (string | number)[] {
 }
 
 /**
+ * Scrape a single postcode: does separate searches for 1-beds and studios.
+ */
+async function scrapePostcode(postcode: string): Promise<RawListing[]> {
+  const pc = postcode.toLowerCase();
+  const base = `https://www.openrent.co.uk/properties-to-rent/london-${pc}?term=${encodeURIComponent(postcode)}&prices_max=2200&isLive=true`;
+
+  // Search 1: 1-bed flats + flat shares (bedrooms 1-1)
+  const oneBedUrl = `${base}&bedrooms_min=1&bedrooms_max=1`;
+  const oneBeds = await scrapeSearchUrl(oneBedUrl, postcode);
+
+  await sleep(800 + Math.random() * 1200);
+
+  // Search 2: studios only (bedrooms 0-0) — force type to "studio"
+  const studioUrl = `${base}&bedrooms_min=0&bedrooms_max=0`;
+  const studios = await scrapeSearchUrl(studioUrl, postcode, "studio");
+
+  // Deduplicate by sourceId
+  const seen = new Set(oneBeds.map((l) => l.sourceId));
+  const deduped = [...oneBeds];
+  for (const s of studios) {
+    if (!seen.has(s.sourceId)) {
+      deduped.push(s);
+      seen.add(s.sourceId);
+    }
+  }
+
+  return deduped;
+}
+
+/**
  * Scrape all target postcodes from OpenRent
  */
 export async function scrapeOpenRent(postcodes: string[]): Promise<RawListing[]> {
@@ -250,7 +260,7 @@ export async function scrapeOpenRent(postcodes: string[]): Promise<RawListing[]>
     allListings.push(...listings);
     console.log(`    Found ${listings.length} listings`);
 
-    // Random delay 1-3 seconds (OpenRent is less aggressive with blocking)
+    // Random delay 1-3 seconds
     await sleep(1000 + Math.random() * 2000);
   }
 
