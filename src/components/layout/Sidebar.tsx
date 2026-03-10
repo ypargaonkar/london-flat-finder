@@ -16,12 +16,13 @@ interface SidebarProps {
 }
 
 function isOneBedFlat(listing: ListingData): boolean {
+  // Use listingType field if available
+  if (listing.listingType === "studio" || listing.listingType === "flatshare") return false;
+  // Fallback: check title/description keywords
   const title = (listing.title || "").toLowerCase();
   const desc = (listing.description || "").toLowerCase();
   const text = title + " " + desc;
-  // Exclude studios
   if (title.includes("studio") || listing.bedrooms === 0) return false;
-  // Exclude flat shares
   if (text.includes("flat share") || text.includes("flatshare") || text.includes("house share")
     || text.includes("houseshare") || text.includes("room in") || text.includes("shared")
     || text.includes("en-suite room") || text.includes("ensuite room")) return false;
