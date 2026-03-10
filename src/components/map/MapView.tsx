@@ -110,6 +110,7 @@ export function MapView({
           price: l.pricePerMonth || 0,
           title: l.title,
           selected: l.id === selectedListingId ? 1 : 0,
+          isStudio: ((l.title || "").toLowerCase().includes("studio") || l.bedrooms === 0) ? 1 : 0,
         },
       })),
   };
@@ -219,28 +220,45 @@ export function MapView({
               "case",
               ["==", ["get", "selected"], 1],
               10,
+              ["==", ["get", "isStudio"], 1],
+              5,
               7,
             ],
             "circle-color": [
-              "interpolate",
-              ["linear"],
-              ["get", "score"],
-              0, "#ef4444",
-              40, "#eab308",
-              60, "#84cc16",
-              80, "#22c55e",
+              "case",
+              ["==", ["get", "isStudio"], 1],
+              "#a78bfa",
+              [
+                "interpolate",
+                ["linear"],
+                ["get", "score"],
+                0, "#ef4444",
+                40, "#eab308",
+                60, "#84cc16",
+                80, "#22c55e",
+              ],
             ],
             "circle-stroke-width": [
               "case",
               ["==", ["get", "selected"], 1],
               3,
+              ["==", ["get", "isStudio"], 1],
+              1,
               1.5,
             ],
             "circle-stroke-color": [
               "case",
               ["==", ["get", "selected"], 1],
               "#3b82f6",
+              ["==", ["get", "isStudio"], 1],
+              "rgba(167,139,250,0.4)",
               "rgba(255,255,255,0.6)",
+            ],
+            "circle-opacity": [
+              "case",
+              ["==", ["get", "isStudio"], 1],
+              0.6,
+              0.9,
             ],
             "circle-blur": 0.1,
           }}
@@ -303,12 +321,19 @@ export function MapView({
           >
             <div className="p-3.5 max-w-[260px]">
               <div className="flex items-center justify-between gap-2">
-                <p className="text-sm font-bold text-white">
+                <p className="text-sm font-serif font-bold text-white">
                   £{listing.pricePerMonth?.toLocaleString()}/mo
                 </p>
-                <span className="text-[10px] font-bold text-white/40 bg-white/[0.06] px-1.5 py-0.5 rounded">
-                  {listing.postcode}
-                </span>
+                <div className="flex items-center gap-1">
+                  {((listing.title || "").toLowerCase().includes("studio") || listing.bedrooms === 0) && (
+                    <span className="text-[9px] font-bold text-purple-300 bg-purple-500/20 px-1.5 py-0.5 rounded">
+                      Studio
+                    </span>
+                  )}
+                  <span className="text-[10px] font-bold text-white/40 bg-white/[0.06] px-1.5 py-0.5 rounded">
+                    {listing.postcode}
+                  </span>
+                </div>
               </div>
               <p className="text-[11px] text-white/50 mt-0.5 line-clamp-1">{listing.title}</p>
               {listing.stationName && (
@@ -328,9 +353,9 @@ export function MapView({
                   href={listing.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] text-blue-400 hover:text-blue-300 inline-flex items-center gap-0.5 transition-colors"
+                  className="text-[10px] text-blue-400 hover:text-blue-300 inline-flex items-center gap-0.5 transition-colors font-medium"
                 >
-                  OpenRent
+                  View Listing
                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M7 17L17 7M17 7H7M17 7v10" />
                   </svg>
