@@ -358,20 +358,20 @@ export function MapView({
                   </span>
                 </div>
               </div>
-              <p className="text-sm text-white/50 mt-1 line-clamp-2">{listing.title}</p>
               {listing.stationName && (
-                <p className="text-xs text-white/30 mt-2">
-                  {listing.stationName}
-                  {listing.distanceToStationM != null && ` (${listing.distanceToStationM}m)`}
-                  {listing.journeyToOfficeMin != null && (
-                    <span className="text-blue-400/70 ml-1.5">
-                      ~{Math.round(listing.journeyToOfficeMin)}min to Dojo
-                    </span>
-                  )}
+                <p className="text-sm font-semibold text-white mt-2">
+                  {listing.distanceToStationM != null
+                    ? `${Math.round(listing.distanceToStationM / 80)}min walk`
+                    : ""} to {listing.stationName}
+                </p>
+              )}
+              {listing.journeyToOfficeMin != null && (
+                <p className="text-sm font-semibold text-white mt-1">
+                  ~{Math.round(listing.journeyToOfficeMin)}min to Dojo
                 </p>
               )}
               <div className="flex items-center justify-between mt-3 pt-2 border-t border-white/[0.06]">
-                <span className="text-xs text-white/25">Score: {listing.compositeScore}</span>
+                <span className="text-xs text-white/40">Score: {listing.compositeScore}</span>
                 <a
                   href={listing.url}
                   target="_blank"
