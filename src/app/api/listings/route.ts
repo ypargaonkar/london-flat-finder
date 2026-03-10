@@ -11,12 +11,18 @@ export async function GET(request: NextRequest) {
   const hasModularKitchen = searchParams.get("hasModularKitchen");
 
   try {
-    let results = await db
-      .select()
-      .from(schema.listings)
-      .where(eq(schema.listings.isActive, true))
-      .orderBy(desc(schema.listings.compositeScore))
-      .all();
+    // Debug: check total listings regardless of isActive
+    const allCount = await db.select().from(schema.listings).all();
+    console.log(`[DEBUG] Total listings in DB: ${allCount.length}`);
+    if (allCount.length > 0) {
+      const sample = allCount[0];
+      console.log(`[DEBUG] Sample listing isActive: ${sample.isActive} (type: ${typeof sample.isActive})`);
+      console.log(`[DEBUG] Sample: id=${sample.id}, title=${sample.title?.substring(0, 50)}, price=${sample.pricePerMonth}`);
+    }
+
+    // Use JS filtering to avoid boolean type issues with libsql
+    let results = allCount.filter((l) => l.isActive !== false);
+    results.sort((a, b) => (b.compositeScore || 0) - (a.compositeScore || 0));
 
     if (maxPrice) {
       const max = parseInt(maxPrice);
