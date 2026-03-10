@@ -82,7 +82,7 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
         if (price > 0 && price <= 5000) {
           listings.push({
             sourceId: id,
-            url: `https://www.openrent.co.uk/property-to-rent/${id}`,
+            url: `https://www.openrent.co.uk/property-to-rent/london/flat/${id}`,
             title: title || `${postcode} flat`,
             address: title,
             postcode,
@@ -111,7 +111,7 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
 
       listings.push({
         sourceId: id,
-        url: `https://www.openrent.co.uk/property-to-rent/${id}`,
+        url: `https://www.openrent.co.uk/property-to-rent/london/flat/${id}`,
         title: `${postcode} - 1 Bed Flat`,
         address: "",
         postcode,

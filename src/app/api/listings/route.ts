@@ -30,11 +30,20 @@ export async function GET(request: NextRequest) {
     if (hasDishwasher === "true") results = results.filter((l) => l.hasDishwasher);
     if (hasModularKitchen === "true") results = results.filter((l) => l.hasModularKitchen);
 
-    // Enrich with station name
+    // Enrich with station name + fix OpenRent URLs
     const enriched = results.map((l) => {
       const station = l.nearestStationId ? stationMap.get(l.nearestStationId) : null;
+      // Fix old-format OpenRent URLs
+      let url = l.url;
+      if (l.source === "openrent" && url.includes("/property-to-rent/") && !url.includes("/london/")) {
+        const idMatch = url.match(/\/property-to-rent\/(\d+)/);
+        if (idMatch) {
+          url = `https://www.openrent.co.uk/property-to-rent/london/flat/${idMatch[1]}`;
+        }
+      }
       return {
         ...l,
+        url,
         stationName: station?.name || null,
         stationZone: station?.zone || null,
         journeyToOfficeMin: station?.journeyToOfficeMin || null,
