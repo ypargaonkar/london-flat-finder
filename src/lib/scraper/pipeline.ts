@@ -106,6 +106,7 @@ export async function processAndUpsertListings(
         lat, lon,
         pricePerMonth: raw.pricePerMonth,
         bedrooms: raw.bedrooms,
+        listingType: raw.listingType || "flat",
         description: raw.description,
         imageUrls: JSON.stringify(raw.imageUrls),
         furnishing: amenities.furnishing,

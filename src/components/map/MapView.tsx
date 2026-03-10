@@ -93,8 +93,9 @@ export function MapView({
     }
   }, [selectedListingId, listings]);
 
-  // Classify listing type: "flat" | "studio" | "flatshare"
+  // Get listing type from DB field, with client-side fallback for old data
   function classifyListing(l: ListingData): string {
+    if (l.listingType && l.listingType !== "flat") return l.listingType;
     const title = (l.title || "").toLowerCase();
     const desc = (l.description || "").toLowerCase();
     const text = title + " " + desc;
@@ -104,7 +105,7 @@ export function MapView({
       return "flatshare";
     }
     if (title.includes("studio") || l.bedrooms === 0) return "studio";
-    return "flat";
+    return l.listingType || "flat";
   }
 
   // Create GeoJSON for listing markers

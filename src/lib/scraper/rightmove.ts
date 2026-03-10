@@ -41,6 +41,7 @@ export interface RawListing {
   imageUrls: string[];
   lat?: number;
   lon?: number;
+  listingType?: "flat" | "studio" | "flatshare";
 }
 
 /**

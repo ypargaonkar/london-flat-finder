@@ -25,6 +25,7 @@ export const listings = sqliteTable("listings", {
   lon: real("lon"),
   pricePerMonth: integer("price_per_month"),
   bedrooms: integer("bedrooms").default(1),
+  listingType: text("listing_type").default("flat"), // 'flat' | 'studio' | 'flatshare'
   description: text("description"),
   imageUrls: text("image_urls").default("[]"), // JSON array
   furnishing: text("furnishing"),

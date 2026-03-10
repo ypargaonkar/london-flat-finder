@@ -14,6 +14,7 @@ export interface ListingData {
   lon: number | null;
   pricePerMonth: number | null;
   bedrooms: number | null;
+  listingType: string | null;
   description: string | null;
   imageUrls: string;
   furnishing: string | null;

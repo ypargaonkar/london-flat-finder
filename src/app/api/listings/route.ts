@@ -1,7 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sql } from "drizzle-orm";
 import { db, schema } from "@/lib/db";
 
+// One-time migration: add listing_type column if missing
+let migrated = false;
+async function ensureListingTypeColumn() {
+  if (migrated) return;
+  try {
+    await db.run(sql`ALTER TABLE listings ADD COLUMN listing_type TEXT DEFAULT 'flat'`);
+  } catch {
+    // Column already exists
+  }
+  migrated = true;
+}
+
 export async function GET(request: NextRequest) {
+  await ensureListingTypeColumn();
   const searchParams = request.nextUrl.searchParams;
   const maxPrice = searchParams.get("maxPrice");
   const hasWasher = searchParams.get("hasWasher");
@@ -41,9 +55,18 @@ export async function GET(request: NextRequest) {
           url = `https://www.openrent.co.uk/property-to-rent/london/flat/${idMatch[1]}`;
         }
       }
+      // Infer listingType for old data that doesn't have it set
+      let listingType = l.listingType || "flat";
+      if (listingType === "flat") {
+        const text = ((l.title || "") + " " + (l.description || "")).toLowerCase();
+        if (text.includes("studio") || l.bedrooms === 0) listingType = "studio";
+        else if (text.includes("flat share") || text.includes("flatshare") || text.includes("house share")
+          || text.includes("room in") || text.includes("shared")) listingType = "flatshare";
+      }
       return {
         ...l,
         url,
+        listingType,
         stationName: station?.name || null,
         stationZone: station?.zone || null,
         journeyToOfficeMin: station?.journeyToOfficeMin || null,

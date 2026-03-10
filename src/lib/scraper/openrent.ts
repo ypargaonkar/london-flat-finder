@@ -19,7 +19,8 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
 
   try {
     // OpenRent uses .co.uk (redirects from .com)
-    const url = `https://www.openrent.co.uk/properties-to-rent/london-${postcode.toLowerCase()}?term=${encodeURIComponent(postcode)}&bedrooms_min=1&bedrooms_max=1&prices_max=2200&isLive=true`;
+    // Search 0-1 bedrooms to capture studios as well
+    const url = `https://www.openrent.co.uk/properties-to-rent/london-${postcode.toLowerCase()}?term=${encodeURIComponent(postcode)}&bedrooms_min=0&bedrooms_max=1&prices_max=2200&isLive=true`;
 
     console.log(`    Fetching: ${url}`);
 
@@ -106,21 +107,23 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
       const lat = Number(lats[i]) || 0;
       const lon = Number(lons[i]) || 0;
 
-      // Only include 1-bed flats within budget
-      if (beds !== 1 || price <= 0 || price > 2200) continue;
+      // Include studios (0 beds) and 1-bed flats within budget
+      if ((beds !== 0 && beds !== 1) || price <= 0 || price > 2200) continue;
 
+      const listingType = beds === 0 ? "studio" as const : "flat" as const;
       listings.push({
         sourceId: id,
         url: `https://www.openrent.co.uk/property-to-rent/london/flat/${id}`,
-        title: `${postcode} - 1 Bed Flat`,
+        title: beds === 0 ? `${postcode} - Studio` : `${postcode} - 1 Bed Flat`,
         address: "",
         postcode,
         pricePerMonth: price,
-        bedrooms: 1,
+        bedrooms: beds,
         description: "",
         imageUrls: [`https://imagescdn.openrent.co.uk/listings/${id}/listing_image_primary.jpg`],
         lat: lat || undefined,
         lon: lon || undefined,
+        listingType,
       });
 
       // Limit to 30 listings per postcode to avoid timeout
