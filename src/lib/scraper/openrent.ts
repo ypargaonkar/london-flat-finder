@@ -50,6 +50,7 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
     const lats = extractJsArray(html, "PROPERTYLISTLATITUDES");
     const lons = extractJsArray(html, "PROPERTYLISTLONGITUDES");
     const furnished = extractJsArray(html, "furnished");
+    const propertyTypes = extractJsArray(html, "propertyTypes"); // 1=House, 2=Flat, 3=Room
 
     console.log(`    Parsed arrays: ${propertyIds.length} IDs, ${prices.length} prices`);
 
@@ -107,14 +108,34 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
       const lat = Number(lats[i]) || 0;
       const lon = Number(lons[i]) || 0;
 
-      // Include studios (0 beds) and 1-bed flats within budget
-      if ((beds !== 0 && beds !== 1) || price <= 0 || price > 2200) continue;
+      const propType = Number(propertyTypes[i]) || 2; // 1=House, 2=Flat, 3=Room
 
-      const listingType = beds === 0 ? "studio" as const : "flat" as const;
+      // Classify listing type from propertyType and bedrooms
+      let listingType: "flat" | "studio" | "flatshare" = "flat";
+      if (propType === 3) {
+        listingType = "flatshare";
+      } else if (beds === 0) {
+        listingType = "studio";
+      }
+
+      // Build descriptive title
+      let title: string;
+      if (listingType === "flatshare") {
+        title = `${postcode} - Room in Shared Flat`;
+      } else if (listingType === "studio") {
+        title = `${postcode} - Studio`;
+      } else {
+        title = `${postcode} - ${beds} Bed Flat`;
+      }
+
+      // Filter: include studios, 1-beds, and flat shares within budget
+      if (listingType === "flat" && beds !== 1) continue;
+      if (price <= 0 || price > 2200) continue;
+
       listings.push({
         sourceId: id,
         url: `https://www.openrent.co.uk/property-to-rent/london/flat/${id}`,
-        title: beds === 0 ? `${postcode} - Studio` : `${postcode} - 1 Bed Flat`,
+        title,
         address: "",
         postcode,
         pricePerMonth: price,

@@ -51,7 +51,15 @@ export async function processAndUpsertListings(
         });
 
         await db.update(schema.listings)
-          .set({ lastSeen: now, isActive: true, deactivatedAt: null, compositeScore })
+          .set({
+            lastSeen: now,
+            isActive: true,
+            deactivatedAt: null,
+            compositeScore,
+            listingType: raw.listingType || existing.listingType || "flat",
+            title: raw.title || existing.title,
+            bedrooms: raw.bedrooms ?? existing.bedrooms,
+          })
           .where(eq(schema.listings.id, existing.id))
           .run();
         continue;
