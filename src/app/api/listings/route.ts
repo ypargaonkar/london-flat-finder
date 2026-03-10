@@ -41,12 +41,14 @@ export async function GET(request: NextRequest) {
           url = `https://www.openrent.co.uk/property-to-rent/london/flat/${idMatch[1]}`;
         }
       }
-      // Infer listingType from title/description/bedrooms
-      let listingType = "flat";
-      const text = ((l.title || "") + " " + (l.description || "")).toLowerCase();
-      if (text.includes("studio") || l.bedrooms === 0) listingType = "studio";
-      else if (text.includes("flat share") || text.includes("flatshare") || text.includes("house share")
-        || text.includes("room in") || text.includes("shared")) listingType = "flatshare";
+      // Use DB listingType, with fallback inference for old data
+      let listingType = l.listingType || "flat";
+      if (listingType === "flat") {
+        const text = ((l.title || "") + " " + (l.description || "")).toLowerCase();
+        if (text.includes("studio") || l.bedrooms === 0) listingType = "studio";
+        else if (text.includes("flat share") || text.includes("flatshare") || text.includes("house share")
+          || text.includes("room in") || text.includes("shared")) listingType = "flatshare";
+      }
       return {
         ...l,
         url,
