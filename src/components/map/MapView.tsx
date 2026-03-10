@@ -301,27 +301,41 @@ export function MapView({
             onClose={() => onSelectListing(null)}
             closeOnClick={false}
           >
-            <div className="p-3.5 max-w-[240px]">
-              <p className="font-semibold text-sm text-white/95 line-clamp-1">{listing.title}</p>
-              <p className="text-sm text-blue-400 font-bold mt-1">
-                £{listing.pricePerMonth?.toLocaleString()}/mo
-              </p>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="text-[10px] text-white/30">{listing.postcode}</span>
-                <span className="text-[10px] text-white/20">·</span>
-                <span className="text-[10px] text-white/30">Score: {listing.compositeScore}</span>
+            <div className="p-3.5 max-w-[260px]">
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-sm font-bold text-white">
+                  £{listing.pricePerMonth?.toLocaleString()}/mo
+                </p>
+                <span className="text-[10px] font-bold text-white/40 bg-white/[0.06] px-1.5 py-0.5 rounded">
+                  {listing.postcode}
+                </span>
               </div>
-              <a
-                href={listing.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[11px] text-blue-400 hover:text-blue-300 mt-2 inline-flex items-center gap-1 transition-colors duration-200"
-              >
-                View on {listing.source === "rightmove" ? "Rightmove" : "OpenRent"}
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M7 17L17 7M17 7H7M17 7v10" />
-                </svg>
-              </a>
+              <p className="text-[11px] text-white/50 mt-0.5 line-clamp-1">{listing.title}</p>
+              {listing.stationName && (
+                <p className="text-[10px] text-white/30 mt-1">
+                  {listing.stationName}
+                  {listing.distanceToStationM != null && ` (${listing.distanceToStationM}m)`}
+                  {listing.journeyToOfficeMin != null && (
+                    <span className="text-blue-400/70 ml-1">
+                      ~{Math.round(listing.journeyToOfficeMin)}min to Dojo
+                    </span>
+                  )}
+                </p>
+              )}
+              <div className="flex items-center justify-between mt-2">
+                <span className="text-[10px] text-white/25">Score: {listing.compositeScore}</span>
+                <a
+                  href={listing.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-blue-400 hover:text-blue-300 inline-flex items-center gap-0.5 transition-colors"
+                >
+                  OpenRent
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </Popup>
         );

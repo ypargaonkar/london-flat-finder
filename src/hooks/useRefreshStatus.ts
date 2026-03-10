@@ -49,7 +49,7 @@ export function useRefreshStatus() {
     let totalNew = 0;
 
     try {
-      const sources = ["rightmove", "openrent"];
+      const sources = ["openrent"]; // rightmove location IDs are broken
       const total = TARGET_POSTCODES.length * sources.length;
       let done = 0;
 

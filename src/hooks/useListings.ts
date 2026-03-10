@@ -29,6 +29,9 @@ export interface ListingData {
   firstSeen: string;
   lastSeen: string;
   isActive: boolean | null;
+  stationName: string | null;
+  stationZone: string | null;
+  journeyToOfficeMin: number | null;
 }
 
 export interface ListingStats {

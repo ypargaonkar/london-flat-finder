@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db, schema } from "@/lib/db";
-import { eq, desc } from "drizzle-orm";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -11,17 +10,15 @@ export async function GET(request: NextRequest) {
   const hasModularKitchen = searchParams.get("hasModularKitchen");
 
   try {
-    // Debug: check total listings regardless of isActive
-    const allCount = await db.select().from(schema.listings).all();
-    console.log(`[DEBUG] Total listings in DB: ${allCount.length}`);
-    if (allCount.length > 0) {
-      const sample = allCount[0];
-      console.log(`[DEBUG] Sample listing isActive: ${sample.isActive} (type: ${typeof sample.isActive})`);
-      console.log(`[DEBUG] Sample: id=${sample.id}, title=${sample.title?.substring(0, 50)}, price=${sample.pricePerMonth}`);
-    }
+    // Fetch all listings (JS-side filter to avoid libsql boolean issues)
+    const allListings = await db.select().from(schema.listings).all();
+    const allStations = await db.select().from(schema.stations).all();
 
-    // Use JS filtering to avoid boolean type issues with libsql
-    let results = allCount.filter((l) => l.isActive !== false);
+    // Build station lookup
+    const stationMap = new Map(allStations.map((s) => [s.id, s]));
+
+    // Filter active listings
+    let results = allListings.filter((l) => l.isActive !== false);
     results.sort((a, b) => (b.compositeScore || 0) - (a.compositeScore || 0));
 
     if (maxPrice) {
@@ -33,16 +30,27 @@ export async function GET(request: NextRequest) {
     if (hasDishwasher === "true") results = results.filter((l) => l.hasDishwasher);
     if (hasModularKitchen === "true") results = results.filter((l) => l.hasModularKitchen);
 
-    const totalActive = results.length;
+    // Enrich with station name
+    const enriched = results.map((l) => {
+      const station = l.nearestStationId ? stationMap.get(l.nearestStationId) : null;
+      return {
+        ...l,
+        stationName: station?.name || null,
+        stationZone: station?.zone || null,
+        journeyToOfficeMin: station?.journeyToOfficeMin || null,
+      };
+    });
+
+    const totalActive = enriched.length;
     const avgPrice = totalActive > 0
-      ? Math.round(results.reduce((sum, l) => sum + (l.pricePerMonth || 0), 0) / totalActive)
+      ? Math.round(enriched.reduce((sum, l) => sum + (l.pricePerMonth || 0), 0) / totalActive)
       : 0;
     const avgScore = totalActive > 0
-      ? Math.round(results.reduce((sum, l) => sum + (l.compositeScore || 0), 0) / totalActive)
+      ? Math.round(enriched.reduce((sum, l) => sum + (l.compositeScore || 0), 0) / totalActive)
       : 0;
 
     return NextResponse.json({
-      listings: results,
+      listings: enriched,
       stats: { totalActive, avgPrice, avgScore },
     });
   } catch (error) {
