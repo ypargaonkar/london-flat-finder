@@ -3,8 +3,6 @@
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
 import type { Filters as FilterType } from "@/hooks/useListings";
 import type { ListingStats } from "@/hooks/useListings";
 
@@ -16,24 +14,34 @@ interface FiltersProps {
 
 export function Filters({ filters, onFiltersChange, stats }: FiltersProps) {
   return (
-    <div className="space-y-4 p-4">
-      {/* Stats */}
-      <div className="flex items-center gap-3 text-sm">
-        <Badge variant="secondary">{stats.totalActive} listings</Badge>
+    <div className="p-4 space-y-5">
+      {/* Stats bar */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-baseline gap-1.5">
+          <span className="text-2xl font-bold text-white">{stats.totalActive}</span>
+          <span className="text-xs text-white/40">flats</span>
+        </div>
         {stats.avgPrice > 0 && (
-          <span className="text-muted-foreground">
-            Avg: £{stats.avgPrice.toLocaleString()}/mo
-          </span>
+          <div className="text-right">
+            <span className="text-sm font-medium text-white/70">
+              £{stats.avgPrice.toLocaleString()}
+            </span>
+            <span className="text-[10px] text-white/30 ml-1">avg/mo</span>
+          </div>
         )}
       </div>
 
-      <Separator />
-
       {/* Budget slider */}
-      <div>
-        <Label className="text-xs font-medium">
-          Max Budget: £{filters.maxPrice.toLocaleString()}/mo
-        </Label>
+      <div className="bg-white/[0.03] rounded-lg p-3 border border-white/[0.04]">
+        <div className="flex items-center justify-between mb-3">
+          <Label className="text-[11px] font-medium text-white/50 uppercase tracking-wider">
+            Budget
+          </Label>
+          <span className="text-sm font-semibold text-white tabular-nums">
+            £{filters.maxPrice.toLocaleString()}
+            <span className="text-white/30 font-normal">/mo</span>
+          </span>
+        </div>
         <Slider
           value={[filters.maxPrice]}
           onValueChange={(value) =>
@@ -42,68 +50,41 @@ export function Filters({ filters, onFiltersChange, stats }: FiltersProps) {
           min={1000}
           max={3000}
           step={50}
-          className="mt-2"
         />
-        <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
-          <span>£1,000</span>
-          <span>£3,000</span>
+        <div className="flex justify-between text-[10px] text-white/20 mt-1.5">
+          <span>£1k</span>
+          <span>£3k</span>
         </div>
       </div>
 
-      <Separator />
-
-      {/* Amenity checkboxes */}
-      <div>
-        <Label className="text-xs font-medium mb-2 block">Amenities</Label>
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="washer"
-              checked={filters.hasWasher}
-              onCheckedChange={(checked) =>
-                onFiltersChange({ ...filters, hasWasher: !!checked })
-              }
-            />
-            <Label htmlFor="washer" className="text-sm cursor-pointer">
-              Washing Machine
-            </Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="dryer"
-              checked={filters.hasDryer}
-              onCheckedChange={(checked) =>
-                onFiltersChange({ ...filters, hasDryer: !!checked })
-              }
-            />
-            <Label htmlFor="dryer" className="text-sm cursor-pointer">
-              Tumble Dryer
-            </Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="dishwasher"
-              checked={filters.hasDishwasher}
-              onCheckedChange={(checked) =>
-                onFiltersChange({ ...filters, hasDishwasher: !!checked })
-              }
-            />
-            <Label htmlFor="dishwasher" className="text-sm cursor-pointer">
-              Dishwasher
-            </Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="kitchen"
-              checked={filters.hasModularKitchen}
-              onCheckedChange={(checked) =>
-                onFiltersChange({ ...filters, hasModularKitchen: !!checked })
-              }
-            />
-            <Label htmlFor="kitchen" className="text-sm cursor-pointer">
-              Modern Kitchen
-            </Label>
-          </div>
+      {/* Amenity filters */}
+      <div className="bg-white/[0.03] rounded-lg p-3 border border-white/[0.04]">
+        <Label className="text-[11px] font-medium text-white/50 uppercase tracking-wider mb-3 block">
+          Amenities
+        </Label>
+        <div className="space-y-2.5">
+          {[
+            { id: "washer", label: "Washing Machine", key: "hasWasher" as const },
+            { id: "dryer", label: "Tumble Dryer", key: "hasDryer" as const },
+            { id: "dishwasher", label: "Dishwasher", key: "hasDishwasher" as const },
+            { id: "kitchen", label: "Modern Kitchen", key: "hasModularKitchen" as const },
+          ].map(({ id, label, key }) => (
+            <div key={id} className="flex items-center gap-2.5">
+              <Checkbox
+                id={id}
+                checked={filters[key]}
+                onCheckedChange={(checked) =>
+                  onFiltersChange({ ...filters, [key]: !!checked })
+                }
+              />
+              <Label
+                htmlFor={id}
+                className="text-sm text-white/60 cursor-pointer hover:text-white/80 transition-colors"
+              >
+                {label}
+              </Label>
+            </div>
+          ))}
         </div>
       </div>
     </div>

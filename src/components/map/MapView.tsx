@@ -76,8 +76,8 @@ export function MapView({
   } | null>(null);
 
   const tileUrl = mapTilerKey
-    ? `https://api.maptiler.com/maps/streets-v2/style.json?key=${mapTilerKey}`
-    : "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
+    ? `https://api.maptiler.com/maps/streets-v2-dark/style.json?key=${mapTilerKey}`
+    : "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
 
   // Fly to selected listing
   useEffect(() => {
@@ -263,10 +263,10 @@ export function MapView({
             })
           }
         >
-          <div className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap">
+          <div className="bg-gradient-to-r from-blue-500 to-violet-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-lg shadow-blue-500/30 whitespace-nowrap border border-white/20">
             Dojo Office
           </div>
-          <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-blue-600" />
+          <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-violet-500" />
         </div>
       </Marker>
 
@@ -280,7 +280,7 @@ export function MapView({
             anchor="center"
           >
             <div
-              className="bg-gray-800 text-white text-[9px] px-1.5 py-0.5 rounded opacity-70 hover:opacity-100 cursor-pointer whitespace-nowrap"
+              className="bg-black/70 text-white/60 text-[9px] px-1.5 py-0.5 rounded-md border border-white/10 backdrop-blur-sm opacity-70 hover:opacity-100 hover:text-white/90 cursor-pointer whitespace-nowrap transition-all"
               title={lm.name}
             >
               {lm.name}
@@ -300,21 +300,21 @@ export function MapView({
             onClose={() => onSelectListing(null)}
             closeOnClick={false}
           >
-            <div className="p-1 max-w-[200px]">
-              <p className="font-semibold text-sm truncate">{listing.title}</p>
-              <p className="text-sm text-blue-600 font-bold">
+            <div className="p-3 max-w-[220px]">
+              <p className="font-semibold text-sm truncate text-white">{listing.title}</p>
+              <p className="text-sm text-blue-400 font-bold mt-0.5">
                 £{listing.pricePerMonth?.toLocaleString()}/mo
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-white/40 mt-0.5">
                 Score: {listing.compositeScore} | {listing.postcode}
               </p>
               <a
                 href={listing.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-blue-500 underline"
+                className="text-xs text-blue-400 hover:text-blue-300 mt-1 inline-block"
               >
-                View on {listing.source === "rightmove" ? "Rightmove" : "OpenRent"}
+                View on {listing.source === "rightmove" ? "Rightmove" : "OpenRent"} &rarr;
               </a>
             </div>
           </Popup>

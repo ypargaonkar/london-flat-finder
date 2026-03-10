@@ -124,6 +124,49 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
+    color-scheme: dark;
   }
+}
+
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.4 0 0);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.5 0 0);
+}
+
+/* Map popup overrides */
+.maplibregl-popup-content {
+  background: oklch(0.205 0 0) !important;
+  color: oklch(0.985 0 0) !important;
+  border: 1px solid oklch(1 0 0 / 10%) !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  box-shadow: 0 8px 32px oklch(0 0 0 / 40%) !important;
+}
+.maplibregl-popup-tip {
+  border-top-color: oklch(0.205 0 0) !important;
+}
+.maplibregl-popup-close-button {
+  color: oklch(0.7 0 0) !important;
+  font-size: 18px !important;
+  padding: 4px 8px !important;
+}
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 12px oklch(0.72 0.17 142 / 30%);
+}
+.glow-blue {
+  box-shadow: 0 0 12px oklch(0.62 0.19 260 / 30%);
 }
