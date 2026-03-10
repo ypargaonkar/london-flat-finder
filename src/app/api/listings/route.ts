@@ -1,15 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sql } from "drizzle-orm";
 import { db, schema } from "@/lib/db";
+import { createClient } from "@libsql/client";
 
 // One-time migration: add listing_type column if missing
 let migrated = false;
 async function ensureListingTypeColumn() {
   if (migrated) return;
   try {
-    await db.run(sql`ALTER TABLE listings ADD COLUMN listing_type TEXT DEFAULT 'flat'`);
+    const client = createClient({
+      url: process.env.TURSO_DATABASE_URL || "file:./data/db.sqlite",
+      authToken: process.env.TURSO_AUTH_TOKEN,
+    });
+    await client.execute("ALTER TABLE listings ADD COLUMN listing_type TEXT DEFAULT 'flat'");
   } catch {
-    // Column already exists
+    // Column already exists — ignore
   }
   migrated = true;
 }
