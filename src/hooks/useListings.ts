@@ -47,6 +47,8 @@ export interface Filters {
   hasDryer: boolean;
   hasDishwasher: boolean;
   hasModularKitchen: boolean;
+  showStudios: boolean;
+  showFlatShares: boolean;
 }
 
 export function useListings(filters: Filters) {

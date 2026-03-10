@@ -51,6 +51,55 @@ export function Filters({ filters, onFiltersChange, stats }: FiltersProps) {
         </div>
       </div>
 
+      {/* Map layers */}
+      <div className="space-y-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-white/30">Show on map</span>
+        <div className="flex items-center gap-2 flex-wrap">
+          <label
+            htmlFor="showStudios"
+            className={`
+              flex items-center gap-1.5 px-3 py-1.5 rounded-lg cursor-pointer text-xs font-medium transition-all duration-300
+              ${filters.showStudios
+                ? "bg-purple-500/15 text-purple-400 border border-purple-500/25"
+                : "bg-white/[0.03] text-white/40 border border-white/[0.06] hover:bg-white/[0.06] hover:text-white/60 line-through"
+              }
+            `}
+          >
+            <Checkbox
+              id="showStudios"
+              checked={filters.showStudios}
+              onCheckedChange={(checked) =>
+                onFiltersChange({ ...filters, showStudios: !!checked })
+              }
+              className="hidden"
+            />
+            <span className="w-2 h-2 rounded-full bg-purple-400" />
+            Studios
+          </label>
+          <label
+            htmlFor="showFlatShares"
+            className={`
+              flex items-center gap-1.5 px-3 py-1.5 rounded-lg cursor-pointer text-xs font-medium transition-all duration-300
+              ${filters.showFlatShares
+                ? "bg-cyan-500/15 text-cyan-400 border border-cyan-500/25"
+                : "bg-white/[0.03] text-white/40 border border-white/[0.06] hover:bg-white/[0.06] hover:text-white/60 line-through"
+              }
+            `}
+          >
+            <Checkbox
+              id="showFlatShares"
+              checked={filters.showFlatShares}
+              onCheckedChange={(checked) =>
+                onFiltersChange({ ...filters, showFlatShares: !!checked })
+              }
+              className="hidden"
+            />
+            <span className="w-2 h-2 rounded-full bg-cyan-400" />
+            Flat Shares
+          </label>
+        </div>
+      </div>
+
       {/* Amenity filters */}
       <div className="space-y-2">
         <span className="text-[11px] font-semibold uppercase tracking-wider text-white/30">Must have</span>

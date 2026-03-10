@@ -151,11 +151,11 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
       if (listings.length >= 30) break;
     }
 
-    // Extract real URLs and titles from page HTML to detect studios
+    // Classify listings by resolving real URLs from HTML links + HEAD requests
     if (listings.length > 0) {
       const $ = cheerio.load(html);
 
-      // Build a map of sourceId -> real href from all property links
+      // Build a map of sourceId -> real href from HTML links (first ~20)
       const hrefMap = new Map<string, string>();
       $("a[href*='/property-to-rent/']").each((_, el) => {
         const href = $(el).attr("href") || "";
@@ -163,26 +163,38 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
         if (idMatch) hrefMap.set(idMatch[1], href);
       });
 
+      // For listings not in HTML, resolve real URL via HEAD request
       for (const listing of listings) {
-        const href = hrefMap.get(listing.sourceId);
-        if (href) {
-          // Use real URL
-          listing.url = `https://www.openrent.co.uk${href}`;
+        let href = hrefMap.get(listing.sourceId);
 
-          // Detect studios from URL slug (e.g. /studio-flat-xxx/)
-          if (href.includes("studio-flat") || href.includes("studio/")) {
-            listing.listingType = "studio";
-            if (!listing.title || listing.title.includes("1 Bed Flat")) {
-              listing.title = `${postcode} - Studio`;
+        if (!href) {
+          // Quick HEAD request to get redirect URL
+          try {
+            const headRes = await fetch(listing.url, {
+              method: "HEAD",
+              redirect: "follow",
+              headers: { "User-Agent": USER_AGENT },
+            });
+            const realUrl = headRes.url;
+            if (realUrl && realUrl !== listing.url) {
+              listing.url = realUrl;
+              href = new URL(realUrl).pathname;
             }
+          } catch {
+            // Skip if HEAD request fails
           }
+        } else {
+          listing.url = `https://www.openrent.co.uk${href}`;
+        }
 
-          // Detect flat shares from URL slug
-          if (href.includes("room-in-a-shared") || href.includes("shared-flat") || href.includes("house-share")) {
+        if (href) {
+          const slug = href.toLowerCase();
+          if (slug.includes("studio-flat") || slug.includes("studio/")) {
+            listing.listingType = "studio";
+            listing.title = `${postcode} - Studio`;
+          } else if (slug.includes("room-in-a-shared") || slug.includes("shared-flat") || slug.includes("house-share")) {
             listing.listingType = "flatshare";
-            if (!listing.title || listing.title.includes("1 Bed Flat")) {
-              listing.title = `${postcode} - Room in Shared Flat`;
-            }
+            listing.title = `${postcode} - Room in Shared Flat`;
           }
         }
       }

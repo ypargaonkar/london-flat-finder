@@ -14,11 +14,20 @@ export default function Dashboard() {
     hasDryer: false,
     hasDishwasher: false,
     hasModularKitchen: false,
+    showStudios: true,
+    showFlatShares: true,
   });
   const [selectedListingId, setSelectedListingId] = useState<number | null>(null);
 
-  const { listings, stats, loading } = useListings(filters);
+  const { listings: allListings, stats, loading } = useListings(filters);
   const { stations } = useStations();
+
+  // Filter out studios/flat shares on the map based on toggle
+  const listings = allListings.filter((l) => {
+    if (!filters.showStudios && l.listingType === "studio") return false;
+    if (!filters.showFlatShares && l.listingType === "flatshare") return false;
+    return true;
+  });
 
   return (
     <div className="h-screen flex flex-col">
