@@ -175,6 +175,9 @@
 }
 
 /* Map popup overrides */
+.maplibregl-popup {
+  max-width: 380px !important;
+}
 .maplibregl-popup-content {
   background: oklch(0.16 0.005 260) !important;
   color: oklch(0.95 0 0) !important;
@@ -183,6 +186,8 @@
   padding: 0 !important;
   box-shadow: 0 12px 40px oklch(0 0 0 / 50%), 0 0 0 1px oklch(1 0 0 / 5%) !important;
   backdrop-filter: blur(20px) !important;
+  max-width: 380px !important;
+  min-width: 340px !important;
 }
 .maplibregl-popup-tip {
   border-top-color: oklch(0.16 0.005 260) !important;
