@@ -342,19 +342,17 @@ export function MapView({
                 <p className="text-lg font-serif font-bold text-white">
                   £{listing.pricePerMonth?.toLocaleString()}/mo
                 </p>
-                <div className="flex items-center gap-1.5">
-                  {(() => {
-                    const t = classifyListing(listing);
-                    if (t === "studio") return (
-                      <span className="text-[10px] font-bold text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded">Studio</span>
-                    );
-                    if (t === "flatshare") return (
-                      <span className="text-[10px] font-bold text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded">Flat Share</span>
-                    );
-                    return null;
-                  })()}
+                <div className="flex flex-col items-end gap-0.5">
                   <span className="text-xs font-bold text-white/40 bg-white/[0.06] px-2 py-0.5 rounded">
                     {listing.postcode}
+                  </span>
+                  <span className="text-[11px] text-white/30">
+                    {(() => {
+                      const t = classifyListing(listing);
+                      if (t === "studio") return "Studio";
+                      if (t === "flatshare") return "Flat Share";
+                      return "1-Bed";
+                    })()}
                   </span>
                 </div>
               </div>
