@@ -1,0 +1,18 @@
+{
+  "office": {
+    "name": "Dojo (The Brunel Building)",
+    "lat": 51.5191,
+    "lon": -0.1765,
+    "address": "The Brunel Building, 2 Canalside Walk, Paddington, W2 1DG"
+  },
+  "landmarks": [
+    { "name": "Bank", "lat": 51.5133, "lon": -0.0886 },
+    { "name": "Oxford Circus", "lat": 51.5152, "lon": -0.1418 },
+    { "name": "King's Cross", "lat": 51.5308, "lon": -0.1238 },
+    { "name": "Canary Wharf", "lat": 51.5054, "lon": -0.0235 },
+    { "name": "Westminster", "lat": 51.501, "lon": -0.1246 },
+    { "name": "Liverpool Street", "lat": 51.5178, "lon": -0.0823 },
+    { "name": "Victoria", "lat": 51.4965, "lon": -0.1444 },
+    { "name": "Waterloo", "lat": 51.5031, "lon": -0.1132 }
+  ]
+}
