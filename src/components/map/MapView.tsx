@@ -343,10 +343,10 @@ export function MapView({
                   £{listing.pricePerMonth?.toLocaleString()}/mo
                 </p>
                 <div className="flex flex-col items-end gap-0.5">
-                  <span className="text-xs font-bold text-white/40 bg-white/[0.06] px-2 py-0.5 rounded">
+                  <span className="text-sm font-bold text-white/40 bg-white/[0.06] px-2 py-0.5 rounded">
                     {listing.postcode}
                   </span>
-                  <span className="text-[11px] text-white/30">
+                  <span className="text-sm text-white/30">
                     {(() => {
                       const t = classifyListing(listing);
                       if (t === "studio") return "Studio";
@@ -357,14 +357,14 @@ export function MapView({
                 </div>
               </div>
               {listing.stationName && (
-                <p className="text-sm font-semibold text-white mt-2">
+                <p className="text-base font-semibold text-white mt-2">
                   {listing.distanceToStationM != null
-                    ? `${Math.round(listing.distanceToStationM / 80)}min walk`
-                    : ""} to {listing.stationName}
+                    ? `${Math.round(listing.distanceToStationM / 80)}min walk to `
+                    : ""}{listing.stationName}
                 </p>
               )}
               {listing.journeyToOfficeMin != null && (
-                <p className="text-sm font-semibold text-white mt-1">
+                <p className="text-base font-semibold text-white mt-1">
                   ~{Math.round(listing.journeyToOfficeMin)}min to Dojo
                 </p>
               )}
