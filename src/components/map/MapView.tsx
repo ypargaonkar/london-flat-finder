@@ -200,9 +200,9 @@ export function MapView({
               "text-optional": true,
             }}
             paint={{
-              "text-color": "#374151",
-              "text-halo-color": "#ffffff",
-              "text-halo-width": 1,
+              "text-color": "rgba(255,255,255,0.5)",
+              "text-halo-color": "rgba(0,0,0,0.8)",
+              "text-halo-width": 1.5,
             }}
             minzoom={13}
           />
@@ -240,8 +240,9 @@ export function MapView({
               "case",
               ["==", ["get", "selected"], 1],
               "#3b82f6",
-              "#ffffff",
+              "rgba(255,255,255,0.6)",
             ],
+            "circle-blur": 0.1,
           }}
         />
       </Source>
@@ -253,7 +254,7 @@ export function MapView({
         anchor="bottom"
       >
         <div
-          className="flex flex-col items-center cursor-pointer"
+          className="flex flex-col items-center cursor-pointer group"
           onClick={() =>
             setPopupInfo({
               type: "office",
@@ -263,10 +264,10 @@ export function MapView({
             })
           }
         >
-          <div className="bg-gradient-to-r from-blue-500 to-violet-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-lg shadow-blue-500/30 whitespace-nowrap border border-white/20">
+          <div className="bg-gradient-to-r from-blue-500 to-violet-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-lg shadow-blue-500/30 whitespace-nowrap border border-white/20 transition-all duration-300 group-hover:shadow-blue-500/50 group-hover:scale-105">
             Dojo Office
           </div>
-          <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-violet-500" />
+          <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[6px] border-t-violet-500" />
         </div>
       </Marker>
 
@@ -280,7 +281,7 @@ export function MapView({
             anchor="center"
           >
             <div
-              className="bg-black/70 text-white/60 text-[9px] px-1.5 py-0.5 rounded-md border border-white/10 backdrop-blur-sm opacity-70 hover:opacity-100 hover:text-white/90 cursor-pointer whitespace-nowrap transition-all"
+              className="bg-black/60 text-white/50 text-[9px] px-1.5 py-0.5 rounded-md border border-white/[0.08] backdrop-blur-sm opacity-60 hover:opacity-100 hover:text-white/80 cursor-pointer whitespace-nowrap transition-all duration-300"
               title={lm.name}
             >
               {lm.name}
@@ -300,21 +301,26 @@ export function MapView({
             onClose={() => onSelectListing(null)}
             closeOnClick={false}
           >
-            <div className="p-3 max-w-[220px]">
-              <p className="font-semibold text-sm truncate text-white">{listing.title}</p>
-              <p className="text-sm text-blue-400 font-bold mt-0.5">
+            <div className="p-3.5 max-w-[240px]">
+              <p className="font-semibold text-sm text-white/95 line-clamp-1">{listing.title}</p>
+              <p className="text-sm text-blue-400 font-bold mt-1">
                 £{listing.pricePerMonth?.toLocaleString()}/mo
               </p>
-              <p className="text-xs text-white/40 mt-0.5">
-                Score: {listing.compositeScore} | {listing.postcode}
-              </p>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="text-[10px] text-white/30">{listing.postcode}</span>
+                <span className="text-[10px] text-white/20">·</span>
+                <span className="text-[10px] text-white/30">Score: {listing.compositeScore}</span>
+              </div>
               <a
                 href={listing.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-blue-400 hover:text-blue-300 mt-1 inline-block"
+                className="text-[11px] text-blue-400 hover:text-blue-300 mt-2 inline-flex items-center gap-1 transition-colors duration-200"
               >
-                View on {listing.source === "rightmove" ? "Rightmove" : "OpenRent"} &rarr;
+                View on {listing.source === "rightmove" ? "Rightmove" : "OpenRent"}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
               </a>
             </div>
           </Popup>
@@ -329,8 +335,8 @@ export function MapView({
           anchor="bottom"
           onClose={() => setPopupInfo(null)}
         >
-          <div className="p-1">
-            <p className="font-semibold text-sm">
+          <div className="p-2.5">
+            <p className="font-semibold text-sm text-white/90">
               {"name" in popupInfo.data ? popupInfo.data.name : ""}
             </p>
           </div>

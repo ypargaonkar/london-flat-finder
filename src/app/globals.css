@@ -83,37 +83,37 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.87 0.00 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.12 0.005 260);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.16 0.005 260);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.16 0.005 260);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.7 0.15 250);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.22 0.005 260);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.22 0.005 260);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.25 0.01 260);
+  --accent-foreground: oklch(0.95 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.7 0.15 250);
+  --chart-1: oklch(0.7 0.15 250);
+  --chart-2: oklch(0.65 0.18 280);
+  --chart-3: oklch(0.6 0.15 160);
+  --chart-4: oklch(0.7 0.12 60);
+  --chart-5: oklch(0.65 0.15 30);
+  --sidebar: oklch(0.14 0.005 260);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.7 0.15 250);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.22 0.005 260);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.7 0.15 250);
 }
 
 @layer base {
@@ -129,44 +129,117 @@
   }
 }
 
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.4 0 0);
-  border-radius: 3px;
+  background: oklch(0.35 0.01 260);
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.5 0 0);
+  background: oklch(0.45 0.01 260);
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 /* Map popup overrides */
 .maplibregl-popup-content {
-  background: oklch(0.205 0 0) !important;
-  color: oklch(0.985 0 0) !important;
+  background: oklch(0.16 0.005 260) !important;
+  color: oklch(0.95 0 0) !important;
   border: 1px solid oklch(1 0 0 / 10%) !important;
-  border-radius: 12px !important;
+  border-radius: 16px !important;
   padding: 0 !important;
-  box-shadow: 0 8px 32px oklch(0 0 0 / 40%) !important;
+  box-shadow: 0 12px 40px oklch(0 0 0 / 50%), 0 0 0 1px oklch(1 0 0 / 5%) !important;
+  backdrop-filter: blur(20px) !important;
 }
 .maplibregl-popup-tip {
-  border-top-color: oklch(0.205 0 0) !important;
+  border-top-color: oklch(0.16 0.005 260) !important;
 }
 .maplibregl-popup-close-button {
-  color: oklch(0.7 0 0) !important;
+  color: oklch(0.6 0 0) !important;
   font-size: 18px !important;
-  padding: 4px 8px !important;
+  padding: 6px 10px !important;
+  transition: color 0.2s !important;
+}
+.maplibregl-popup-close-button:hover {
+  color: oklch(0.9 0 0) !important;
 }
 
-/* Glow effects */
-.glow-green {
-  box-shadow: 0 0 12px oklch(0.72 0.17 142 / 30%);
+/* Glass panel */
+.glass {
+  background: oklch(1 0 0 / 4%);
+  backdrop-filter: blur(20px);
+  border: 1px solid oklch(1 0 0 / 8%);
 }
-.glow-blue {
-  box-shadow: 0 0 12px oklch(0.62 0.19 260 / 30%);
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Score colors */
+.score-a { color: oklch(0.72 0.17 142); }
+.score-b { color: oklch(0.72 0.17 130); }
+.score-c { color: oklch(0.75 0.15 85); }
+.score-d { color: oklch(0.7 0.15 55); }
+.score-f { color: oklch(0.65 0.2 25); }
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Stagger animation for cards */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slideUp 0.35s ease-out forwards;
+}
+
+/* Shimmer loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, oklch(0.2 0 0) 25%, oklch(0.25 0 0) 50%, oklch(0.2 0 0) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }

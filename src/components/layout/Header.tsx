@@ -18,34 +18,53 @@ export function Header() {
   const { lastRefresh, refreshing, progress, triggerRefresh } = useRefreshStatus();
 
   return (
-    <header className="h-14 border-b border-white/[0.06] bg-gradient-to-r from-[#0a0a0f] via-[#0f0f1a] to-[#0a0a0f] flex items-center justify-between px-5 shrink-0 backdrop-blur-xl">
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <h1 className="text-base font-semibold tracking-tight bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
-            London Flat Finder
-          </h1>
+    <header className="h-14 border-b border-white/[0.06] bg-[#0c0c14]/95 backdrop-blur-xl flex items-center justify-between px-5 shrink-0 sticky top-0 z-50">
+      <div className="flex items-center gap-3.5">
+        {/* Logo / Brand */}
+        <div className="flex items-center gap-2.5">
+          <div className="relative">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                <polyline points="9,22 9,12 15,12 15,22" />
+              </svg>
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-sm font-semibold tracking-tight text-white/95 leading-none">
+              London Flat Finder
+            </h1>
+            <span className="text-[10px] text-white/35 leading-none mt-0.5">
+              Paddington W2 &middot; 1 Bed Rentals
+            </span>
+          </div>
         </div>
-        <span className="text-[11px] text-white/40 bg-white/[0.05] border border-white/[0.06] px-2 py-0.5 rounded-full">
-          Paddington W2
-        </span>
       </div>
 
-      <div className="flex items-center gap-3 text-sm">
+      <div className="flex items-center gap-3">
+        {/* Refresh progress */}
         {refreshing && progress && (
-          <span className="text-xs text-white/50 font-mono">{progress}</span>
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+            <span className="text-[11px] text-blue-300/90 font-medium">{progress}</span>
+          </div>
         )}
+
+        {/* Last updated */}
         {!refreshing && lastRefresh?.completedAt && (
-          <span className="text-xs text-white/40">
+          <span className="text-[11px] text-white/30 flex items-center gap-1.5">
+            <div className="w-1 h-1 rounded-full bg-emerald-500/60" />
             Updated {timeAgo(lastRefresh.completedAt)}
           </span>
         )}
+
+        {/* Refresh button */}
         <Button
           variant="outline"
           size="sm"
           onClick={triggerRefresh}
           disabled={refreshing}
-          className="h-7 text-xs border-white/10 bg-white/[0.03] hover:bg-white/[0.08] text-white/70 hover:text-white transition-all"
+          className="h-8 px-3 text-xs font-medium border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.08] text-white/60 hover:text-white/90 rounded-lg transition-all duration-300 hover:border-white/[0.15] hover:shadow-lg hover:shadow-white/[0.02] disabled:opacity-40"
         >
           {refreshing ? (
             <span className="flex items-center gap-1.5">
@@ -56,7 +75,13 @@ export function Header() {
               Scraping...
             </span>
           ) : (
-            "Refresh"
+            <span className="flex items-center gap-1.5">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="23,4 23,10 17,10" />
+                <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
+              </svg>
+              Refresh
+            </span>
           )}
         </Button>
       </div>
