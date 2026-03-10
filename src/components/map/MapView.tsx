@@ -93,26 +93,43 @@ export function MapView({
     }
   }, [selectedListingId, listings]);
 
+  // Classify listing type: "flat" | "studio" | "flatshare"
+  function classifyListing(l: ListingData): string {
+    const title = (l.title || "").toLowerCase();
+    const desc = (l.description || "").toLowerCase();
+    const text = title + " " + desc;
+    if (text.includes("flat share") || text.includes("flatshare") || text.includes("house share")
+      || text.includes("houseshare") || text.includes("room in") || text.includes("shared")
+      || text.includes("en-suite room") || text.includes("ensuite room")) {
+      return "flatshare";
+    }
+    if (title.includes("studio") || l.bedrooms === 0) return "studio";
+    return "flat";
+  }
+
   // Create GeoJSON for listing markers
   const listingGeoJson: GeoJSON.FeatureCollection = {
     type: "FeatureCollection",
     features: listings
       .filter((l) => l.lat && l.lon)
-      .map((l) => ({
-        type: "Feature" as const,
-        geometry: {
-          type: "Point" as const,
-          coordinates: [l.lon!, l.lat!],
-        },
-        properties: {
-          id: l.id,
-          score: l.compositeScore || 0,
-          price: l.pricePerMonth || 0,
-          title: l.title,
-          selected: l.id === selectedListingId ? 1 : 0,
-          isStudio: ((l.title || "").toLowerCase().includes("studio") || l.bedrooms === 0) ? 1 : 0,
-        },
-      })),
+      .map((l) => {
+        const listingType = classifyListing(l);
+        return {
+          type: "Feature" as const,
+          geometry: {
+            type: "Point" as const,
+            coordinates: [l.lon!, l.lat!],
+          },
+          properties: {
+            id: l.id,
+            score: l.compositeScore || 0,
+            price: l.pricePerMonth || 0,
+            title: l.title,
+            selected: l.id === selectedListingId ? 1 : 0,
+            listingType, // "flat" | "studio" | "flatshare"
+          },
+        };
+      }),
   };
 
   // Station GeoJSON (only show top-scoring stations to avoid clutter)
@@ -220,14 +237,16 @@ export function MapView({
               "case",
               ["==", ["get", "selected"], 1],
               10,
-              ["==", ["get", "isStudio"], 1],
-              5,
+              ["==", ["get", "listingType"], "flat"],
               7,
+              5,
             ],
             "circle-color": [
               "case",
-              ["==", ["get", "isStudio"], 1],
+              ["==", ["get", "listingType"], "studio"],
               "#a78bfa",
+              ["==", ["get", "listingType"], "flatshare"],
+              "#f59e0b",
               [
                 "interpolate",
                 ["linear"],
@@ -242,23 +261,25 @@ export function MapView({
               "case",
               ["==", ["get", "selected"], 1],
               3,
-              ["==", ["get", "isStudio"], 1],
-              1,
+              ["==", ["get", "listingType"], "flat"],
               1.5,
+              1,
             ],
             "circle-stroke-color": [
               "case",
               ["==", ["get", "selected"], 1],
               "#3b82f6",
-              ["==", ["get", "isStudio"], 1],
+              ["==", ["get", "listingType"], "studio"],
               "rgba(167,139,250,0.4)",
+              ["==", ["get", "listingType"], "flatshare"],
+              "rgba(245,158,11,0.4)",
               "rgba(255,255,255,0.6)",
             ],
             "circle-opacity": [
               "case",
-              ["==", ["get", "isStudio"], 1],
-              0.6,
+              ["==", ["get", "listingType"], "flat"],
               0.9,
+              0.6,
             ],
             "circle-blur": 0.1,
           }}
@@ -325,11 +346,16 @@ export function MapView({
                   £{listing.pricePerMonth?.toLocaleString()}/mo
                 </p>
                 <div className="flex items-center gap-1">
-                  {((listing.title || "").toLowerCase().includes("studio") || listing.bedrooms === 0) && (
-                    <span className="text-[9px] font-bold text-purple-300 bg-purple-500/20 px-1.5 py-0.5 rounded">
-                      Studio
-                    </span>
-                  )}
+                  {(() => {
+                    const t = classifyListing(listing);
+                    if (t === "studio") return (
+                      <span className="text-[9px] font-bold text-purple-300 bg-purple-500/20 px-1.5 py-0.5 rounded">Studio</span>
+                    );
+                    if (t === "flatshare") return (
+                      <span className="text-[9px] font-bold text-amber-300 bg-amber-500/20 px-1.5 py-0.5 rounded">Flat Share</span>
+                    );
+                    return null;
+                  })()}
                   <span className="text-[10px] font-bold text-white/40 bg-white/[0.06] px-1.5 py-0.5 rounded">
                     {listing.postcode}
                   </span>

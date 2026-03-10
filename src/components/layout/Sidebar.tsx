@@ -15,11 +15,16 @@ interface SidebarProps {
   loading: boolean;
 }
 
-function isOneBed(listing: ListingData): boolean {
+function isOneBedFlat(listing: ListingData): boolean {
   const title = (listing.title || "").toLowerCase();
   const desc = (listing.description || "").toLowerCase();
-  if (title.includes("studio") || desc.includes("studio")) return false;
-  if (listing.bedrooms === 0) return false;
+  const text = title + " " + desc;
+  // Exclude studios
+  if (title.includes("studio") || listing.bedrooms === 0) return false;
+  // Exclude flat shares
+  if (text.includes("flat share") || text.includes("flatshare") || text.includes("house share")
+    || text.includes("houseshare") || text.includes("room in") || text.includes("shared")
+    || text.includes("en-suite room") || text.includes("ensuite room")) return false;
   return true;
 }
 
@@ -36,7 +41,7 @@ export function Sidebar({
 
   // Only show 1-bed flats in sidebar (not studios)
   const sidebarListings = useMemo(
-    () => listings.filter(isOneBed),
+    () => listings.filter(isOneBedFlat),
     [listings]
   );
 

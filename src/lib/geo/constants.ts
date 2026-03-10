@@ -25,12 +25,18 @@ export const MAP_LANDMARKS = [
 
 // Target postcodes for scraping
 export const TARGET_POSTCODES = [
+  // Central & West
   "W2", "W9", "W10", "W11", "W1",
-  "NW1", "NW6", "NW8",
+  "W3", "W5", "W13",
+  "NW1", "NW6", "NW8", "NW10",
   "SW1", "SW7",
   "EC1", "WC1", "WC2",
-  "E1", "E14",
+  // East London
+  "E1", "E3", "E8", "E9", "E14", "E15", "E20",
+  // South & North
   "SE1", "N1",
+  // Outer West
+  "HA0", "HA9",
 ];
 
 // Tube line colors
