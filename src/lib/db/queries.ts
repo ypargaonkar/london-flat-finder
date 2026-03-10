@@ -1,5 +1,5 @@
 import { db, schema } from "./index";
-import { eq, and, lte, desc, sql } from "drizzle-orm";
+import { eq, and, lt, lte, desc, sql } from "drizzle-orm";
 import type { Station, Listing, NewStation, NewListing } from "./schema";
 
 // ---- Stations ----
@@ -87,6 +87,36 @@ export async function getListingStats() {
   };
 }
 
+// ---- Stale Listing Deactivation ----
+
+export async function deactivateStaleListings(staleDays = 3): Promise<number> {
+  const cutoff = new Date(Date.now() - staleDays * 24 * 60 * 60 * 1000).toISOString();
+  const now = new Date().toISOString();
+
+  const stale = await db
+    .select({ id: schema.listings.id })
+    .from(schema.listings)
+    .where(
+      and(
+        eq(schema.listings.isActive, true),
+        lt(schema.listings.lastSeen, cutoff)
+      )
+    )
+    .all();
+
+  if (stale.length === 0) return 0;
+
+  for (const row of stale) {
+    await db.update(schema.listings)
+      .set({ isActive: false, deactivatedAt: now })
+      .where(eq(schema.listings.id, row.id))
+      .run();
+  }
+
+  console.log(`Deactivated ${stale.length} stale listings (not seen in ${staleDays} days)`);
+  return stale.length;
+}
+
 // ---- Refresh Log ----
 
 export async function getLastRefresh() {
@@ -98,17 +128,17 @@ export async function getLastRefresh() {
     .get();
 }
 
-export async function createRefreshLog() {
+export async function createRefreshLog(source: "cron" | "manual" = "manual") {
   return db
     .insert(schema.refreshLog)
-    .values({ startedAt: new Date().toISOString(), status: "running" })
+    .values({ startedAt: new Date().toISOString(), status: "running", source })
     .returning()
     .get();
 }
 
 export async function completeRefreshLog(
   id: number,
-  data: { status: string; listingsFound?: number; newListings?: number; errors?: string }
+  data: { status: string; listingsFound?: number; newListings?: number; staleDeactivated?: number; errors?: string }
 ) {
   await db.update(schema.refreshLog)
     .set({ ...data, completedAt: new Date().toISOString() })

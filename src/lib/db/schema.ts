@@ -40,6 +40,7 @@ export const listings = sqliteTable("listings", {
   firstSeen: text("first_seen").notNull(),
   lastSeen: text("last_seen").notNull(),
   isActive: integer("is_active", { mode: "boolean" }).default(true),
+  deactivatedAt: text("deactivated_at"),
 });
 
 export const journeys = sqliteTable("journeys", {
@@ -58,8 +59,10 @@ export const refreshLog = sqliteTable("refresh_log", {
   startedAt: text("started_at").notNull(),
   completedAt: text("completed_at"),
   status: text("status").notNull().default("running"), // 'running' | 'completed' | 'failed'
+  source: text("source").notNull().default("manual"), // 'cron' | 'manual'
   listingsFound: integer("listings_found").default(0),
   newListings: integer("new_listings").default(0),
+  staleDeactivated: integer("stale_deactivated").default(0),
   errors: text("errors"),
 });
 

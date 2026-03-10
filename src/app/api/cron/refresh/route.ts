@@ -1,166 +1,144 @@
 import { NextRequest, NextResponse } from "next/server";
-import { scrapeRightmove } from "@/lib/scraper/rightmove";
 import { scrapeOpenRent } from "@/lib/scraper/openrent";
-import { detectAmenities, computeAmenityScore } from "@/lib/scoring/amenity-score";
-import { adjustTransportScoreByDistance } from "@/lib/scoring/transport-score";
-import { computeCompositeScore } from "@/lib/scoring/composite-score";
-import { geocodePostcode, findNearestStation } from "@/lib/geo/distance";
-import { MAX_WALK_DISTANCE_M, TARGET_POSTCODES } from "@/lib/geo/constants";
+import { processAndUpsertListings } from "@/lib/scraper/pipeline";
+import { TARGET_POSTCODES } from "@/lib/geo/constants";
 import { db, schema } from "@/lib/db";
-import { eq, and } from "drizzle-orm";
-import { getLastRefresh, createRefreshLog, completeRefreshLog } from "@/lib/db/queries";
+import {
+  getLastRefresh,
+  createRefreshLog,
+  completeRefreshLog,
+  deactivateStaleListings,
+} from "@/lib/db/queries";
+import type { RawListing } from "@/lib/scraper/rightmove";
 
 export const maxDuration = 60;
 
 /**
+ * GET /api/cron/refresh
+ *
+ * - With valid CRON_SECRET (via Vercel Cron or manual trigger): runs full fan-out refresh
+ * - Without secret: returns last refresh status
+ */
+export async function GET(request: NextRequest) {
+  const authHeader = request.headers.get("authorization");
+  const cronSecret = process.env.CRON_SECRET;
+
+  // If no CRON_SECRET configured or no auth header → just return status
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
+    const last = await getLastRefresh();
+    return NextResponse.json({ lastRefresh: last || null });
+  }
+
+  // Authenticated cron call → run full fan-out refresh
+  console.log("[Cron] Starting fan-out refresh...");
+  const log = await createRefreshLog("cron");
+
+  try {
+    // Split postcodes into 3 batches
+    const batchSize = Math.ceil(TARGET_POSTCODES.length / 3);
+    const batches = [
+      TARGET_POSTCODES.slice(0, batchSize),
+      TARGET_POSTCODES.slice(batchSize, batchSize * 2),
+      TARGET_POSTCODES.slice(batchSize * 2),
+    ];
+
+    // Determine base URL for internal calls
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+    // Fire 3 parallel batch requests
+    const results = await Promise.allSettled(
+      batches.map((postcodes, i) =>
+        fetch(`${baseUrl}/api/cron/refresh-batch`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${cronSecret}`,
+          },
+          body: JSON.stringify({ postcodes, batchIndex: i }),
+        }).then((res) => res.json())
+      )
+    );
+
+    let totalFound = 0;
+    let totalNew = 0;
+    const errors: string[] = [];
+
+    for (const result of results) {
+      if (result.status === "fulfilled") {
+        totalFound += result.value.found || 0;
+        totalNew += result.value.new || 0;
+        if (result.value.errors) errors.push(...result.value.errors);
+      } else {
+        errors.push(`Batch failed: ${result.reason}`);
+      }
+    }
+
+    // Deactivate stale listings
+    const staleCount = await deactivateStaleListings(3);
+
+    await completeRefreshLog(log.id, {
+      status: "completed",
+      listingsFound: totalFound,
+      newListings: totalNew,
+      staleDeactivated: staleCount,
+      errors: errors.length > 0 ? errors.join("\n") : undefined,
+    });
+
+    console.log(
+      `[Cron] Refresh complete: ${totalFound} found, ${totalNew} new, ${staleCount} deactivated`
+    );
+
+    return NextResponse.json({
+      success: true,
+      listingsFound: totalFound,
+      newListings: totalNew,
+      staleDeactivated: staleCount,
+      errors: errors.length > 0 ? errors : undefined,
+    });
+  } catch (err) {
+    await completeRefreshLog(log.id, {
+      status: "failed",
+      errors: String(err),
+    });
+    console.error("[Cron] Refresh failed:", err);
+    return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
+  }
+}
+
+/**
  * POST /api/cron/refresh?postcode=W2
- * Scrapes a single postcode (or a small batch). Called repeatedly from the client.
+ * Single-postcode scrape (called from manual UI refresh).
  */
 export async function POST(request: NextRequest) {
   const postcode = request.nextUrl.searchParams.get("postcode");
-  const source = request.nextUrl.searchParams.get("source") || "rightmove";
+  const source = request.nextUrl.searchParams.get("source") || "openrent";
 
-  // If no postcode specified, return the list of postcodes to scrape
   if (!postcode) {
     return NextResponse.json({
       postcodes: TARGET_POSTCODES,
-      sources: ["rightmove", "openrent"],
+      sources: ["openrent"],
     });
   }
 
   try {
-    // Scrape single postcode from single source
-    let rawListings: Array<{
-      sourceId: string;
-      url: string;
-      title: string;
-      address: string;
-      postcode: string;
-      pricePerMonth: number;
-      bedrooms: number;
-      description: string;
-      imageUrls: string[];
-      lat?: number;
-      lon?: number;
-    }> = [];
-
-    if (source === "rightmove") {
-      rawListings = await scrapeRightmove([postcode]);
-    } else {
+    let rawListings: RawListing[] = [];
+    if (source === "openrent") {
       rawListings = await scrapeOpenRent([postcode]);
     }
 
-    // Load stations for matching
     const allStations = await db.select().from(schema.stations).all();
-    const now = new Date().toISOString();
-    let newCount = 0;
+    const tagged = rawListings.map((l) => ({ ...l, source }));
 
-    // Filter out listings without prices
-    const validListings = rawListings.filter((l) => l.pricePerMonth > 0);
-    console.log(`  ${rawListings.length} raw listings, ${validListings.length} with valid prices`);
-
-    for (const raw of validListings) {
-      // Check existing
-      const existing = await db
-        .select()
-        .from(schema.listings)
-        .where(
-          and(
-            eq(schema.listings.source, source),
-            eq(schema.listings.sourceId, raw.sourceId)
-          )
-        )
-        .get();
-
-      if (existing) {
-        await db.update(schema.listings)
-          .set({ lastSeen: now, isActive: true })
-          .where(eq(schema.listings.id, existing.id))
-          .run();
-        continue;
-      }
-
-      // Use lat/lon from scraper if available, otherwise geocode
-      let lat: number | null = raw.lat || null;
-      let lon: number | null = raw.lon || null;
-      if (!lat && !lon && raw.postcode) {
-        const geo = await geocodePostcode(raw.postcode);
-        if (geo) { lat = geo.lat; lon = geo.lon; }
-      }
-
-      // Amenities
-      const amenities = detectAmenities(raw.description);
-      const amenityScore = computeAmenityScore(amenities);
-
-      // Nearest station
-      let nearestStationId: number | null = null;
-      let distanceToStationM: number | null = null;
-      let transportScore = 0;
-
-      if (lat && lon) {
-        const nearest = findNearestStation(lat, lon, allStations);
-        if (nearest && nearest.distanceM <= MAX_WALK_DISTANCE_M) {
-          nearestStationId = nearest.stationId;
-          distanceToStationM = nearest.distanceM;
-          const station = allStations.find((s) => s.id === nearest.stationId);
-          if (station) {
-            transportScore = adjustTransportScoreByDistance(
-              station.transportScore || 0,
-              nearest.distanceM
-            );
-          }
-        }
-      }
-
-      const compositeScore = computeCompositeScore({
-        transportScore,
-        amenityScore,
-        pricePerMonth: raw.pricePerMonth,
-        firstSeenDate: now,
-      });
-
-      await db.insert(schema.listings).values({
-        source,
-        sourceId: raw.sourceId,
-        url: raw.url,
-        title: raw.title,
-        address: raw.address,
-        postcode: raw.postcode,
-        lat, lon,
-        pricePerMonth: raw.pricePerMonth,
-        bedrooms: raw.bedrooms,
-        description: raw.description,
-        imageUrls: JSON.stringify(raw.imageUrls),
-        furnishing: amenities.furnishing,
-        hasWasher: amenities.hasWasher,
-        hasDryer: amenities.hasDryer,
-        hasModularKitchen: amenities.hasModularKitchen,
-        hasDishwasher: amenities.hasDishwasher,
-        nearestStationId,
-        distanceToStationM,
-        transportScore,
-        amenityScore,
-        compositeScore,
-        firstSeen: now,
-        lastSeen: now,
-        isActive: true,
-      }).run();
-
-      newCount++;
-    }
-
-    // Count total in DB after insert
-    const totalInDb = await db.select().from(schema.listings).all();
-    console.log(`  Total listings in DB after scrape: ${totalInDb.length}`);
+    const result = await processAndUpsertListings(tagged, allStations);
 
     return NextResponse.json({
       success: true,
       postcode,
       source,
-      found: rawListings.length,
-      valid: validListings.length,
-      new: newCount,
-      totalInDb: totalInDb.length,
+      found: result.found,
+      new: result.newListings,
     });
   } catch (error) {
     console.error(`Scrape error for ${postcode}/${source}:`, error);
@@ -169,9 +147,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-}
-
-export async function GET() {
-  const last = await getLastRefresh();
-  return NextResponse.json({ lastRefresh: last || null });
 }

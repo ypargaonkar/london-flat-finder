@@ -6,15 +6,16 @@
  * | Transport | 40%    | From station score + proximity |
  * | Amenities | 30%    | Washer, dryer, kitchen, dishwasher, furnished |
  * | Price     | 20%    | Cheaper within budget = better |
- * | Recency   | 10%    | Listed today = 100, 14+ days ago = 0 |
+ * | Recency   | 10%    | Verified today = 100, not seen 7+ days = 0 |
  */
 export function computeCompositeScore(params: {
   transportScore: number;
   amenityScore: number;
   pricePerMonth: number | null;
   firstSeenDate: string;
+  lastSeenDate?: string;
 }): number {
-  const { transportScore, amenityScore, pricePerMonth, firstSeenDate } = params;
+  const { transportScore, amenityScore, pricePerMonth, firstSeenDate, lastSeenDate } = params;
 
   // Price score: £1500 = 100, £2200 = 50, scale linearly
   let priceScore = 50;
@@ -25,15 +26,17 @@ export function computeCompositeScore(params: {
     priceScore = Math.max(0, Math.min(100, priceScore));
   }
 
-  // Recency score: today = 100, 14+ days ago = 0
+  // Recency score based on lastSeen (when we last verified the listing exists)
+  // Verified today = 100, not seen for 7+ days = 0
   let recencyScore = 50;
+  const recencyDate = lastSeenDate || firstSeenDate;
   try {
     const daysAgo = Math.floor(
-      (Date.now() - new Date(firstSeenDate).getTime()) / (1000 * 60 * 60 * 24)
+      (Date.now() - new Date(recencyDate).getTime()) / (1000 * 60 * 60 * 24)
     );
     if (daysAgo <= 0) recencyScore = 100;
-    else if (daysAgo >= 14) recencyScore = 0;
-    else recencyScore = 100 - (daysAgo / 14) * 100;
+    else if (daysAgo >= 7) recencyScore = 0;
+    else recencyScore = 100 - (daysAgo / 7) * 100;
   } catch {
     // keep default
   }

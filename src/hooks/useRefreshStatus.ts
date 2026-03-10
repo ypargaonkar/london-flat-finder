@@ -53,9 +53,17 @@ export function useRefreshStatus() {
     setRefreshing(true);
     let totalFound = 0;
     let totalNew = 0;
+    let logId: number | null = null;
 
     try {
-      const sources = ["openrent"]; // rightmove location IDs are broken
+      // Create refresh log entry before starting
+      const logRes = await fetch("/api/cron/refresh-log", { method: "POST" });
+      if (logRes.ok) {
+        const logData = await logRes.json();
+        logId = logData.logId;
+      }
+
+      const sources = ["openrent"];
       const total = TARGET_POSTCODES.length * sources.length;
       let done = 0;
 
@@ -78,6 +86,19 @@ export function useRefreshStatus() {
             // Continue with next
           }
         }
+      }
+
+      // Complete refresh log + run stale deactivation
+      if (logId) {
+        await fetch("/api/cron/refresh-log", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            logId,
+            listingsFound: totalFound,
+            newListings: totalNew,
+          }),
+        });
       }
 
       setProgress(`Done! ${totalFound} found, ${totalNew} new`);
