@@ -151,22 +151,38 @@ async function scrapePostcode(postcode: string): Promise<RawListing[]> {
       if (listings.length >= 30) break;
     }
 
-    // Try to get titles from page HTML
+    // Extract real URLs and titles from page HTML to detect studios
     if (listings.length > 0) {
       const $ = cheerio.load(html);
 
-      // Try to find listing titles in the page
-      for (const listing of listings) {
-        const link = $(`a[href*="/property-to-rent/${listing.sourceId}"]`);
-        if (link.length > 0) {
-          const card = link.closest("div");
-          const title = card.find("h2, h3, [class*='title']").first().text().trim();
-          if (title) listing.title = title;
+      // Build a map of sourceId -> real href from all property links
+      const hrefMap = new Map<string, string>();
+      $("a[href*='/property-to-rent/']").each((_, el) => {
+        const href = $(el).attr("href") || "";
+        const idMatch = href.match(/\/(\d+)$/);
+        if (idMatch) hrefMap.set(idMatch[1], href);
+      });
 
-          const addr = card.find("[class*='address'], [class*='location']").first().text().trim();
-          if (addr) {
-            listing.address = addr;
-            listing.title = addr;
+      for (const listing of listings) {
+        const href = hrefMap.get(listing.sourceId);
+        if (href) {
+          // Use real URL
+          listing.url = `https://www.openrent.co.uk${href}`;
+
+          // Detect studios from URL slug (e.g. /studio-flat-xxx/)
+          if (href.includes("studio-flat") || href.includes("studio/")) {
+            listing.listingType = "studio";
+            if (!listing.title || listing.title.includes("1 Bed Flat")) {
+              listing.title = `${postcode} - Studio`;
+            }
+          }
+
+          // Detect flat shares from URL slug
+          if (href.includes("room-in-a-shared") || href.includes("shared-flat") || href.includes("house-share")) {
+            listing.listingType = "flatshare";
+            if (!listing.title || listing.title.includes("1 Bed Flat")) {
+              listing.title = `${postcode} - Room in Shared Flat`;
+            }
           }
         }
       }
