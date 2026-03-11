@@ -2,6 +2,38 @@
 
 import type { ListingData } from "@/hooks/useListings";
 
+const POSTCODE_AREAS: Record<string, string> = {
+  W1: "Mayfair / Soho",
+  W2: "Paddington / Bayswater",
+  W3: "Acton",
+  W5: "Ealing",
+  W9: "Maida Vale",
+  W10: "Ladbroke Grove",
+  W11: "Notting Hill",
+  W13: "West Ealing",
+  NW1: "Camden / Regent's Park",
+  NW6: "Kilburn / West Hampstead",
+  NW8: "St John's Wood",
+  NW10: "Kensal Green / Harlesden",
+  SW1: "Westminster / Pimlico",
+  SW7: "South Kensington",
+  EC1: "Clerkenwell / Farringdon",
+  WC1: "Bloomsbury / King's Cross",
+  WC2: "Covent Garden / Holborn",
+  E1: "Whitechapel / Shoreditch",
+  E3: "Bow / Mile End",
+  E8: "Hackney / Dalston",
+  E9: "Homerton / Hackney Wick",
+  E14: "Canary Wharf / Limehouse",
+  E15: "Stratford",
+  E16: "Canning Town",
+  E20: "Olympic Park / Stratford",
+  SE1: "Southwark / Bermondsey",
+  N1: "Islington / Angel",
+  HA0: "Wembley",
+  HA9: "Wembley Park",
+};
+
 function scoreToGrade(score: number): { grade: string; color: string; bg: string } {
   if (score >= 80) return { grade: "A", color: "text-emerald-400", bg: "bg-emerald-500/15" };
   if (score >= 60) return { grade: "B", color: "text-lime-400", bg: "bg-lime-500/15" };
@@ -27,8 +59,9 @@ export function ListingCard({ listing, selected, onClick }: ListingCardProps) {
     listing.hasModularKitchen ? "Kitchen" : "",
   ].filter(Boolean);
 
-  const displayTitle = listing.title && !listing.title.includes("1 Bed Flat")
-    ? listing.title
+  const areaName = listing.postcode ? POSTCODE_AREAS[listing.postcode] : null;
+  const displayTitle = areaName
+    ? `1 Bed in ${areaName}`
     : listing.address && listing.address.length > 5
       ? listing.address
       : `1 Bed Flat in ${listing.postcode || "London"}`;
