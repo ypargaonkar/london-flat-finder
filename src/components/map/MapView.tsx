@@ -82,6 +82,7 @@ export function MapView({
 }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
   const [hoveredLine, setHoveredLine] = useState<string | null>(null);
+  const [hoverPos, setHoverPos] = useState<{ x: number; y: number } | null>(null);
   const [popupInfo, setPopupInfo] = useState<{
     type: "listing" | "station" | "landmark" | "office";
     data: ListingData | StationData | { name: string; lat: number; lon: number };
@@ -203,9 +204,11 @@ export function MapView({
       if (features.length > 0) {
         const line = features[0].properties?.line as string;
         setHoveredLine(line);
+        setHoverPos({ x: event.point.x, y: event.point.y });
         map.getCanvas().style.cursor = "pointer";
       } else if (hoveredLine) {
         setHoveredLine(null);
+        setHoverPos(null);
         map.getCanvas().style.cursor = "";
       }
     },
@@ -214,6 +217,7 @@ export function MapView({
 
   const handleMouseLeave = useCallback(() => {
     setHoveredLine(null);
+    setHoverPos(null);
     const map = mapRef.current?.getMap();
     if (map) map.getCanvas().style.cursor = "";
   }, []);
@@ -482,6 +486,23 @@ export function MapView({
             </p>
           </div>
         </Popup>
+      )}
+
+      {/* Hovering line name tooltip */}
+      {hoveredLine && hoverPos && (
+        <div
+          className="pointer-events-none absolute z-50 rounded-md px-2.5 py-1 text-xs font-semibold shadow-lg border border-white/10 backdrop-blur-sm"
+          style={{
+            left: hoverPos.x + 12,
+            top: hoverPos.y - 28,
+            backgroundColor: TUBE_LINE_COLORS[hoveredLine] || "rgba(0,0,0,0.8)",
+            color: ["Circle", "Lioness", "Hammersmith & City", "Suffragette", "Southern"].includes(hoveredLine)
+              ? "#000"
+              : "#fff",
+          }}
+        >
+          {hoveredLine}
+        </div>
       )}
     </Map>
   );
