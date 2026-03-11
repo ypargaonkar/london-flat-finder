@@ -73,18 +73,48 @@ async function fetchLine(lineId) {
   return res.json();
 }
 
+// Clean up station names: "Paddington Underground Station" -> "Paddington"
+function cleanName(raw) {
+  return raw
+    .replace(/\s+(Underground|DLR|Rail|Railway)\s+Station$/i, "")
+    .replace(/\s+Station$/i, "")
+    .trim();
+}
+
 async function main() {
   const features = [];
+  // Map of "lon,lat" -> { name, lon, lat, lines: Set }  to deduplicate stations
+  const stationMap = new Map();
 
   for (const line of LINES) {
     console.log(`Fetching ${line.name} (${line.id})...`);
     const data = await fetchLine(line.id);
     if (!data) continue;
 
+    // Extract stations from stopPointSequences
+    const seqs = data.stopPointSequences || [];
+    for (const seq of seqs) {
+      for (const sp of seq.stopPoint) {
+        if (!isInLondon([sp.lon, sp.lat])) continue;
+        const name = cleanName(sp.name);
+        // Deduplicate by rounding coords to ~10m precision
+        const key = `${sp.lon.toFixed(4)},${sp.lat.toFixed(4)}`;
+        if (stationMap.has(key)) {
+          stationMap.get(key).lines.add(line.name);
+        } else {
+          stationMap.set(key, {
+            name,
+            lon: sp.lon,
+            lat: sp.lat,
+            lines: new Set([line.name]),
+          });
+        }
+      }
+    }
+
     const lineStrings = data.lineStrings || [];
     if (lineStrings.length === 0) {
       // Fallback: build from stopPointSequences
-      const seqs = data.stopPointSequences || [];
       for (const seq of seqs) {
         const coords = seq.stopPoint.map((sp) => [sp.lon, sp.lat]);
         const clipped = clipToLondon(coords);
@@ -119,23 +149,38 @@ async function main() {
       }
     }
 
-    // Also fetch inbound for lines with different return routes
-    const inboundData = await fetchLine(line.id.replace("outbound", "inbound"));
     // Small delay to be nice to the API
     await new Promise((r) => setTimeout(r, 200));
   }
 
-  console.log(`\nTotal features: ${features.length}`);
+  // Build station point features
+  const stationFeatures = [];
+  for (const st of stationMap.values()) {
+    stationFeatures.push({
+      type: "Feature",
+      properties: {
+        name: st.name,
+        lines: Array.from(st.lines).join(","),
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [st.lon, st.lat],
+      },
+    });
+  }
 
-  const geojson = {
-    type: "FeatureCollection",
-    features,
-  };
+  console.log(`\nTotal route segments: ${features.length}`);
+  console.log(`Total stations: ${stationFeatures.length}`);
+
+  const routeGeoJson = { type: "FeatureCollection", features };
+  const stationGeoJson = { type: "FeatureCollection", features: stationFeatures };
 
   const output = `// Auto-generated from TfL API — do not edit manually
 // Run: node scripts/fetch-routes.mjs
 
-export const TUBE_ROUTES: GeoJSON.FeatureCollection = ${JSON.stringify(geojson, null, 2)};
+export const TUBE_ROUTES: GeoJSON.FeatureCollection = ${JSON.stringify(routeGeoJson, null, 2)};
+
+export const LINE_STATIONS: GeoJSON.FeatureCollection = ${JSON.stringify(stationGeoJson, null, 2)};
 `;
 
   writeFileSync(

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback, useEffect, useState } from "react";
+import { useRef, useCallback, useEffect, useState, useMemo } from "react";
 import Map, {
   Marker,
   Popup,
@@ -13,7 +13,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import type { ListingData, ListingWithCost } from "@/hooks/useListings";
 import type { StationData } from "@/hooks/useStations";
 import type { MapRef } from "react-map-gl/maplibre";
-import { TUBE_ROUTES } from "@/data/tubeRoutes";
+import { TUBE_ROUTES, LINE_STATIONS } from "@/data/tubeRoutes";
 
 // Which transport lines to show on the map.
 // Add "Lioness", "Mildmay", "Windrush", "Weaver", "Suffragette", "Liberty"
@@ -192,6 +192,18 @@ export function MapView({
     }),
   };
 
+  // Stations on the currently hovered line — shown as labels when hovering
+  const hoveredLineStations: GeoJSON.FeatureCollection = useMemo(() => {
+    if (!hoveredLine) return { type: "FeatureCollection", features: [] };
+    return {
+      type: "FeatureCollection",
+      features: LINE_STATIONS.features.filter((f) => {
+        const lines = (f.properties?.lines as string) || "";
+        return lines.split(",").includes(hoveredLine);
+      }),
+    };
+  }, [hoveredLine]);
+
   const handleMapClick = useCallback(
     (event: maplibregl.MapMouseEvent & { features?: maplibregl.MapGeoJSONFeature[] }) => {
       // Check if clicked on a listing
@@ -282,6 +294,43 @@ export function MapView({
           }}
         />
       </Source>
+
+      {/* Station names on hovered line */}
+      {hoveredLine && (
+        <Source id="line-station-labels" type="geojson" data={hoveredLineStations}>
+          <Layer
+            id="line-station-dots"
+            type="circle"
+            paint={{
+              "circle-radius": 3.5,
+              "circle-color": TUBE_LINE_COLORS[hoveredLine] || "#fff",
+              "circle-stroke-width": 1.5,
+              "circle-stroke-color": "#fff",
+              "circle-opacity": 0.95,
+            }}
+          />
+          <Layer
+            id="line-station-names"
+            type="symbol"
+            layout={{
+              "text-field": ["get", "name"],
+              "text-size": 11,
+              "text-offset": [0, 1.4],
+              "text-anchor": "top",
+              "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
+              "text-allow-overlap": false,
+              "text-ignore-placement": false,
+              "text-padding": 4,
+              "text-optional": true,
+            }}
+            paint={{
+              "text-color": "#fff",
+              "text-halo-color": "rgba(0,0,0,0.85)",
+              "text-halo-width": 1.5,
+            }}
+          />
+        </Source>
+      )}
 
       {/* Station markers layer */}
       {showStations && (

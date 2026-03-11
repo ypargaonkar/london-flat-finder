@@ -14726,3 +14726,10313 @@ export const TUBE_ROUTES: GeoJSON.FeatureCollection = {
     }
   ]
 };
+
+export const LINE_STATIONS: GeoJSON.FeatureCollection = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elephant & Castle",
+        "lines": "Bakerloo,Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.100606,
+          51.494536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lambeth North",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.112315,
+          51.498808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Waterloo",
+        "lines": "Bakerloo,Jubilee,Northern,Waterloo & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.11478,
+          51.503299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Embankment",
+        "lines": "Bakerloo,Circle,District,Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.122666,
+          51.507058
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charing Cross",
+        "lines": "Bakerloo,Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.127277,
+          51.50741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Piccadilly Circus",
+        "lines": "Bakerloo,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.133798,
+          51.51005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oxford Circus",
+        "lines": "Bakerloo,Central,Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.141903,
+          51.515224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Regent's Park",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.146444,
+          51.523344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baker Street",
+        "lines": "Bakerloo,Circle,Hammersmith & City,Jubilee,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.15713,
+          51.522883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Marylebone",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.163207,
+          51.522322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Edgware Road (Bakerloo)",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.17015,
+          51.520299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paddington",
+        "lines": "Bakerloo,Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.175689,
+          51.516581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Warwick Avenue",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.183783,
+          51.523263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maida Vale",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.185758,
+          51.529777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kilburn Park",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.194232,
+          51.534979
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Queen's Park",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.204574,
+          51.534158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kensal Green",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.225016,
+          51.530539
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Willesden Junction",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.244283,
+          51.532259
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harlesden",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.257883,
+          51.53631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stonebridge Park",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.275892,
+          51.543959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wembley Central",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.296852,
+          51.552304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Wembley",
+        "lines": "Bakerloo,Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.304,
+          51.562551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Kenton",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.308433,
+          51.570232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kenton",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.31691,
+          51.581756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harrow & Wealdstone",
+        "lines": "Bakerloo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.335217,
+          51.592268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Ruislip",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.437886,
+          51.569688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ruislip Gardens",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.41071,
+          51.560736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Ruislip",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.398915,
+          51.556853
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northolt",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.368699,
+          51.548236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Greenford",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.34605,
+          51.542424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Perivale",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.323446,
+          51.536717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hanger Lane",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.292704,
+          51.530177
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Acton",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.259755,
+          51.523524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Acton",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.247248,
+          51.516612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "White City",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.224297,
+          51.511959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shepherd's Bush (Central)",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.218813,
+          51.504376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Holland Park",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.205679,
+          51.507143
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Notting Hill Gate",
+        "lines": "Central,Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.196104,
+          51.509128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Queensway",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.187152,
+          51.510312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lancaster Gate",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.175494,
+          51.511723
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Marble Arch",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.158953,
+          51.513424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bond Street",
+        "lines": "Central,Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.149723,
+          51.514304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tottenham Court Road",
+        "lines": "Central,Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.13041,
+          51.516426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Holborn",
+        "lines": "Central,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.120475,
+          51.51758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chancery Lane",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.111583,
+          51.518247
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St. Paul's",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.097567,
+          51.514936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bank",
+        "lines": "Central,Northern,Waterloo & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.088712,
+          51.513335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Liverpool Street",
+        "lines": "Central,Circle,Hammersmith & City,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.083182,
+          51.517372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bethnal Green",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.055506,
+          51.527222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mile End",
+        "lines": "Central,District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.03364,
+          51.525122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stratford",
+        "lines": "Central,Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.003458,
+          51.541806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leyton",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.005523,
+          51.556589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leytonstone",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.008194,
+          51.568324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Snaresbrook",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.02144,
+          51.580678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Woodford",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.027338,
+          51.591907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woodford",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.03397,
+          51.606899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Buckhurst Hill",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.046757,
+          51.626605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Loughton",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.055476,
+          51.641443
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Debden",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.083782,
+          51.645386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Theydon Bois",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.103085,
+          51.671759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Epping",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.113767,
+          51.69368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wanstead",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.028527,
+          51.575501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Redbridge",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.04536,
+          51.576243
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gants Hill",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.066185,
+          51.576544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Newbury Park",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.090004,
+          51.575726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barkingside",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.088585,
+          51.585689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fairlop",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.091004,
+          51.595618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hainault",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.093482,
+          51.603659
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Roding Valley",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.043647,
+          51.617199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chigwell",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.075041,
+          51.617916
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grange Hill",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.092066,
+          51.613378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ealing Broadway",
+        "lines": "Central,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.301457,
+          51.515017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Acton",
+        "lines": "Central"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.28098,
+          51.518001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hammersmith (H&C Line)",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.22503,
+          51.49339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Goldhawk Road",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.226715,
+          51.502005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shepherd's Bush Market",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.226375,
+          51.505579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wood Lane",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.22453,
+          51.509669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Latimer Road",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.217799,
+          51.513389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ladbroke Grove",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.210391,
+          51.517449
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Westbourne Park",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.201065,
+          51.52111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Royal Oak",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.188748,
+          51.519113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paddington (H&C Line)-Underground",
+        "lines": "Circle,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.178306,
+          51.518187
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Edgware Road (Circle Line)",
+        "lines": "Circle,District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.167832,
+          51.519858
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Great Portland Street",
+        "lines": "Circle,Hammersmith & City,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.144262,
+          51.52384
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Euston Square",
+        "lines": "Circle,Hammersmith & City,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.135829,
+          51.525604
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "King's Cross St. Pancras",
+        "lines": "Circle,Hammersmith & City,Metropolitan,Northern,Piccadilly,Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.123194,
+          51.530663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Farringdon",
+        "lines": "Circle,Hammersmith & City,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.104913,
+          51.520252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barbican",
+        "lines": "Circle,Hammersmith & City,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.097993,
+          51.520275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moorgate",
+        "lines": "Circle,Hammersmith & City,Metropolitan,Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.088322,
+          51.518176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aldgate",
+        "lines": "Circle,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.075689,
+          51.514246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tower Hill",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.076546,
+          51.509971
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Monument",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.085969,
+          51.5107
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cannon Street",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.090432,
+          51.51151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mansion House",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.094009,
+          51.512117
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Blackfriars",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.103659,
+          51.511581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Temple",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.11426,
+          51.511006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Westminster",
+        "lines": "Circle,District,Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.124861,
+          51.50132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St. James's Park",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.133608,
+          51.499544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Victoria",
+        "lines": "Circle,District,Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.143102,
+          51.496359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sloane Square",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.156377,
+          51.49227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Kensington",
+        "lines": "Circle,District,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.174138,
+          51.494094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gloucester Road",
+        "lines": "Circle,District,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.182658,
+          51.494316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "High Street Kensington",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.192792,
+          51.501055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bayswater",
+        "lines": "Circle,District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.187938,
+          51.512284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ealing Common",
+        "lines": "District,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.288265,
+          51.51014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Acton Town",
+        "lines": "District,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.280462,
+          51.503057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chiswick Park",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.267972,
+          51.494627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Turnham Green",
+        "lines": "District,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.254555,
+          51.495148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stamford Brook",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.245704,
+          51.494917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ravenscourt Park",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.235881,
+          51.494122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hammersmith (Dist&Picc Line)",
+        "lines": "District,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.22362,
+          51.4923
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barons Court",
+        "lines": "District,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.213427,
+          51.490311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Kensington",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.206636,
+          51.490459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Earl's Court",
+        "lines": "District,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.193378,
+          51.492063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aldgate East",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.072384,
+          51.515037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Whitechapel",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.059971,
+          51.519518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stepney Green",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.046596,
+          51.521858
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bow Road",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.025128,
+          51.52694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bromley-by-Bow",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.011538,
+          51.524839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Ham",
+        "lines": "District,Hammersmith & City,Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.005055,
+          51.528136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Plaistow",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.017451,
+          51.531341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upton Park",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.035263,
+          51.53534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Ham",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.051186,
+          51.538948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barking",
+        "lines": "District,Hammersmith & City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.081053,
+          51.539321
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upney",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.10153,
+          51.538372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Becontree",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.127016,
+          51.540331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dagenham Heathway",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.147527,
+          51.541639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dagenham East",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.166017,
+          51.544096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elm Park",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.19864,
+          51.549775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hornchurch",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.219116,
+          51.554093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upminster Bridge",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.235809,
+          51.55856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upminster",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.250882,
+          51.559063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Richmond",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.301336,
+          51.463237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kew Gardens",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.285241,
+          51.477058
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gunnersbury",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.275267,
+          51.491803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wimbledon",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.206573,
+          51.421207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wimbledon Park",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.199719,
+          51.434573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southfields",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.206602,
+          51.445073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Putney",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.211,
+          51.459205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Putney Bridge",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.208731,
+          51.468262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Parsons Green",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.20117,
+          51.475277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fulham Broadway",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.195422,
+          51.480081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Brompton",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.195599,
+          51.487268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kensington (Olympia)",
+        "lines": "District"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.210015,
+          51.497624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stanmore",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.303266,
+          51.619839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canons Park",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.294693,
+          51.607701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Queensbury",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.286219,
+          51.594188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kingsbury",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.27879,
+          51.584845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wembley Park",
+        "lines": "Jubilee,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.279262,
+          51.563198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Neasden",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.249837,
+          51.553986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dollis Hill",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.239068,
+          51.551955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Willesden Green",
+        "lines": "Jubilee,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.221537,
+          51.549146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kilburn",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.204248,
+          51.547183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Hampstead",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.191059,
+          51.546638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finchley Road",
+        "lines": "Jubilee,Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.179845,
+          51.546825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Swiss Cottage",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.174894,
+          51.543681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St. John's Wood",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.173948,
+          51.534521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Green Park",
+        "lines": "Jubilee,Piccadilly,Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.142787,
+          51.506947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southwark",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.105331,
+          51.50427
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Bridge",
+        "lines": "Jubilee,Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.088873,
+          51.505721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bermondsey",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.063993,
+          51.49775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canada Water",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.049405,
+          51.497931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canary Wharf",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.018246,
+          51.503488
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Greenwich",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.004287,
+          51.50047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canning Town",
+        "lines": "Jubilee"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.008322,
+          51.513584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Amersham",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.607714,
+          51.674126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chalfont & Latimer",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.560689,
+          51.667985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chorleywood",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.518461,
+          51.654358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rickmansworth",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.473703,
+          51.640207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moor Park",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.432454,
+          51.629845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northwood",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.423829,
+          51.611053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northwood Hills",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.409464,
+          51.600572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinner",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.381161,
+          51.592901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Harrow",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.362408,
+          51.584872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harrow-on-the-Hill",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.337225,
+          51.579195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northwick Park",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.318056,
+          51.578481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Preston Road",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.295107,
+          51.571972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chesham",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.611247,
+          51.705208
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Uxbridge",
+        "lines": "Metropolitan,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.477949,
+          51.546565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hillingdon",
+        "lines": "Metropolitan,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.449828,
+          51.553715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ickenham",
+        "lines": "Metropolitan,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.442225,
+          51.56177
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ruislip",
+        "lines": "Metropolitan,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.421898,
+          51.571354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ruislip Manor",
+        "lines": "Metropolitan,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.412973,
+          51.573202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eastcote",
+        "lines": "Metropolitan,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.397373,
+          51.576506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rayners Lane",
+        "lines": "Metropolitan,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.371127,
+          51.575147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Harrow",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.3534,
+          51.57971
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Watford",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.417377,
+          51.657446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Croxley",
+        "lines": "Metropolitan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.441718,
+          51.647044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Morden",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.194839,
+          51.402142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Wimbledon",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.192005,
+          51.415309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Colliers Wood",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.178086,
+          51.41816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tooting Broadway",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.168374,
+          51.42763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tooting Bec",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.159736,
+          51.435678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Balham",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.152997,
+          51.443288
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clapham South",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.147582,
+          51.452654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clapham Common",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.138317,
+          51.461742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clapham North",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.130016,
+          51.465135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stockwell",
+        "lines": "Northern,Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.122644,
+          51.472184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oval",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.112439,
+          51.48185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kennington",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.105963,
+          51.488337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leicester Square",
+        "lines": "Northern,Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.128426,
+          51.511386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Goodge Street",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.134361,
+          51.520599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Warren Street",
+        "lines": "Northern,Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.138321,
+          51.524951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Euston",
+        "lines": "Northern,Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.131846,
+          51.527824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mornington Crescent",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.138789,
+          51.534679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Camden Town",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.14274,
+          51.539292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kentish Town",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.140733,
+          51.550312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tufnell Park",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.138433,
+          51.556822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Archway",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.134819,
+          51.565478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Highgate",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.145857,
+          51.577532
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Finchley",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.165012,
+          51.587131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finchley Central",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.192527,
+          51.600921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Finchley",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.188362,
+          51.609426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woodside Park",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.18542,
+          51.618014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Totteridge & Whetstone",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.17921,
+          51.630597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "High Barnet",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.194298,
+          51.650541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Borough",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.09337,
+          51.501199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Old Street",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.08777,
+          51.525864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Angel",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.105919,
+          51.531788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chalk Farm",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.153388,
+          51.544118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Belsize Park",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.164648,
+          51.550311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hampstead",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.177464,
+          51.556239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Golders Green",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.194039,
+          51.572259
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brent Cross",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.213622,
+          51.57665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hendon Central",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.226424,
+          51.583301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Colindale",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.249919,
+          51.595424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Burnt Oak",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.264048,
+          51.602774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Edgware",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.274928,
+          51.613653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mill Hill East",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.209986,
+          51.608229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Battersea Power",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.142142,
+          51.479932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nine Elms",
+        "lines": "Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.128476,
+          51.479912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Harrow",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.352492,
+          51.564888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sudbury Hill",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.336435,
+          51.556946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sudbury Town",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.315745,
+          51.550815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alperton",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.29961,
+          51.540627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Park Royal",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.284341,
+          51.527123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Ealing",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.288868,
+          51.517505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Knightsbridge",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.160508,
+          51.501669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hyde Park Corner",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.152441,
+          51.503035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Covent Garden",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.124436,
+          51.513093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Russell Square",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.124285,
+          51.523073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Caledonian Road",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.118493,
+          51.548519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Holloway Road",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.113244,
+          51.552697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arsenal",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.107457,
+          51.558655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finsbury Park",
+        "lines": "Piccadilly,Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.106825,
+          51.564158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Manor House",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.096118,
+          51.570738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Turnpike Lane",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.102953,
+          51.590272
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wood Green",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.109886,
+          51.597479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bounds Green",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.124235,
+          51.607034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arnos Grove",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.133062,
+          51.616446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southgate",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.127816,
+          51.632315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oakwood",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.132182,
+          51.647726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cockfosters",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.149171,
+          51.65152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Heathrow Terminal 4",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.445771,
+          51.458524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Heathrow Terminals 2 & 3",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.452265,
+          51.471235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hatton Cross",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.423191,
+          51.466747
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hounslow West",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.386544,
+          51.473469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hounslow Central",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.366578,
+          51.471295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hounslow East",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.356474,
+          51.473213
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Osterley",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.352224,
+          51.481274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boston Manor",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.324939,
+          51.495635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northfields",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.314719,
+          51.499319
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Ealing",
+        "lines": "Piccadilly"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.307424,
+          51.501003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Heathrow Terminal 5",
+        "lines": "Piccadilly,Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.49056,
+          51.470052
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brixton",
+        "lines": "Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.114888,
+          51.462618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vauxhall",
+        "lines": "Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.124204,
+          51.485743
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pimlico",
+        "lines": "Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.133761,
+          51.489097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Highbury & Islington",
+        "lines": "Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.103324,
+          51.54635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seven Sisters",
+        "lines": "Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.072584,
+          51.58333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tottenham Hale",
+        "lines": "Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.060241,
+          51.588108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Blackhorse Road",
+        "lines": "Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.04115,
+          51.586919
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Walthamstow Central",
+        "lines": "Victoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.019885,
+          51.582965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shenfield",
+        "lines": "Elizabeth line,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.329851,
+          51.630877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brentwood",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.299586,
+          51.613605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harold Wood",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.233129,
+          51.592766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gidea Park",
+        "lines": "Elizabeth line,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.205964,
+          51.581904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Romford",
+        "lines": "Elizabeth line,Liberty,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.183237,
+          51.574829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chadwell Heath",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.128958,
+          51.568039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Goodmayes",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.110807,
+          51.565579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seven Kings",
+        "lines": "Elizabeth line,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.0971,
+          51.564026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ilford",
+        "lines": "Elizabeth line,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.06968,
+          51.559118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Manor Park",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.046342,
+          51.552477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Forest Gate",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.024353,
+          51.549432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maryland",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.005815,
+          51.546081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stratford (London)",
+        "lines": "Elizabeth line,Mildmay,c2c,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.003397,
+          51.541895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Whitechapel",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.059837,
+          51.519632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Liverpool Street",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.082043,
+          51.517721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Farringdon",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.104915,
+          51.520189
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tottenham Court Road",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.13044,
+          51.515698
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bond Street",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.147246,
+          51.513895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paddington",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.177107,
+          51.516451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Acton Main Line",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.266756,
+          51.51718
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ealing Broadway",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.301752,
+          51.514841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Ealing",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.320133,
+          51.513506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hanwell",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.338583,
+          51.511835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southall",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.37861,
+          51.505957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hayes & Harlington",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.420683,
+          51.503096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Heathrow Terminals 2 & 3",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.45803,
+          51.47098
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Heathrow Terminal 4",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.445463,
+          51.458268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Drayton",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.472234,
+          51.510055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Iver",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.506726,
+          51.508503
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Langley (Berks)",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.541756,
+          51.508062
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Slough",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.59151,
+          51.51188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Burnham (Berks)",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.646374,
+          51.523506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Abbey Wood",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.121087,
+          51.491284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woolwich",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.070593,
+          51.492168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Custom House",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.026677,
+          51.50986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canary Wharf",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.018834,
+          51.506203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Paddington",
+        "lines": "Elizabeth line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.176174,
+          51.515996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Liverpool Street",
+        "lines": "Elizabeth line,Weaver,c2c,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.081426,
+          51.517991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tower Gateway",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.074818,
+          51.510617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shadwell",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.056643,
+          51.511693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Limehouse",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.039809,
+          51.512393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Westferry",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.02675,
+          51.509431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Poplar",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.017384,
+          51.507744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Blackwall",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.006969,
+          51.507991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East India",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.002326,
+          51.509359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canning Town",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.008101,
+          51.514127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Royal Victoria",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.018497,
+          51.509336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Custom House (for ExCel)",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.026699,
+          51.509716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Prince Regent",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.034158,
+          51.509263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Royal Albert",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.045935,
+          51.508357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Beckton Park",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.054932,
+          51.508793
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cyprus",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.063925,
+          51.508473
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gallions Reach",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.071555,
+          51.508941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Beckton",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.061453,
+          51.514362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canary Wharf",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.020997,
+          51.504838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Heron Quays",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.021421,
+          51.503379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Quay",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.015975,
+          51.50005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crossharbour",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.014606,
+          51.495728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mudchute",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.014738,
+          51.490704
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Island Gardens",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.010139,
+          51.487811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cutty Sark (for Maritime Greenwich)",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.01081,
+          51.481671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Greenwich",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.013673,
+          51.478087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Deptford Bridge",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.022438,
+          51.474215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elverson Road",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.016728,
+          51.469074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lewisham",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.012874,
+          51.464665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bank",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.088515,
+          51.513233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Silvertown",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.02246,
+          51.502838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pontoon Dock",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.032115,
+          51.502212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London City Airport",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.048739,
+          51.503416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "King George V",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.062624,
+          51.502003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woolwich Arsenal",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.069127,
+          51.490009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stratford International",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.009638,
+          51.545265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stratford",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.003287,
+          51.541758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stratford High Street",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.001078,
+          51.538196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Abbey Road",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.003737,
+          51.531926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Ham",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.004482,
+          51.527894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Star Lane",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.004156,
+          51.520786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pudding Mill Lane",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.012755,
+          51.534302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bow Church",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.020936,
+          51.527858
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Devons Road",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.017615,
+          51.522667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Langdon Park",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.01415,
+          51.515172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "All Saints",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.013135,
+          51.511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West India Quay",
+        "lines": "DLR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.020311,
+          51.50703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Euston",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.133924,
+          51.528136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Hampstead",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.178878,
+          51.541432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kilburn High Road",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.192237,
+          51.537277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Queens Park (London)",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.204985,
+          51.533966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kensal Green",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.225088,
+          51.53054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Willesden Junction",
+        "lines": "Lioness,Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.244548,
+          51.532497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harlesden",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.257667,
+          51.536289
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stonebridge Park",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.275828,
+          51.544111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wembley Central",
+        "lines": "Lioness,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.296433,
+          51.552325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Kenton",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.308462,
+          51.570214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kenton",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.316981,
+          51.581802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harrow & Wealdstone",
+        "lines": "Lioness,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.334571,
+          51.592169
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Headstone Lane",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.35722,
+          51.602649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hatch End",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.368601,
+          51.609417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Carpenders Park",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.385939,
+          51.628351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bushey",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.385612,
+          51.645691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Watford High Street",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.391711,
+          51.652655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Watford Junction",
+        "lines": "Lioness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.396517,
+          51.663529
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hackney Wick",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.02492,
+          51.54341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Homerton",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.04236,
+          51.547012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hackney Central",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.056058,
+          51.547105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dalston Kingsland",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.075701,
+          51.548148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canonbury",
+        "lines": "Mildmay,Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.092191,
+          51.548732
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Highbury & Islington",
+        "lines": "Mildmay,Windrush,Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.103764,
+          51.546177
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Caledonian Road & Barnsbury",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.116729,
+          51.543041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Camden Road",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.138701,
+          51.541791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kentish Town West",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.146655,
+          51.546548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gospel Oak",
+        "lines": "Mildmay,Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.15077,
+          51.555335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hampstead Heath",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.165705,
+          51.55521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finchley Road & Frognal",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.183141,
+          51.550266
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Hampstead",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.191185,
+          51.547468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brondesbury",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.202309,
+          51.545166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brondesbury Park",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.210128,
+          51.540699
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kensal Rise",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.219957,
+          51.534554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Acton Central",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.262971,
+          51.508716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Acton",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.270157,
+          51.499695
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gunnersbury",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.275286,
+          51.491678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kew Gardens",
+        "lines": "Mildmay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.285054,
+          51.477073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Richmond (London)",
+        "lines": "Mildmay,South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.301558,
+          51.463061
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shepherds Bush",
+        "lines": "Mildmay,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.217654,
+          51.505285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kensington (Olympia)",
+        "lines": "Mildmay,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.210364,
+          51.497899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Brompton",
+        "lines": "Mildmay,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.195593,
+          51.487061
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Imperial Wharf",
+        "lines": "Mildmay,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.182823,
+          51.474949
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clapham Junction",
+        "lines": "Mildmay,Southern,South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.170293,
+          51.464188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dalston Junction",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.075137,
+          51.546116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Haggerston",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.075666,
+          51.538705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hoxton",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.075681,
+          51.531512
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shoreditch High Street",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.075246,
+          51.523375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Whitechapel",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.059757,
+          51.519469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shadwell",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.056934,
+          51.511284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wapping",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.055931,
+          51.504388
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rotherhithe",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.052048,
+          51.500817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canada Water",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.04972,
+          51.49799
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Surrey Quays",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.047519,
+          51.493196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Cross Gate",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.040399,
+          51.475128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brockley",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.037537,
+          51.464649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Honor Oak Park",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.045505,
+          51.449989
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Forest Hill",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.053157,
+          51.43928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sydenham",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.054244,
+          51.427248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Penge West",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.06084,
+          51.417555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Anerley",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.065886,
+          51.412153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Norwood Junction",
+        "lines": "Windrush,Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.075221,
+          51.397019
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Croydon",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.102585,
+          51.378428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Queens Road Peckham",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.057313,
+          51.473566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Peckham Rye",
+        "lines": "Windrush,Thameslink,Southern,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.069414,
+          51.470034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Denmark Hill",
+        "lines": "Windrush,Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.089361,
+          51.468203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clapham High Street",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.132522,
+          51.465481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wandsworth Road",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.13852,
+          51.470216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clapham Junction",
+        "lines": "Windrush"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.170221,
+          51.464187
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crystal Palace",
+        "lines": "Windrush,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.07261,
+          51.418109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Cross ELL",
+        "lines": "Windrush,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.032441,
+          51.476344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Bridge",
+        "lines": "Windrush,Thameslink,Southern,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.086092,
+          51.505019
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bethnal Green",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.059568,
+          51.523917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cambridge Heath (London)",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.057279,
+          51.531973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Fields",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.057753,
+          51.541153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hackney Downs",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.060819,
+          51.548757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rectory Road",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.068267,
+          51.558502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stoke Newington",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.072887,
+          51.565233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stamford Hill",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.076682,
+          51.574467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seven Sisters",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.07527,
+          51.582268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bruce Grove",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.069867,
+          51.593959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "White Hart Lane",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.070914,
+          51.605037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Silver Street",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.06724,
+          51.614688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Edmonton Green",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.061112,
+          51.624929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Southbury",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.052437,
+          51.648705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Turkey Street",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.047217,
+          51.672628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Theobalds Grove",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.034831,
+          51.692457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cheshunt",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.02396,
+          51.702876
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bush Hill Park",
+        "lines": "Weaver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.069221,
+          51.641519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Enfield Town",
+        "lines": "Weaver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.079328,
+          51.652026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clapton",
+        "lines": "Weaver,Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.057025,
+          51.561644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St James Street (London)",
+        "lines": "Weaver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.032918,
+          51.580981
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Walthamstow Central",
+        "lines": "Weaver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.019815,
+          51.582919
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wood Street",
+        "lines": "Weaver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.002405,
+          51.58658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Highams Park",
+        "lines": "Weaver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.000222,
+          51.60835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chingford",
+        "lines": "Weaver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.009897,
+          51.633087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upper Holloway",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.129513,
+          51.563631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crouch Hill",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.117149,
+          51.571302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harringay Green Lanes",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.098144,
+          51.577182
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Tottenham",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.072103,
+          51.580372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Blackhorse Road",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.041236,
+          51.586605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Walthamstow Queens Road",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.023846,
+          51.581503
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leyton Midland Road",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.008051,
+          51.569725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leytonstone High Road",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.008416,
+          51.563554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wanstead Park",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.026213,
+          51.551693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woodgrange Park",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.044423,
+          51.549264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barking",
+        "lines": "Suffragette,c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.080903,
+          51.539495
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barking Riverside",
+        "lines": "Suffragette"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.116922,
+          51.520766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Emerson Park",
+        "lines": "Liberty"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.220113,
+          51.568642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upminster",
+        "lines": "Liberty,c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.25088,
+          51.559018
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Radlett",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.317244,
+          51.685188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elstree & Borehamwood",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.280081,
+          51.653069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mill Hill Broadway",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.24924,
+          51.613093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hendon",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.238674,
+          51.580068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brent Cross West",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.225488,
+          51.568429
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cricklewood",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.212677,
+          51.558453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Hampstead Thameslink",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.191837,
+          51.548476
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kentish Town",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.140365,
+          51.550495
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London St Pancras International",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.127189,
+          51.53239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Farringdon",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.105205,
+          51.520167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "City Thameslink",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.10359,
+          51.513936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Blackfriars",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.103332,
+          51.51181
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Croydon",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.09278,
+          51.375454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Croydon",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.093457,
+          51.362965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Purley",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.114035,
+          51.337579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Coulsdon South",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.137887,
+          51.315838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Merstham",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.150226,
+          51.264154
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sanderstead",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.093678,
+          51.348283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Riddlesdown",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.099387,
+          51.332486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upper Warlingham",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.077952,
+          51.308512
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woldingham",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.05187,
+          51.290158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oxted",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.004833,
+          51.257908
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elephant & Castle",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.098725,
+          51.494029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Loughborough Junction",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.102182,
+          51.466298
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Herne Hill",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.102289,
+          51.453305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tulse Hill",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.105077,
+          51.439861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Streatham",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.13155,
+          51.425808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tooting",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.161278,
+          51.419848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Haydons Road",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.188815,
+          51.425448
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wimbledon",
+        "lines": "Thameslink,South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.206371,
+          51.421222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wimbledon Chase",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.214031,
+          51.409558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Merton",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.205157,
+          51.402993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Morden South",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.199461,
+          51.396116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St Helier (London)",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.198771,
+          51.389901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sutton Common",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.196343,
+          51.374891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Sutton",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.205173,
+          51.365854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sutton (London)",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.191215,
+          51.359533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mitcham Eastfields",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.154646,
+          51.407739
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mitcham Junction",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.157757,
+          51.39295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hackbridge",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.153907,
+          51.377872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Carshalton",
+        "lines": "Thameslink,Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.166368,
+          51.368454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Deptford",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.02627,
+          51.478848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Greenwich",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.01334,
+          51.478135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maze Hill",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.002914,
+          51.482625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Westcombe Park",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.018395,
+          51.484203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charlton",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.031258,
+          51.486813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woolwich Arsenal",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.069194,
+          51.489909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Plumstead",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.084257,
+          51.489795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Abbey Wood (London)",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.121394,
+          51.491062
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Slade Green",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.190491,
+          51.467786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dartford",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.219248,
+          51.447371
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stone Crossing",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.263771,
+          51.45133
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Greenhithe for Bluewater",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.28029,
+          51.450372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Swanscombe",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.309543,
+          51.449071
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northfleet",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.324334,
+          51.445846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Potters Bar",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.192605,
+          51.697067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hadley Wood",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.176172,
+          51.668497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Barnet",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.172997,
+          51.648575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oakleigh Park",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.166209,
+          51.637678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Southgate",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.143038,
+          51.614114
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alexandra Palace",
+        "lines": "Thameslink,Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.120235,
+          51.597924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Harringay",
+        "lines": "Thameslink,Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.105136,
+          51.577358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finsbury Park",
+        "lines": "Thameslink,Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.106285,
+          51.564302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London King's Cross",
+        "lines": "Thameslink,Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.122926,
+          51.530883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nunhead",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.052273,
+          51.466828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crofton Park",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.036503,
+          51.455189
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Catford",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.026317,
+          51.444407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bellingham",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.019331,
+          51.432913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Beckenham Hill",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.015951,
+          51.424583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ravensbourne",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.007557,
+          51.414188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shortlands",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.001784,
+          51.405801
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bromley South",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.017344,
+          51.399976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bickley",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.045241,
+          51.400104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Petts Wood",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.074481,
+          51.388619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Orpington",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.089091,
+          51.373296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sevenoaks",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.181669,
+          51.276865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St Mary Cray",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.106384,
+          51.394749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Swanley",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.169225,
+          51.393387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eynsford",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.204393,
+          51.36272
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shoreham (Kent)",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.18889,
+          51.332219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Otford",
+        "lines": "Thameslink,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.196779,
+          51.313158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bat & Ball",
+        "lines": "Thameslink"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.194228,
+          51.289761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Victoria",
+        "lines": "Thameslink,Southern,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.144559,
+          51.495257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Bermondsey",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.054678,
+          51.488136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Dulwich",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.080572,
+          51.461494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Dulwich",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.087917,
+          51.45451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Streatham Common",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.13601,
+          51.41873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Norbury",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.121926,
+          51.411446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thornton Heath",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.100306,
+          51.398777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Selhurst",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0883,
+          51.391927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Norwood",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.10383,
+          51.431748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gipsy Hill",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.083836,
+          51.424453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Birkbeck",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.055739,
+          51.403892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Beckenham Junction",
+        "lines": "Southern,Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.025813,
+          51.411035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Battersea Park",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.147533,
+          51.47696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wandsworth Common",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.163386,
+          51.446185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Balham",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.152424,
+          51.443225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Streatham Hill",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12716,
+          51.438193
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Purley Oaks",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.098856,
+          51.347046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kenley",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.100925,
+          51.324777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Whyteleafe",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.081148,
+          51.309958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Whyteleafe South",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.076918,
+          51.303387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Caterham",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.078307,
+          51.282141
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Reedham (Surrey)",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.123416,
+          51.33112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Coulsdon Town",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.134464,
+          51.322043
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woodmansterne",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.154262,
+          51.31902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chipstead",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.169503,
+          51.309277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kingswood",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.211247,
+          51.294725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tadworth",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.235965,
+          51.291638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tattenham Corner",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.242609,
+          51.309183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Waddon",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.117336,
+          51.367398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wallington",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.150833,
+          51.360386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Carshalton Beeches",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.169797,
+          51.357411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cheam",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.214167,
+          51.355479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ewell East",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.24153,
+          51.3453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Epsom",
+        "lines": "Southern,South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.268778,
+          51.334393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ashtead",
+        "lines": "Southern,South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.307572,
+          51.317874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leatherhead",
+        "lines": "Southern,South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.333232,
+          51.298818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Box Hill & Westhumble",
+        "lines": "Southern,South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.32849,
+          51.254012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Belmont",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.198855,
+          51.343815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Banstead",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.213159,
+          51.329349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Epsom Downs",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.238955,
+          51.323688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Watford Junction",
+        "lines": "Southern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.395925,
+          51.663908
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Waterloo East",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.108898,
+          51.504076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Charing Cross",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.124802,
+          51.508027
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Cannon Street",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.090293,
+          51.511382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ebbsfleet International",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.320921,
+          51.442973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stratford International",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.008778,
+          51.544828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London St Pancras International",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.126463,
+          51.532514
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St Pancras International",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12656,
+          51.532272
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brixton",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.114183,
+          51.463299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Dulwich",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.091371,
+          51.440718
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sydenham Hill",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.080339,
+          51.432714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Penge East",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.05422,
+          51.419334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kent House",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.045247,
+          51.412215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chislehurst",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.057418,
+          51.405557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kemsing",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.247428,
+          51.297187
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Borough Green & Wrotham",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.306245,
+          51.293219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woolwich Dockyard",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.054642,
+          51.491127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Belvedere",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.152286,
+          51.492118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Erith",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.175055,
+          51.481671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crayford",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.178936,
+          51.44828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bexley",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.147903,
+          51.440219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Albany Park",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.125737,
+          51.435453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sidcup",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.103795,
+          51.43387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Eltham",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.070533,
+          51.43806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mottingham",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.050054,
+          51.440218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lee",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.013493,
+          51.449755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hither Green",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.000944,
+          51.452025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lewisham",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.014024,
+          51.465692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St Johns (London)",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.022719,
+          51.469391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ladywell",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.019041,
+          51.456244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Catford Bridge",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.024791,
+          51.444741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lower Sydenham",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.033345,
+          51.424831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Beckenham",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.035273,
+          51.41677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clock House",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.040657,
+          51.408586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elmers End",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.04957,
+          51.398492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eden Park",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.026355,
+          51.390091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Wickham",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.014432,
+          51.381301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hayes (Kent)",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.010557,
+          51.376334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grove Park",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.021726,
+          51.430863
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Elmstead Woods",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.044274,
+          51.417118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chelsfield",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.10907,
+          51.356256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Knockholt",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.130847,
+          51.34579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dunton Green",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.170937,
+          51.29649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sundridge Park",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.021446,
+          51.413782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bromley North",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.016993,
+          51.408328
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Farningham Road",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.235452,
+          51.401666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Longfield",
+        "lines": "Southeastern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.300364,
+          51.396155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Waterloo",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.113109,
+          51.503299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vauxhall",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.122889,
+          51.48619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Queenstown Road (Battersea)",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.146678,
+          51.474968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Twickenham",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.330394,
+          51.450031
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Whitton",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.357681,
+          51.449607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Feltham",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.409838,
+          51.447898
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ashford (Surrey)",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.468071,
+          51.436507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Staines",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.503164,
+          51.432455
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Egham",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.546512,
+          51.429647
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Virginia Water",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.562174,
+          51.401802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Longcross",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.59457,
+          51.385173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sunningdale",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.633041,
+          51.39194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Earlsfield",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.187715,
+          51.442337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Raynes Park",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.230151,
+          51.409173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Malden",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.25594,
+          51.404075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Norbiton",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.284025,
+          51.412358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kingston",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.301166,
+          51.412751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hampton Wick",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.312489,
+          51.414524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Teddington",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.332706,
+          51.424481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Strawberry Hill",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.339358,
+          51.438963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chertsey",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.509317,
+          51.387069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Addlestone",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.484457,
+          51.373046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Byfleet & New Haw",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.48139,
+          51.349797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Byfleet",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.505485,
+          51.339226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woking",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.55696,
+          51.318469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Weybridge",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.457739,
+          51.361771
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wraysbury",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.541922,
+          51.457708
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sunnymeads",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.559374,
+          51.470288
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Datchet",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.579422,
+          51.483077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Windsor & Eton Riverside",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.606534,
+          51.48565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wandsworth Town",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.188125,
+          51.461048
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Putney",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.216475,
+          51.461303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barnes",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.242164,
+          51.467086
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mortlake",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.267106,
+          51.468087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Sheen",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.287876,
+          51.465155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "St Margarets (London)",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.3202,
+          51.455236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fulwell",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.349468,
+          51.433935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hampton (London)",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.372119,
+          51.415934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kempton Park",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.409751,
+          51.420983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sunbury",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.417783,
+          51.418313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upper Halliford",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.430906,
+          51.413067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shepperton",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.446786,
+          51.396805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Barnes Bridge",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.25263,
+          51.472009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chiswick",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.267835,
+          51.481137
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kew Bridge",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.287108,
+          51.489513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brentford",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.309651,
+          51.487547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Syon Lane",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.324842,
+          51.481785
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Isleworth",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.336907,
+          51.474763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hounslow",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.362277,
+          51.461946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Effingham Junction",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.419965,
+          51.291495
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Horsley",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.435409,
+          51.279347
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Clandon",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.502766,
+          51.264005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Motspur Park",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.239531,
+          51.395196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Worcester Park",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.245167,
+          51.381253
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stoneleigh",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.248665,
+          51.363401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ewell West",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.256987,
+          51.350045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bookham",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.384021,
+          51.288739
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Malden Manor",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.261274,
+          51.38473
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tolworth",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.279461,
+          51.37686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chessington North",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.300699,
+          51.364041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chessington South",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.308157,
+          51.35655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Berrylands",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.280714,
+          51.399045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Surbiton",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.303958,
+          51.39246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thames Ditton",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.339152,
+          51.389097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hampton Court",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.342748,
+          51.402556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Esher",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.353338,
+          51.379891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hersham",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.389959,
+          51.376812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Walton-on-Thames",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.414635,
+          51.372931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brookwood",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.635748,
+          51.303758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Worplesdon",
+        "lines": "South Western"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.582578,
+          51.289017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moorgate",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.088943,
+          51.518491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Old Street",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.088535,
+          51.525832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Essex Road",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.096276,
+          51.540705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Drayton Park",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.105509,
+          51.55277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hornsey",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.111975,
+          51.586461
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bowes Park",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.120582,
+          51.607012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Palmers Green",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.110437,
+          51.618314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Winchmore Hill",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1009,
+          51.633942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grange Park",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.097358,
+          51.642607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Enfield Chase",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.090696,
+          51.653254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gordon Hill",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.09461,
+          51.663335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Crews Hill",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.106887,
+          51.684486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cuffley",
+        "lines": "Great Northern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.109783,
+          51.708722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "London Fenchurch Street",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.078897,
+          51.511646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Limehouse",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.039803,
+          51.512537
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Ham",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.005431,
+          51.528489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grays",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.321832,
+          51.476248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dagenham Dock",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.14724,
+          51.52731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rainham (London)",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.190634,
+          51.516723
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Purfleet",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.236767,
+          51.481013
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Horndon",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.340644,
+          51.567945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chafford Hundred",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.287447,
+          51.485557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ockendon",
+        "lines": "c2c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.290469,
+          51.521992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Broxbourne",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.011087,
+          51.74691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tottenham Hale",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.059929,
+          51.58831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northumberland Park",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.053932,
+          51.601969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Meridian Water",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.050898,
+          51.610102
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ponders End",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.03508,
+          51.642256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brimsdown",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.030817,
+          51.655583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Enfield Lock",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.028532,
+          51.670922
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Waltham Cross",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.026558,
+          51.685061
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lea Bridge",
+        "lines": "Greater Anglia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.036673,
+          51.566548
+        ]
+      }
+    }
+  ]
+};
