@@ -197,6 +197,35 @@ function extractJsArray(html: string, varName: string): (string | number)[] {
 }
 
 /**
+ * Check if a specific OpenRent listing page shows "Let Agreed" or is removed.
+ * Returns true if the listing is no longer available.
+ */
+export async function isListingLet(url: string): Promise<boolean> {
+  try {
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent": USER_AGENT,
+        Accept: "text/html",
+      },
+      redirect: "follow",
+      signal: AbortSignal.timeout(5000),
+    });
+
+    if (!res.ok) return true; // 404 etc = gone
+
+    const html = (await res.text()).toLowerCase();
+    return (
+      html.includes("let agreed") ||
+      html.includes("this property has been removed") ||
+      html.includes("this property is no longer available") ||
+      html.includes("property no longer available")
+    );
+  } catch {
+    return false; // network error — assume still live
+  }
+}
+
+/**
  * Scrape a single postcode (0-1 bed search, studios detected from HTML).
  */
 async function scrapePostcode(postcode: string): Promise<RawListing[]> {

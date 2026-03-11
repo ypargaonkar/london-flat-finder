@@ -1,4 +1,4 @@
-import { scrapeOpenRent } from "./openrent";
+import { scrapeOpenRent, isListingLet } from "./openrent";
 import { detectAmenities, computeAmenityScore } from "../scoring/amenity-score";
 import { adjustTransportScoreByDistance } from "../scoring/transport-score";
 import { computeCompositeScore } from "../scoring/composite-score";
@@ -41,7 +41,22 @@ export async function processAndUpsertListings(
         .get();
 
       if (existing) {
-        // Re-seen: update lastSeen, reactivate, and recompute score
+        // For listings older than 12 hours, verify the page isn't marked "Let Agreed"
+        const ageMs = Date.now() - new Date(existing.firstSeen).getTime();
+        if (raw.source === "openrent" && ageMs > 12 * 60 * 60 * 1000) {
+          if (await isListingLet(raw.url)) {
+            // Still on search page but actually let — deactivate
+            if (existing.isActive) {
+              await db.update(schema.listings)
+                .set({ isActive: false, deactivatedAt: now })
+                .where(eq(schema.listings.id, existing.id))
+                .run();
+            }
+            continue;
+          }
+        }
+
+        // Still live: update lastSeen, reactivate, and recompute score
         const compositeScore = computeCompositeScore({
           transportScore: existing.transportScore || 0,
           amenityScore: existing.amenityScore || 0,
