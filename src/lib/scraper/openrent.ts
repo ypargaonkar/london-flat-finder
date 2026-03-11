@@ -10,9 +10,7 @@ function sleep(ms: number) {
 
 /**
  * Scrape OpenRent for a single postcode.
- * Uses JS arrays for data + HTML card titles/URL slugs to detect studios.
- * OpenRent lists studios as bedrooms=1 in JS arrays, but the HTML card
- * titles and URL slugs reliably say "Studio Flat".
+ * Uses `isstudio` and `isshared` JS arrays for reliable classification.
  */
 async function scrapeSearchUrl(
   url: string,
@@ -42,66 +40,56 @@ async function scrapeSearchUrl(
     const html = await res.text();
     console.log(`    HTML length: ${html.length} chars`);
 
-    // Always parse HTML to get card titles and URL slugs for studio detection
-    const $ = cheerio.load(html);
-
-    // Build maps from HTML property cards: sourceId -> { href, title }
-    const cardInfo = new Map<string, { href: string; title: string }>();
-    $("a[href*='/property-to-rent/']").each((_, el) => {
-      const href = $(el).attr("href") || "";
-      const idMatch = href.match(/\/(\d+)$/);
-      if (!idMatch) return;
-      const id = idMatch[1];
-      if (cardInfo.has(id)) return;
-
-      // Get the card title from nearby elements
-      const card = $(el).closest("div");
-      const title = card.find("h2, h3, [class*='title'], [class*='Title']").first().text().trim()
-        || $(el).text().trim();
-
-      cardInfo.set(id, { href, title });
-    });
-
-    console.log(`    HTML cards found: ${cardInfo.size}`);
-
-    // Parse JavaScript arrays embedded in the page
+    // Parse all JavaScript arrays embedded in the page
     const propertyIds = extractJsArray(html, "PROPERTYIDS");
     const prices = extractJsArray(html, "prices");
     const bedrooms = extractJsArray(html, "bedrooms");
     const lats = extractJsArray(html, "PROPERTYLISTLATITUDES");
     const lons = extractJsArray(html, "PROPERTYLISTLONGITUDES");
     const propertyTypes = extractJsArray(html, "propertyTypes"); // 1=House, 2=Flat, 3=Room
+    const isStudio = extractJsArray(html, "isstudio");           // 0 or 1
+    const isShared = extractJsArray(html, "isshared");           // 0 or 1
 
-    console.log(`    Parsed arrays: ${propertyIds.length} IDs, ${prices.length} prices`);
+    console.log(`    Parsed: ${propertyIds.length} IDs, isstudio: ${isStudio.length}, isshared: ${isShared.length}`);
 
     if (propertyIds.length === 0) {
-      // Fallback: build listings from HTML cards only
-      console.log(`    Fallback: using HTML cards...`);
-      for (const [id, info] of cardInfo) {
-        const card = $(`a[href$='/${id}']`).closest("div");
+      // Fallback: try HTML parsing
+      const $ = cheerio.load(html);
+      console.log(`    Fallback: trying HTML selectors...`);
+
+      $("a[href*='/property-to-rent/']").each((_, el) => {
+        const href = $(el).attr("href") || "";
+        const idMatch = href.match(/\/property-to-rent\/(\d+)/);
+        if (!idMatch) return;
+        const id = idMatch[1];
+        if (listings.some((l) => l.sourceId === id)) return;
+
+        const card = $(el).closest("div");
         const priceText = card.find("[class*='price'], [class*='Price']").text()
           || card.text().match(/£[\d,]+/)?.[0]
           || "";
         const price = parseInt(priceText.replace(/[^0-9]/g, "") || "0");
+        const title = card.find("h2, h3, [class*='title'], [class*='Title']").first().text().trim()
+          || $(el).text().trim();
         const imgSrc = card.find("img").first().attr("src")
           || card.find("img").first().attr("data-src")
           || "";
 
         if (price > 0 && price <= 5000) {
-          const titleLower = info.title.toLowerCase();
-          const slugLower = info.href.toLowerCase();
+          const slugLower = href.toLowerCase();
+          const titleLower = title.toLowerCase();
           let listingType: "flat" | "studio" | "flatshare" = "flat";
           if (titleLower.includes("studio") || slugLower.includes("studio")) {
             listingType = "studio";
-          } else if (titleLower.includes("room") || titleLower.includes("share") || slugLower.includes("shared") || slugLower.includes("room-in")) {
+          } else if (titleLower.includes("room") || titleLower.includes("share") || slugLower.includes("shared")) {
             listingType = "flatshare";
           }
 
           listings.push({
             sourceId: id,
-            url: `https://www.openrent.co.uk${info.href}`,
-            title: info.title || `${postcode} flat`,
-            address: info.title,
+            url: `https://www.openrent.co.uk${href}`,
+            title: title || `${postcode} flat`,
+            address: title,
             postcode,
             pricePerMonth: price > 10000 ? Math.round(price / 12) : price,
             bedrooms: listingType === "studio" ? 0 : 1,
@@ -110,7 +98,8 @@ async function scrapeSearchUrl(
             listingType,
           });
         }
-      }
+      });
+
       console.log(`    Fallback found ${listings.length} listings`);
       return listings;
     }
@@ -123,28 +112,15 @@ async function scrapeSearchUrl(
       const lat = Number(lats[i]) || 0;
       const lon = Number(lons[i]) || 0;
       const propType = Number(propertyTypes[i]) || 2;
+      const studio = Number(isStudio[i]) === 1;
+      const shared = Number(isShared[i]) === 1;
 
-      // Primary classification from JS data
+      // Classify using the dedicated boolean flags
       let listingType: "flat" | "studio" | "flatshare" = "flat";
-      if (propType === 3) {
-        listingType = "flatshare";
-      } else if (beds === 0) {
+      if (studio) {
         listingType = "studio";
-      }
-
-      // Override with HTML card title / URL slug (more reliable for studios)
-      const card = cardInfo.get(id);
-      if (card) {
-        const titleLower = card.title.toLowerCase();
-        const slugLower = card.href.toLowerCase();
-        if (titleLower.includes("studio") || slugLower.includes("studio-flat") || slugLower.includes("studio/")) {
-          listingType = "studio";
-        } else if (
-          (titleLower.includes("room") && (titleLower.includes("share") || titleLower.includes("shared")))
-          || slugLower.includes("room-in-a-shared") || slugLower.includes("shared-flat") || slugLower.includes("house-share")
-        ) {
-          listingType = "flatshare";
-        }
+      } else if (shared || propType === 3) {
+        listingType = "flatshare";
       }
 
       // Build descriptive title
@@ -163,12 +139,12 @@ async function scrapeSearchUrl(
 
       listings.push({
         sourceId: id,
-        url: card ? `https://www.openrent.co.uk${card.href}` : `https://www.openrent.co.uk/property-to-rent/london/flat/${id}`,
+        url: `https://www.openrent.co.uk/property-to-rent/london/flat/${id}`,
         title,
         address: "",
         postcode,
         pricePerMonth: price,
-        bedrooms: listingType === "studio" ? 0 : beds,
+        bedrooms: studio ? 0 : beds,
         description: "",
         imageUrls: [`https://imagescdn.openrent.co.uk/listings/${id}/listing_image_primary.jpg`],
         lat: lat || undefined,
@@ -176,11 +152,13 @@ async function scrapeSearchUrl(
         listingType,
       });
 
-      // Limit to 30 listings per search to avoid timeout
+      // Limit to 30 listings per postcode to avoid timeout
       if (listings.length >= 30) break;
     }
 
-    console.log(`    Found ${listings.length} listings (studios detected from HTML: ${listings.filter(l => l.listingType === "studio").length})`);
+    const studioCount = listings.filter(l => l.listingType === "studio").length;
+    const shareCount = listings.filter(l => l.listingType === "flatshare").length;
+    console.log(`    Found ${listings.length} listings (${studioCount} studios, ${shareCount} shares)`);
     return listings;
   } catch (err) {
     console.error(`Error scraping OpenRent for ${postcode}:`, err);
