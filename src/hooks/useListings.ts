@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { calculateTrueCost, type CommuteMode, type TrueCostBreakdown } from "@/lib/costs/true-cost";
 
 export interface ListingData {
   id: number;
@@ -51,6 +52,13 @@ export interface Filters {
   showStudios: boolean;
   showFlatShares: boolean;
   selectedPostcodes: string[];
+  commuteMode: CommuteMode;
+}
+
+export type { CommuteMode, TrueCostBreakdown };
+
+export interface ListingWithCost extends ListingData {
+  trueCost: TrueCostBreakdown;
 }
 
 export function useListings(filters: Filters) {
@@ -79,7 +87,7 @@ export function useListings(filters: Filters) {
   }, [fetchListings]);
 
   // Client-side filtering — instant, no network requests
-  const listings = useMemo(() => {
+  const listings = useMemo<ListingWithCost[]>(() => {
     let result = allListings;
 
     result = result.filter((l) => !l.pricePerMonth || l.pricePerMonth <= filters.maxPrice);
@@ -92,8 +100,18 @@ export function useListings(filters: Filters) {
     if (filters.hasDishwasher) result = result.filter((l) => l.hasDishwasher);
     if (filters.hasModularKitchen) result = result.filter((l) => l.hasModularKitchen);
 
-    return result;
-  }, [allListings, filters.maxPrice, filters.selectedPostcodes, filters.hasWasher, filters.hasDryer, filters.hasDishwasher, filters.hasModularKitchen]);
+    // Compute true monthly cost for each listing
+    return result.map((l) => ({
+      ...l,
+      trueCost: calculateTrueCost(
+        l.pricePerMonth,
+        l.postcode,
+        l.stationZone,
+        l.distanceToStationM,
+        filters.commuteMode,
+      ),
+    }));
+  }, [allListings, filters.maxPrice, filters.selectedPostcodes, filters.commuteMode, filters.hasWasher, filters.hasDryer, filters.hasDishwasher, filters.hasModularKitchen]);
 
   const stats = useMemo<ListingStats>(() => {
     const total = listings.length;

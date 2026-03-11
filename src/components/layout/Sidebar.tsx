@@ -2,11 +2,11 @@
 
 import { Filters } from "@/components/listings/Filters";
 import { ListingCard } from "@/components/listings/ListingCard";
-import type { ListingData, ListingStats, Filters as FilterType } from "@/hooks/useListings";
+import type { ListingData, ListingWithCost, ListingStats, Filters as FilterType } from "@/hooks/useListings";
 import { useRef, useEffect, useMemo } from "react";
 
 interface SidebarProps {
-  listings: ListingData[];
+  listings: ListingWithCost[];
   stats: ListingStats;
   filters: FilterType;
   onFiltersChange: (filters: FilterType) => void;

@@ -3,9 +3,16 @@
 import { useState, useRef, useEffect } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
-import type { Filters as FilterType } from "@/hooks/useListings";
+import type { Filters as FilterType, CommuteMode } from "@/hooks/useListings";
 import type { ListingStats } from "@/hooks/useListings";
 import { POSTCODE_AREAS } from "@/lib/geo/constants";
+
+const COMMUTE_OPTIONS: { value: CommuteMode; label: string; cost: string }[] = [
+  { value: "tube", label: "Tube", cost: "~£150" },
+  { value: "bus", label: "Bus", cost: "£75" },
+  { value: "bike", label: "Bike", cost: "£20" },
+  { value: "walk", label: "Walk", cost: "£0" },
+];
 
 interface FiltersProps {
   filters: FilterType;
@@ -76,6 +83,29 @@ export function Filters({ filters, onFiltersChange, stats }: FiltersProps) {
         <div className="flex justify-between text-[10px] text-white/15">
           <span>£1,000</span>
           <span>£3,000</span>
+        </div>
+      </div>
+
+      {/* Commute mode */}
+      <div className="space-y-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-white/30">Commute</span>
+        <div className="flex items-center gap-2">
+          {COMMUTE_OPTIONS.map(({ value, label, cost }) => (
+            <button
+              key={value}
+              onClick={() => onFiltersChange({ ...filters, commuteMode: value })}
+              className={`
+                flex-1 flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-all duration-300
+                ${filters.commuteMode === value
+                  ? "bg-violet-500/15 text-violet-400 border border-violet-500/25"
+                  : "bg-white/[0.03] text-white/30 border border-white/[0.06] hover:bg-white/[0.06] hover:text-white/50"
+                }
+              `}
+            >
+              <span>{label}</span>
+              <span className="text-[9px] text-white/20">{cost}</span>
+            </button>
+          ))}
         </div>
       </div>
 

@@ -18,6 +18,7 @@ export default function Dashboard() {
     showStudios: true,
     showFlatShares: true,
     selectedPostcodes: [],
+    commuteMode: "tube" as const,
   });
   const [selectedListingId, setSelectedListingId] = useState<number | null>(null);
 

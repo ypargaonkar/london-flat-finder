@@ -1,6 +1,6 @@
 "use client";
 
-import type { ListingData } from "@/hooks/useListings";
+import type { ListingWithCost } from "@/hooks/useListings";
 import { POSTCODE_AREAS } from "@/lib/geo/constants";
 
 function scoreToGrade(score: number): { grade: string; color: string; bg: string } {
@@ -12,7 +12,7 @@ function scoreToGrade(score: number): { grade: string; color: string; bg: string
 }
 
 interface ListingCardProps {
-  listing: ListingData;
+  listing: ListingWithCost;
   selected?: boolean;
   onClick?: () => void;
 }
@@ -35,6 +35,8 @@ export function ListingCard({ listing, selected, onClick }: ListingCardProps) {
       ? listing.address
       : `1 Bed Flat in ${listing.postcode || "London"}`;
 
+  const { trueCost } = listing;
+
   return (
     <div
       className={`
@@ -47,7 +49,7 @@ export function ListingCard({ listing, selected, onClick }: ListingCardProps) {
       onClick={onClick}
     >
       <div className="p-4">
-        {/* Top row: Price + Score badge */}
+        {/* Top row: Rent + True Cost + Score */}
         <div className="flex items-start justify-between mb-2">
           <div>
             <span className="font-serif text-xl font-bold text-white tracking-tight">
@@ -55,16 +57,31 @@ export function ListingCard({ listing, selected, onClick }: ListingCardProps) {
             </span>
             <span className="text-xs text-white/30 ml-1">/mo</span>
           </div>
-          <div className={`${bg} px-2 py-1 rounded-lg flex items-center gap-1.5`}>
-            <span className={`text-xs font-bold ${color}`}>{grade}</span>
-            <span className="text-[10px] text-white/40 font-medium">{score}</span>
+          <div className="flex items-center gap-2">
+            <div className="bg-violet-500/10 px-2 py-1 rounded-lg">
+              <span className="text-[10px] text-white/30">True </span>
+              <span className="text-xs font-bold text-violet-400">£{trueCost.total.toLocaleString()}</span>
+            </div>
+            <div className={`${bg} px-2 py-1 rounded-lg flex items-center gap-1.5`}>
+              <span className={`text-xs font-bold ${color}`}>{grade}</span>
+              <span className="text-[10px] text-white/40 font-medium">{score}</span>
+            </div>
           </div>
         </div>
 
-        {/* Title — serif, NYT style */}
+        {/* Title */}
         <p className="font-serif text-sm font-bold leading-snug text-white/80 group-hover:text-blue-400 transition-colors duration-300 line-clamp-1 mb-2">
           {displayTitle}
         </p>
+
+        {/* Cost breakdown */}
+        <div className="flex items-center gap-3 text-[10px] text-white/30 mb-2">
+          {trueCost.councilTax != null && (
+            <span>Tax £{trueCost.councilTax}</span>
+          )}
+          <span>Transport £{trueCost.transport}</span>
+          <span>Utilities ~£{trueCost.utilities}</span>
+        </div>
 
         {/* Station + journey info */}
         {listing.stationName && (
