@@ -10,7 +10,7 @@ import Map, {
   Layer,
 } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
-import type { ListingData } from "@/hooks/useListings";
+import type { ListingData, ListingWithCost } from "@/hooks/useListings";
 import type { StationData } from "@/hooks/useStations";
 import type { MapRef } from "react-map-gl/maplibre";
 
@@ -49,7 +49,7 @@ function scoreColor(score: number): string {
 }
 
 interface MapViewProps {
-  listings: ListingData[];
+  listings: ListingWithCost[];
   stations: StationData[];
   selectedListingId: number | null;
   onSelectListing: (id: number | null) => void;
@@ -339,9 +339,14 @@ export function MapView({
           >
             <div className="p-5 min-w-[320px]">
               <div className="flex items-center justify-between gap-3">
-                <p className="text-lg font-serif font-bold text-white">
-                  £{listing.pricePerMonth?.toLocaleString()}/mo
-                </p>
+                <div>
+                  <p className="text-lg font-serif font-bold text-white">
+                    £{listing.pricePerMonth?.toLocaleString()}/mo
+                  </p>
+                  <p className="text-sm font-bold text-violet-400 mt-0.5">
+                    True cost: £{listing.trueCost.total.toLocaleString()}/mo
+                  </p>
+                </div>
                 <div className="flex flex-col items-end gap-0.5">
                   <span className="text-sm font-bold text-white/40 bg-white/[0.06] px-2 py-0.5 rounded">
                     {listing.postcode}
@@ -355,6 +360,14 @@ export function MapView({
                     })()}
                   </span>
                 </div>
+              </div>
+              {/* Cost breakdown */}
+              <div className="flex items-center gap-3 mt-2 text-xs text-white/30">
+                {listing.trueCost.councilTax != null && (
+                  <span>Tax £{listing.trueCost.councilTax}</span>
+                )}
+                <span>Transport £{listing.trueCost.transport}</span>
+                <span>Utilities ~£{listing.trueCost.utilities}</span>
               </div>
               {listing.stationName && (
                 <p className="text-base font-semibold text-white mt-2">

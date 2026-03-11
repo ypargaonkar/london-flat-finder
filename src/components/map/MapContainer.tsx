@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import type { ListingData } from "@/hooks/useListings";
+import type { ListingWithCost } from "@/hooks/useListings";
 import type { StationData } from "@/hooks/useStations";
 
 // Dynamically import MapView with no SSR (MapLibre requires DOM)
@@ -21,7 +21,7 @@ const MapView = dynamic(
 );
 
 interface MapContainerProps {
-  listings: ListingData[];
+  listings: ListingWithCost[];
   stations: StationData[];
   selectedListingId: number | null;
   onSelectListing: (id: number | null) => void;
