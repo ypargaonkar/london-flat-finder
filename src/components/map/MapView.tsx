@@ -13,6 +13,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import type { ListingData, ListingWithCost } from "@/hooks/useListings";
 import type { StationData } from "@/hooks/useStations";
 import type { MapRef } from "react-map-gl/maplibre";
+import { TUBE_ROUTES } from "@/data/tubeRoutes";
 
 const OFFICE = { lat: 51.5191, lon: -0.1765, name: "Dojo (The Brunel Building)" };
 
@@ -38,6 +39,18 @@ const TUBE_LINE_COLORS: Record<string, string> = {
   Northern: "#000000",
   Piccadilly: "#003688",
   Victoria: "#0098D4",
+  DLR: "#00A4A7",
+  Lioness: "#FFD200",
+  Mildmay: "#005ABA",
+  Windrush: "#E21836",
+  Weaver: "#7B2D8B",
+  Suffragette: "#00A170",
+  Thameslink: "#D693C2",
+  Southern: "#8CC63F",
+  Southeastern: "#00AEEF",
+  "South Western": "#E11B22",
+  "Great Northern": "#6E2585",
+  c2c: "#B71C4C",
 };
 
 function scoreColor(score: number): string {
@@ -68,6 +81,7 @@ export function MapView({
   mapTilerKey,
 }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
+  const [hoveredLine, setHoveredLine] = useState<string | null>(null);
   const [popupInfo, setPopupInfo] = useState<{
     type: "listing" | "station" | "landmark" | "office";
     data: ListingData | StationData | { name: string; lat: number; lon: number };
@@ -179,6 +193,31 @@ export function MapView({
     [onSelectListing]
   );
 
+  const handleMouseMove = useCallback(
+    (event: maplibregl.MapMouseEvent & { features?: maplibregl.MapGeoJSONFeature[] }) => {
+      const map = mapRef.current?.getMap();
+      if (!map) return;
+      const features = map.queryRenderedFeatures(event.point, {
+        layers: ["tube-lines-layer"],
+      });
+      if (features.length > 0) {
+        const line = features[0].properties?.line as string;
+        setHoveredLine(line);
+        map.getCanvas().style.cursor = "pointer";
+      } else if (hoveredLine) {
+        setHoveredLine(null);
+        map.getCanvas().style.cursor = "";
+      }
+    },
+    [hoveredLine]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredLine(null);
+    const map = mapRef.current?.getMap();
+    if (map) map.getCanvas().style.cursor = "";
+  }, []);
+
   return (
     <Map
       ref={mapRef}
@@ -191,9 +230,38 @@ export function MapView({
       mapStyle={tileUrl}
       interactiveLayerIds={["listings-layer"]}
       onClick={handleMapClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <NavigationControl position="top-right" />
       <ScaleControl position="bottom-right" />
+
+      {/* Tube line routes overlay */}
+      <Source id="tube-lines" type="geojson" data={TUBE_ROUTES}>
+        <Layer
+          id="tube-lines-layer"
+          type="line"
+          paint={{
+            "line-color": ["get", "color"],
+            "line-width": [
+              "case",
+              ["==", ["get", "line"], hoveredLine || ""],
+              5,
+              2.5,
+            ],
+            "line-opacity": [
+              "case",
+              ["==", ["get", "line"], hoveredLine || ""],
+              0.9,
+              0.15,
+            ],
+          }}
+          layout={{
+            "line-cap": "round",
+            "line-join": "round",
+          }}
+        />
+      </Source>
 
       {/* Station markers layer */}
       {showStations && (
