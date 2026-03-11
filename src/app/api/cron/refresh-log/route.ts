@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createRefreshLog, completeRefreshLog, deactivateStaleListings } from "@/lib/db/queries";
+import { createRefreshLog, completeRefreshLog, deactivateStaleListings, verifyActiveListings } from "@/lib/db/queries";
 
 /**
  * POST /api/cron/refresh-log
@@ -27,16 +27,18 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ error: "Missing logId" }, { status: 400 });
   }
 
-  // Run stale deactivation
-  const staleCount = await deactivateStaleListings(3);
+  // Deactivate listings not re-seen in 1 day, then verify remaining
+  const staleCount = await deactivateStaleListings(1);
+  const letCount = await verifyActiveListings();
+  const totalDeactivated = staleCount + letCount;
 
   await completeRefreshLog(logId, {
     status: "completed",
     listingsFound,
     newListings,
-    staleDeactivated: staleCount,
+    staleDeactivated: totalDeactivated,
     errors,
   });
 
-  return NextResponse.json({ success: true, staleDeactivated: staleCount });
+  return NextResponse.json({ success: true, staleDeactivated: totalDeactivated });
 }

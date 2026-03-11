@@ -117,6 +117,90 @@ export async function deactivateStaleListings(staleDays = 3): Promise<number> {
   return stale.length;
 }
 
+// ---- Verify active listings are still live on OpenRent ----
+
+/**
+ * Verify active listings are still live on OpenRent by checking each page.
+ * Deactivates listings marked "Let Agreed" or removed.
+ * @param timeBudgetMs - max time to spend verifying (default 25s to fit in cron limits)
+ */
+export async function verifyActiveListings(timeBudgetMs = 25_000): Promise<number> {
+  const active = await db
+    .select({
+      id: schema.listings.id,
+      url: schema.listings.url,
+      source: schema.listings.source,
+      lastSeen: schema.listings.lastSeen,
+    })
+    .from(schema.listings)
+    .where(eq(schema.listings.isActive, true))
+    .all();
+
+  // Sort oldest-verified first so we prioritise checking staler listings
+  const openrent = active
+    .filter((l) => l.source === "openrent")
+    .sort((a, b) => (a.lastSeen || "").localeCompare(b.lastSeen || ""));
+
+  const now = new Date().toISOString();
+  const deadline = Date.now() + timeBudgetMs;
+  let deactivated = 0;
+  let checked = 0;
+
+  for (const listing of openrent) {
+    if (Date.now() >= deadline) break;
+    try {
+      const res = await fetch(listing.url, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        },
+        redirect: "follow",
+        signal: AbortSignal.timeout(5000),
+      });
+      checked++;
+
+      if (!res.ok) {
+        // 404 or other error — listing removed
+        await db
+          .update(schema.listings)
+          .set({ isActive: false, deactivatedAt: now })
+          .where(eq(schema.listings.id, listing.id))
+          .run();
+        deactivated++;
+        continue;
+      }
+
+      const html = await res.text();
+      const lowerHtml = html.toLowerCase();
+
+      // OpenRent marks let properties with "let agreed" or removes them
+      if (
+        lowerHtml.includes("let agreed") ||
+        lowerHtml.includes("this property has been removed") ||
+        lowerHtml.includes("this property is no longer available") ||
+        lowerHtml.includes("property no longer available")
+      ) {
+        await db
+          .update(schema.listings)
+          .set({ isActive: false, deactivatedAt: now })
+          .where(eq(schema.listings.id, listing.id))
+          .run();
+        deactivated++;
+      }
+
+      // Small delay to avoid hammering OpenRent
+      await new Promise((r) => setTimeout(r, 400));
+    } catch {
+      // Network error or timeout — skip, don't deactivate
+    }
+  }
+
+  console.log(
+    `Verified ${checked}/${openrent.length} active listings, deactivated ${deactivated} (let/removed)`
+  );
+  return deactivated;
+}
+
 // ---- Refresh Log ----
 
 export async function getLastRefresh() {

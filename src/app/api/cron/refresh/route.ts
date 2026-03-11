@@ -8,6 +8,7 @@ import {
   createRefreshLog,
   completeRefreshLog,
   deactivateStaleListings,
+  verifyActiveListings,
 } from "@/lib/db/queries";
 import type { RawListing } from "@/lib/scraper/rightmove";
 
@@ -75,19 +76,22 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Deactivate stale listings
-    const staleCount = await deactivateStaleListings(3);
+    // Deactivate listings not seen since last refresh (1 day threshold)
+    const staleCount = await deactivateStaleListings(1);
+
+    // Verify remaining active listings are still live on OpenRent
+    const letCount = await verifyActiveListings();
 
     await completeRefreshLog(log.id, {
       status: "completed",
       listingsFound: totalFound,
       newListings: totalNew,
-      staleDeactivated: staleCount,
+      staleDeactivated: staleCount + letCount,
       errors: errors.length > 0 ? errors.join("\n") : undefined,
     });
 
     console.log(
-      `[Cron] Refresh complete: ${totalFound} found, ${totalNew} new, ${staleCount} deactivated`
+      `[Cron] Refresh complete: ${totalFound} found, ${totalNew} new, ${staleCount} stale, ${letCount} let/removed`
     );
 
     return NextResponse.json({
