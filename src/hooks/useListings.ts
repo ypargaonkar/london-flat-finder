@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 
 export interface ListingData {
   id: number;
@@ -53,8 +53,7 @@ export interface Filters {
 }
 
 export function useListings(filters: Filters) {
-  const [listings, setListings] = useState<ListingData[]>([]);
-  const [stats, setStats] = useState<ListingStats>({ totalActive: 0, avgPrice: 0, avgScore: 0 });
+  const [allListings, setAllListings] = useState<ListingData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,29 +61,49 @@ export function useListings(filters: Filters) {
     setLoading(true);
     setError(null);
 
-    const params = new URLSearchParams();
-    if (filters.maxPrice < 3000) params.set("maxPrice", String(filters.maxPrice));
-    if (filters.hasWasher) params.set("hasWasher", "true");
-    if (filters.hasDryer) params.set("hasDryer", "true");
-    if (filters.hasDishwasher) params.set("hasDishwasher", "true");
-    if (filters.hasModularKitchen) params.set("hasModularKitchen", "true");
-
     try {
-      const res = await fetch(`/api/listings?${params}`);
+      const res = await fetch("/api/listings");
       if (!res.ok) throw new Error("Failed to fetch listings");
       const data = await res.json();
-      setListings(data.listings || []);
-      setStats(data.stats || { totalActive: 0, avgPrice: 0, avgScore: 0 });
+      setAllListings(data.listings || []);
     } catch (err) {
       setError(String(err));
     } finally {
       setLoading(false);
     }
-  }, [filters.maxPrice, filters.hasWasher, filters.hasDryer, filters.hasDishwasher, filters.hasModularKitchen]);
+  }, []);
 
   useEffect(() => {
     fetchListings();
   }, [fetchListings]);
+
+  // Client-side filtering — instant, no network requests
+  const listings = useMemo(() => {
+    let result = allListings;
+
+    if (filters.maxPrice < 3000) {
+      result = result.filter((l) => !l.pricePerMonth || l.pricePerMonth <= filters.maxPrice);
+    }
+    if (filters.hasWasher) result = result.filter((l) => l.hasWasher);
+    if (filters.hasDryer) result = result.filter((l) => l.hasDryer);
+    if (filters.hasDishwasher) result = result.filter((l) => l.hasDishwasher);
+    if (filters.hasModularKitchen) result = result.filter((l) => l.hasModularKitchen);
+
+    return result;
+  }, [allListings, filters.maxPrice, filters.hasWasher, filters.hasDryer, filters.hasDishwasher, filters.hasModularKitchen]);
+
+  const stats = useMemo<ListingStats>(() => {
+    const total = listings.length;
+    return {
+      totalActive: total,
+      avgPrice: total > 0
+        ? Math.round(listings.reduce((sum, l) => sum + (l.pricePerMonth || 0), 0) / total)
+        : 0,
+      avgScore: total > 0
+        ? Math.round(listings.reduce((sum, l) => sum + (l.compositeScore || 0), 0) / total)
+        : 0,
+    };
+  }, [listings]);
 
   return { listings, stats, loading, error, refetch: fetchListings };
 }
