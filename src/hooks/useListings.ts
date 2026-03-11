@@ -93,7 +93,7 @@ export function useListings(filters: Filters) {
     if (filters.hasModularKitchen) result = result.filter((l) => l.hasModularKitchen);
 
     return result;
-  }, [allListings, filters.maxPrice, filters.hasWasher, filters.hasDryer, filters.hasDishwasher, filters.hasModularKitchen]);
+  }, [allListings, filters.maxPrice, filters.selectedPostcodes, filters.hasWasher, filters.hasDryer, filters.hasDishwasher, filters.hasModularKitchen]);
 
   const stats = useMemo<ListingStats>(() => {
     const total = listings.length;
