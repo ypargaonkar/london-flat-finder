@@ -1,38 +1,7 @@
 "use client";
 
 import type { ListingData } from "@/hooks/useListings";
-
-const POSTCODE_AREAS: Record<string, string> = {
-  W1: "Mayfair / Soho",
-  W2: "Paddington / Bayswater",
-  W3: "Acton",
-  W5: "Ealing",
-  W9: "Maida Vale",
-  W10: "Ladbroke Grove",
-  W11: "Notting Hill",
-  W13: "West Ealing",
-  NW1: "Camden / Regent's Park",
-  NW6: "Kilburn / West Hampstead",
-  NW8: "St John's Wood",
-  NW10: "Kensal Green / Harlesden",
-  SW1: "Westminster / Pimlico",
-  SW7: "South Kensington",
-  EC1: "Clerkenwell / Farringdon",
-  WC1: "Bloomsbury / King's Cross",
-  WC2: "Covent Garden / Holborn",
-  E1: "Whitechapel / Shoreditch",
-  E3: "Bow / Mile End",
-  E8: "Hackney / Dalston",
-  E9: "Homerton / Hackney Wick",
-  E14: "Canary Wharf / Limehouse",
-  E15: "Stratford",
-  E16: "Canning Town",
-  E20: "Olympic Park / Stratford",
-  SE1: "Southwark / Bermondsey",
-  N1: "Islington / Angel",
-  HA0: "Wembley",
-  HA9: "Wembley Park",
-};
+import { POSTCODE_AREAS } from "@/lib/geo/constants";
 
 function scoreToGrade(score: number): { grade: string; color: string; bg: string } {
   if (score >= 80) return { grade: "A", color: "text-emerald-400", bg: "bg-emerald-500/15" };

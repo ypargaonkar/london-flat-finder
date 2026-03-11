@@ -17,6 +17,7 @@ export default function Dashboard() {
     showFlats: true,
     showStudios: true,
     showFlatShares: true,
+    selectedPostcodes: [],
   });
   const [selectedListingId, setSelectedListingId] = useState<number | null>(null);
 

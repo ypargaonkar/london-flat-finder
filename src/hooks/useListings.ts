@@ -50,6 +50,7 @@ export interface Filters {
   showFlats: boolean;
   showStudios: boolean;
   showFlatShares: boolean;
+  selectedPostcodes: string[];
 }
 
 export function useListings(filters: Filters) {
@@ -82,6 +83,10 @@ export function useListings(filters: Filters) {
     let result = allListings;
 
     result = result.filter((l) => !l.pricePerMonth || l.pricePerMonth <= filters.maxPrice);
+    if (filters.selectedPostcodes.length > 0) {
+      const selected = new Set(filters.selectedPostcodes);
+      result = result.filter((l) => l.postcode && selected.has(l.postcode));
+    }
     if (filters.hasWasher) result = result.filter((l) => l.hasWasher);
     if (filters.hasDryer) result = result.filter((l) => l.hasDryer);
     if (filters.hasDishwasher) result = result.filter((l) => l.hasDishwasher);
