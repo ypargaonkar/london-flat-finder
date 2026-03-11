@@ -9,7 +9,7 @@ import { useStations } from "@/hooks/useStations";
 
 export default function Dashboard() {
   const [filters, setFilters] = useState<Filters>({
-    maxPrice: 2200,
+    maxPrice: 3000,
     hasWasher: false,
     hasDryer: false,
     hasDishwasher: false,

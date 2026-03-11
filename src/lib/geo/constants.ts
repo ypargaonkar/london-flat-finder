@@ -75,5 +75,5 @@ export const MAX_WALK_DISTANCE_M = 800;
 export const IDEAL_WALK_DISTANCE_M = 400;
 
 // Scraping config
-export const MAX_PRICE = 2200;
+export const MAX_PRICE = 3000;
 export const DEFAULT_BEDROOMS = 1;

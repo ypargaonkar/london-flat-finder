@@ -81,9 +81,7 @@ export function useListings(filters: Filters) {
   const listings = useMemo(() => {
     let result = allListings;
 
-    if (filters.maxPrice < 3000) {
-      result = result.filter((l) => !l.pricePerMonth || l.pricePerMonth <= filters.maxPrice);
-    }
+    result = result.filter((l) => !l.pricePerMonth || l.pricePerMonth <= filters.maxPrice);
     if (filters.hasWasher) result = result.filter((l) => l.hasWasher);
     if (filters.hasDryer) result = result.filter((l) => l.hasDryer);
     if (filters.hasDishwasher) result = result.filter((l) => l.hasDishwasher);

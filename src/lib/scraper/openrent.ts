@@ -135,7 +135,7 @@ async function scrapeSearchUrl(
 
       // Filter: include studios, 1-beds, and flat shares within budget
       if (listingType === "flat" && beds !== 1) continue;
-      if (price <= 0 || price > 2200) continue;
+      if (price <= 0 || price > 3000) continue;
 
       listings.push({
         sourceId: id,
@@ -201,7 +201,7 @@ function extractJsArray(html: string, varName: string): (string | number)[] {
  */
 async function scrapePostcode(postcode: string): Promise<RawListing[]> {
   const pc = postcode.toLowerCase();
-  const url = `https://www.openrent.co.uk/properties-to-rent/london-${pc}?term=${encodeURIComponent(postcode)}&bedrooms_min=0&bedrooms_max=1&prices_max=2200&isLive=true`;
+  const url = `https://www.openrent.co.uk/properties-to-rent/london-${pc}?term=${encodeURIComponent(postcode)}&bedrooms_min=0&bedrooms_max=1&prices_max=3000&isLive=true`;
   return scrapeSearchUrl(url, postcode);
 }
 
