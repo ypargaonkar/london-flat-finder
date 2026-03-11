@@ -15,6 +15,22 @@ import type { StationData } from "@/hooks/useStations";
 import type { MapRef } from "react-map-gl/maplibre";
 import { TUBE_ROUTES } from "@/data/tubeRoutes";
 
+// Which transport lines to show on the map.
+// Add "Lioness", "Mildmay", "Windrush", "Weaver", "Suffragette", "Liberty"
+// for Overground, or "Thameslink", "Southern", "Southeastern", etc. for National Rail.
+const VISIBLE_LINES = new Set([
+  "Bakerloo", "Central", "Circle", "District", "Elizabeth line",
+  "Hammersmith & City", "Jubilee", "Metropolitan", "Northern",
+  "Piccadilly", "Victoria", "Waterloo & City", "DLR",
+]);
+
+const filteredRoutes: GeoJSON.FeatureCollection = {
+  type: "FeatureCollection",
+  features: TUBE_ROUTES.features.filter(
+    (f) => VISIBLE_LINES.has(f.properties?.line as string)
+  ),
+};
+
 const OFFICE = { lat: 51.5191, lon: -0.1765, name: "Dojo (The Brunel Building)" };
 
 const LANDMARKS = [
@@ -241,7 +257,7 @@ export function MapView({
       <ScaleControl position="bottom-right" />
 
       {/* Tube line routes overlay */}
-      <Source id="tube-lines" type="geojson" data={TUBE_ROUTES}>
+      <Source id="tube-lines" type="geojson" data={filteredRoutes}>
         <Layer
           id="tube-lines-layer"
           type="line"
