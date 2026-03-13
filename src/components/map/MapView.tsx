@@ -107,8 +107,8 @@ export function MapView({
   } | null>(null);
 
   const tileUrl = mapTilerKey
-    ? `https://api.maptiler.com/maps/streets-v2-light/style.json?key=${mapTilerKey}`
-    : "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
+    ? `https://api.maptiler.com/maps/streets-v2/style.json?key=${mapTilerKey}`
+    : "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json";
 
   // Fly to selected listing
   useEffect(() => {
