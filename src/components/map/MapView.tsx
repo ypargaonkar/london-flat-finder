@@ -107,8 +107,8 @@ export function MapView({
   } | null>(null);
 
   const tileUrl = mapTilerKey
-    ? `https://api.maptiler.com/maps/streets-v2-dark/style.json?key=${mapTilerKey}`
-    : "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
+    ? `https://api.maptiler.com/maps/streets-v2-light/style.json?key=${mapTilerKey}`
+    : "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
 
   // Fly to selected listing
   useEffect(() => {
@@ -305,7 +305,7 @@ export function MapView({
               "circle-radius": 3.5,
               "circle-color": TUBE_LINE_COLORS[hoveredLine] || "#fff",
               "circle-stroke-width": 1.5,
-              "circle-stroke-color": "#fff",
+              "circle-stroke-color": "#333",
               "circle-opacity": 0.95,
             }}
           />
@@ -324,8 +324,8 @@ export function MapView({
               "text-optional": true,
             }}
             paint={{
-              "text-color": "#fff",
-              "text-halo-color": "rgba(0,0,0,0.85)",
+              "text-color": "#1a1a1a",
+              "text-halo-color": "rgba(255,255,255,0.85)",
               "text-halo-width": 1.5,
             }}
           />
@@ -342,7 +342,7 @@ export function MapView({
               "circle-radius": 4,
               "circle-color": ["get", "color"],
               "circle-stroke-width": 1.5,
-              "circle-stroke-color": "#ffffff",
+              "circle-stroke-color": "#333333",
               "circle-opacity": 0.8,
             }}
           />
@@ -357,8 +357,8 @@ export function MapView({
               "text-optional": true,
             }}
             paint={{
-              "text-color": "rgba(255,255,255,0.5)",
-              "text-halo-color": "rgba(0,0,0,0.8)",
+              "text-color": "rgba(0,0,0,0.5)",
+              "text-halo-color": "rgba(255,255,255,0.8)",
               "text-halo-width": 1.5,
             }}
             minzoom={13}
@@ -412,7 +412,7 @@ export function MapView({
               "rgba(167,139,250,0.7)",
               ["==", ["get", "listingType"], "flatshare"],
               "rgba(6,182,212,0.7)",
-              "rgba(255,255,255,0.6)",
+              "rgba(0,0,0,0.3)",
             ],
             "circle-opacity": 0.9,
             "circle-blur": 0.1,
