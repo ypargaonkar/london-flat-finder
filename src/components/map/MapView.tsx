@@ -93,7 +93,7 @@ export function MapView({
   selectedListingId,
   onSelectListing,
   showStations = true,
-  showLandmarks = true,
+  showLandmarks = false,
   mapTilerKey,
 }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
