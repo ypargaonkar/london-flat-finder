@@ -285,7 +285,7 @@ export function MapView({
               "case",
               ["==", ["get", "line"], hoveredLine || ""],
               0.9,
-              0.35,
+              0.15,
             ],
           }}
           layout={{
